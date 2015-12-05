@@ -10,23 +10,85 @@ namespace BE
     public class Order
     {
 
-        int OrderId;
-        DateTime OrderTime;
-        int branchId;
-        Hashgacha HashgachaPlace;
-        int NumOfDeliveryPerson;
-        int ClientId;
+        int _OrderId;
+        DateTime _OrderTime;
+        int _BranchId;
+        Hashgacha _HashgachaPlace;
+        int _NumOfDeliveryPerson;
+        int _ClientId;
 
-        public int OrderId1
+        public int OrderId
         {
             get
             {
-                return OrderId;
+                return _OrderId;
             }
 
             set
             {
-                OrderId = value;
+                _OrderId = value;
+            }
+        }
+
+        public DateTime OrderTime
+        {
+            get
+            {
+                return _OrderTime;
+            }
+
+            set
+            {
+                _OrderTime = value;
+            }
+        }
+
+        public int BranchId
+        {
+            get
+            {
+                return _BranchId;
+            }
+
+            set
+            {
+                _BranchId = value;
+            }
+        }
+
+        public String HashgachaPlace
+        {
+            get
+            {
+                return _HashgachaPlace.ToString();
+            }
+            private set {
+                            }
+        }
+
+        public int NumOfDeliveryPerson1
+        {
+            get
+            {
+                return _NumOfDeliveryPerson;
+            }
+
+            set
+            {
+                _NumOfDeliveryPerson = value;
+            }
+        }
+
+        public int ClientId1
+        {
+            get
+            {
+                return _ClientId;
+            }
+
+            set
+            {
+                _ClientId = value;
             }
         }
     }
