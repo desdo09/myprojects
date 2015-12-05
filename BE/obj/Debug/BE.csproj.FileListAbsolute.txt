@@ -1,0 +1,10 @@
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\BE\bin\Debug\BE.dll
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\BE\bin\Debug\BE.pdb
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\BE\obj\Debug\BE.csprojResolveAssemblyReference.cache
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\BE\obj\Debug\BE.dll
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\BE\obj\Debug\BE.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\BE\bin\Debug\BE.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\BE\bin\Debug\BE.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\BE\obj\Debug\BE.csprojResolveAssemblyReference.cache
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\BE\obj\Debug\BE.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\BE\obj\Debug\BE.pdb

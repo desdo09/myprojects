@@ -1,0 +1,7 @@
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\DAL\bin\Debug\DAL.dll
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\DAL\bin\Debug\DAL.pdb
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\DAL\bin\Debug\BE.dll
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\DAL\bin\Debug\BE.pdb
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\DAL\obj\Debug\DAL.dll
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\DAL\obj\Debug\DAL.pdb

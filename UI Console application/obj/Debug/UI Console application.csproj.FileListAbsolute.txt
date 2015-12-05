@@ -1,0 +1,35 @@
+C:\Users\User\Documents\Jct\Shiurei Bait\programacion\C#\dotNet5776_Project_0260\UI Console application\bin\Debug\UI Console application.exe.config
+C:\Users\User\Documents\Jct\Shiurei Bait\programacion\C#\dotNet5776_Project_0260\UI Console application\bin\Debug\UI Console application.exe
+C:\Users\User\Documents\Jct\Shiurei Bait\programacion\C#\dotNet5776_Project_0260\UI Console application\bin\Debug\UI Console application.pdb
+C:\Users\User\Documents\Jct\Shiurei Bait\programacion\C#\dotNet5776_Project_0260\UI Console application\obj\Debug\UI Console application.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\Jct\Shiurei Bait\programacion\C#\dotNet5776_Project_0260\UI Console application\obj\Debug\UI Console application.exe
+C:\Users\User\Documents\Jct\Shiurei Bait\programacion\C#\dotNet5776_Project_0260\UI Console application\obj\Debug\UI Console application.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Proyect C# 2015\dotNet5776_Project_0260\UI Console application\bin\Debug\UI Console application.exe.config
+C:\Users\User\Dropbox\JCT\Proyect\Proyect C# 2015\dotNet5776_Project_0260\UI Console application\obj\Debug\UI Console application.exe
+C:\Users\User\Dropbox\JCT\Proyect\Proyect C# 2015\dotNet5776_Project_0260\UI Console application\obj\Debug\UI Console application.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260\UI Console application\bin\Debug\UI Console application.exe.config
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260\UI Console application\obj\Debug\UI Console application.exe
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260\UI Console application\obj\Debug\UI Console application.pdb
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\UI Console application\bin\Debug\UI Console application.exe.config
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\UI Console application\bin\Debug\UI Console application.exe
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\UI Console application\bin\Debug\UI Console application.pdb
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\UI Console application\bin\Debug\BE.dll
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\UI Console application\bin\Debug\BL.dll
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\UI Console application\bin\Debug\BE.pdb
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\UI Console application\bin\Debug\BL.pdb
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\UI Console application\obj\Debug\UI Console application.csprojResolveAssemblyReference.cache
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\UI Console application\obj\Debug\UI Console application.exe
+C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\UI Console application\obj\Debug\UI Console application.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\UI Console application\bin\Debug\UI Console application.exe.config
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\UI Console application\obj\Debug\UI Console application.exe
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\UI Console application\obj\Debug\UI Console application.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\UI Console application\bin\Debug\UI Console application.exe
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\UI Console application\bin\Debug\UI Console application.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\UI Console application\bin\Debug\BE.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\UI Console application\bin\Debug\BL.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\UI Console application\bin\Debug\BE.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\UI Console application\bin\Debug\BL.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\UI Console application\obj\Debug\UI Console application.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\UI Console application\bin\Debug\UI Console application.exe.config
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\UI Console application\obj\Debug\UI Console application.exe
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\UI Console application\obj\Debug\UI Console application.pdb
