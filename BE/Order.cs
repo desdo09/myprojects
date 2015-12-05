@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    
+
     enum Hashgacha { NotKosher, Kosher, Mehadrin, Badatz };
     public class Order
     {
@@ -17,7 +17,7 @@ namespace BE
         Hashgacha _HashgachaPlace;
         int _NumOfDeliveryPerson;
         int _ClientId;
-        
+
 
         public int OrderId
         {
@@ -39,7 +39,7 @@ namespace BE
                 return _OrderTime;
             }
 
-            set
+            private set
             {
                 _OrderTime = value;
             }
@@ -70,7 +70,7 @@ namespace BE
                 {
                     case "Not Kosher":
                         _HashgachaPlace = Hashgacha.NotKosher;
-                    break;
+                        break;
                     case "NotKosher":
                         _HashgachaPlace = Hashgacha.NotKosher;
                         break;
