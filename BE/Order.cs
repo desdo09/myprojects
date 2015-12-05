@@ -8,15 +8,17 @@ namespace BE
 {
 
     enum Hashgacha { Kosher, Mehadrin, Badatz, notKosher };
-   public class Order
+    public class Order
     {
-       
+
         int _OrderId;
         DateTime _OrderTime;
         int _BranchId;
         Hashgacha _HashgachaPlace;
         int _NumOfDeliveryPerson;
         int _ClientId;
+
+        //test
 
         public int OrderId
         {
@@ -63,8 +65,9 @@ namespace BE
             {
                 return _HashgachaPlace.ToString();
             }
-            private set {
-                            }
+            private set
+            {
+            }
         }
 
         public int NumOfDeliveryPerson1
