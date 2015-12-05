@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BE
 {
     
-    enum Hashgacha { Kosher, Mehadrin, Badatz, notKosher };
+    enum Hashgacha { NotKosher, Kosher, Mehadrin, Badatz };
     public class Order
     {
 
@@ -66,10 +66,30 @@ namespace BE
             }
             private set
             {
+                switch (value)
+                {
+                    case "Not Kosher":
+                        _HashgachaPlace = Hashgacha.NotKosher;
+                    break;
+                    case "NotKosher":
+                        _HashgachaPlace = Hashgacha.NotKosher;
+                        break;
+                    case "Kosher":
+                        _HashgachaPlace = Hashgacha.Kosher;
+                        break;
+                    case "Mehadrin":
+                        _HashgachaPlace = Hashgacha.Mehadrin;
+                        break;
+                    case "Badatz":
+                        _HashgachaPlace = Hashgacha.Badatz;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
-        public int NumOfDeliveryPerson1
+        public int NumOfDeliveryPerson
         {
             get
             {
