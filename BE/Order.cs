@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    //test 5
+    
     enum Hashgacha { Kosher, Mehadrin, Badatz, notKosher };
     public class Order
     {
@@ -17,10 +17,7 @@ namespace BE
         Hashgacha _HashgachaPlace;
         int _NumOfDeliveryPerson;
         int _ClientId;
-
-        //saa
-
-        //test
+        
 
         public int OrderId
         {
