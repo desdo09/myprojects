@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    enum Hashgacha { Kosher, Mehadrin, Badatz };
-   public class Order
+
+    enum Hashgacha { Kosher, Mehadrin, Badatz, notKosher };
+    public class Order
     {
-       
+
         int OrderId;
         DateTime OrderTime;
         int branchId;
