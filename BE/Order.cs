@@ -16,7 +16,7 @@ namespace BE
         int _BranchId;
         Hashgacha _HashgachaPlace;
         int _NumOfDeliveryPerson;
-        int _ClientId7;
+        int _ClientId2;
 
         //test
 
