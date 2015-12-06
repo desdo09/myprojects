@@ -13,6 +13,20 @@ namespace BE
         string _ClientAddress;
         double _ClientCard;
 
+        public Client(int _ClientId, string _ClientName, string _ClientAddress, double _ClientCard)
+        {
+            this._ClientId = _ClientId;
+            this._ClientName = _ClientName;
+            this._ClientAddress = _ClientAddress;
+            this._ClientCard = _ClientCard;
+        }
+        public void copy(Client a)
+        {
+            this._ClientId = a.ClientId;
+            this._ClientName = a.ClientName;
+            this._ClientAddress = a.ClientAddress;
+            this._ClientCard = a.ClientCard;
+        }
         public int ClientId
         {
             get
