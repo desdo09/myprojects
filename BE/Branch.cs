@@ -12,7 +12,7 @@ namespace BE
     public class Branch
     {
         public static string[] NameOfObjects = new string[] {
-            "BranchId", "Id",
+            "BranchsId", "Id",
             "BranchName","Name",
             "BranchAddres","Address",
             "BranchPhone","Phone",
