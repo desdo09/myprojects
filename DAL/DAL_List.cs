@@ -88,7 +88,7 @@ namespace DAL
         #region SearchById functions
         public Branch SearchBranchById(int id)
         {
-            return DataSource.BranchData.FirstOrDefault(a => a.BranchId == id);
+            return DataSource.BranchData.FirstOrDefault(item => item.BranchId == id);
         }
 
         public Client SearchClientById(int id)
