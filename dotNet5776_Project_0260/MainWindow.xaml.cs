@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BE;
+using BL;
+using System.Threading;
 
 namespace dotNet5776_Project_0260
 {
@@ -20,9 +23,50 @@ namespace dotNet5776_Project_0260
     /// </summary>
     public partial class MainWindow : Window
     {
+        static IBL Bl_Object = BL.FactoryBL.GetBL();
         public MainWindow()
         {
             InitializeComponent();
+            for (int i = 0; i < 100; i++)
+            {
+                Bl_Object.addBranch(new Branch(i, "a" + i % 10, "b" + (i * 3) % 15, 33, "a", 4, 5, BE.Hashgacha.Kosher));
+            }
+
+
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = Bl_Object.GetAllBranch();
+            
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = Bl_Object.GetAllClients();
+        }
+
+
+
+        private void dataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+
+            for (int i = 0; i < Branch.NameOfObjects.Length; i++)
+            {
+                if (e.Column.Header.ToString() == Branch.NameOfObjects[i])
+                {
+                    e.Column.Header = Branch.NameOfObjects[i + 1];
+                    break;
+                }
+            }
+           
+        }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+            //new Thread(() => MessageBox.Show("Pressed")).Start();
         }
     }
+
 }
