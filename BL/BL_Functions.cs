@@ -10,6 +10,7 @@ namespace BL
 {
     public class BL_Functions : IBL
     {
+        //Test
         IDAL DalObject = FactoryDal.getDal();
         public void addBranch(Branch a)
         {
