@@ -14,6 +14,23 @@ namespace BE
         float _DishPrice;
         Hashgacha _HashgachaDish;
 
+        public Dish(int _DishId, string _DishName, float _DishSize, float _DishPrice, Hashgacha _HashgachaDish)
+        {
+            this._DishId = _DishId;
+            this._DishName = _DishName;
+            this._DishSize = _DishSize;
+            this._DishPrice = _DishPrice;
+            this._HashgachaDish = _HashgachaDish;
+        }
+        public void Copy(Dish a)
+        {
+            this._DishId = a._DishId;
+            this._DishName = a._DishName;
+            this._DishSize = a._DishSize;
+            this._DishPrice = a._DishPrice;
+            this._HashgachaDish = a._HashgachaDish;
+        }
+
         public int DishId
         {
             get
