@@ -8,10 +8,11 @@ using System.Windows;
 
 namespace BE
 {
+    //im gay
     public class Branch
     {
         public static string[] NameOfObjects = new string[] {
-            "BranchId", "Id",
+            "BranchsId", "Id",
             "BranchName","Name",
             "BranchAddres","Address",
             "BranchPhone","Phone",
