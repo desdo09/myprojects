@@ -1,13 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BE
 {
     public class Branch
     {
+        public static string[] NameOfObjects = new string[] {
+            "BranchId", "Id",
+            "BranchName","Name",
+            "BranchAddres","Address",
+            "BranchPhone","Phone",
+            "BranchManager","Manager",
+            "BranchWorkers","Workers",
+            "NumOfDeliveryPerson","Delivery's persons",
+            "BranchHashgacha","Hashgacha"
+
+        };
+        public Branch()
+        {
+
+        }
+
+        public Branch(int BranchId, string BranchName, string BranchAddres, int BranchPhone, string BranchManager, int BranchWorkers, int NumOfDeliveryPerson, Hashgacha BranchHashgacha)
+        {
+            this._BranchId = BranchId;
+            this._BranchName = BranchName;
+            this._BranchAddres = BranchAddres;
+            this._BranchPhone = BranchPhone;
+            this._BranchManager = BranchManager;
+            this._BranchWorkers = BranchWorkers;
+            this._NumOfDeliveryPerson = NumOfDeliveryPerson;
+            this._BranchHashgacha = BranchHashgacha;
+        }
+
+        public void copy(Branch a)
+        {
+            //this.BranchId = a.BranchId;
+            this.BranchName = a.BranchName;
+            this.BranchAddres = a.BranchAddres;
+            this.BranchPhone = a.BranchPhone;
+            this.BranchManager = a.BranchManager;
+            this.BranchWorkers = a.BranchWorkers;
+            this.NumOfDeliveryPerson = a.NumOfDeliveryPerson;
+            this._BranchHashgacha = a._BranchHashgacha;
+
+        }
+
+
+
         int _BranchId;
         string _BranchName;
         string _BranchAddres;
@@ -16,6 +61,7 @@ namespace BE
         int _BranchWorkers;
         int _NumOfDeliveryPerson;
         Hashgacha _BranchHashgacha;
+
 
         public int BranchId
         {
@@ -28,6 +74,7 @@ namespace BE
             {
                 _BranchId = value;
             }
+
         }
 
         public string BranchName
@@ -108,7 +155,7 @@ namespace BE
             }
         }
 
-        internal Hashgacha BranchHashgacha
+        public Hashgacha BranchHashgacha
         {
             get
             {
@@ -119,6 +166,19 @@ namespace BE
             {
                 _BranchHashgacha = value;
             }
+
+        }
+        public override string ToString()
+        {
+
+            return "Branch name: " + BranchName
+                + "\nBranch addres: " + BranchAddres
+                + "\nBranch phone: " + BranchPhone
+                + "\nBranch manager: " + BranchManager
+                + "\nBranch workers: " + BranchWorkers
+                + "\nNumber of delivery persons: " + NumOfDeliveryPerson
+                + "\nBranch hashgacha: " + BranchHashgacha;
+
         }
     }
 }
