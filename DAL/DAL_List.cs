@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 using DS;
+using System.Runtime.Serialization;
 
 namespace DAL
 {
@@ -29,6 +30,8 @@ namespace DAL
 
             if (SearchBranchById(add.BranchId) == null)
                 DataSource.BranchData.Add(add);
+            else
+                throw new IdAlreadyExists("DAL error: Id " + add.BranchId + " already exists in data source");
 
         }
 
@@ -36,53 +39,81 @@ namespace DAL
         {
             if (SearchClientById(add.ClientId) == null)
                 DataSource.ClientData.Add(add);
-
+            else
+                throw new IdAlreadyExists("DAL error: Id " + add.ClientId + " already exists in data source");
         }
 
         public void AddDish(Dish add)
         {
             if (SearchDishById(add.DishId) == null)
                 DataSource.dishData.Add(add);
+            else
+                throw new IdAlreadyExists("DAL error: Id " + add.DishId + " already exists in data source");
 
         }
 
         public void AddOrder(Order add)
         {
-            if (SearchOrderById(add.BranchId) == null)
+            if (SearchOrderById(add.OrderId) == null)
                 DataSource.OrderData.Add(add);
-
+            else
+                throw new IdAlreadyExists("DAL error: Id " + add.OrderId + " already exists in data source");
         }
 
         public void AddOrdered_Dish(Ordered_Dish add)
         {
-            if (SearchOrdered_DishById(add.DishId) == null)
+            if (SearchOrdered_DishById(add.Ordered_DishId) == null)
                 DataSource.Ordered_DishData.Add(add);
+            else
+                throw new IdAlreadyExists("DAL error: Id " + add.Ordered_DishId + " already exists in data source");
         }
         #endregion
         #region Update Functions
-        public void UpdateBranch(Branch updete)
+        public void UpdateBranch(Branch update)
         {
-            throw new NotImplementedException();
+
+            Branch a = SearchBranchById(update.BranchId);
+            if (a != null)
+                a.copy(update);
+            else
+                throw new NullReferenceException("Id does not found!");
+
         }
 
-        public void UpdateClient(Client updete)
+        public void UpdateClient(Client update)
         {
-            throw new NotImplementedException();
+            Client a = SearchClientById(update.ClientId);
+            if (a != null)
+                a.copy(update);
+            else
+                throw new NullReferenceException("Id does not found!");
         }
 
         public void UpdateDish(Dish update)
         {
-            throw new NotImplementedException();
+            Dish a = SearchDishById(update.DishId);
+            if (a != null)
+                a.Copy(update);
+            else
+                throw new NullReferenceException("Id does not found!");
         }
 
-        public void UpdateOrder(Order updete)
+        public void UpdateOrder(Order update)
         {
-            throw new NotImplementedException();
+            Order a = SearchOrderById(update.OrderId);
+            if (a != null)
+                a.Copy(update);
+            else
+                throw new NullReferenceException("Id does not found!");
         }
 
-        public void UpdateOrdered_Dish(Ordered_Dish updete)
+        public void UpdateOrdered_Dish(Ordered_Dish update)
         {
-            throw new NotImplementedException();
+            Ordered_Dish a = SearchOrdered_DishById(update.Ordered_DishId);
+            if (a != null)
+                a.copy(update);
+            else
+                throw new NullReferenceException("Id does not found!");
         }
         #endregion
         #region SearchById functions
@@ -114,38 +145,43 @@ namespace DAL
         #region Delete Functions
         public void DeleteBranch(Branch delete)
         {
-            throw new NotImplementedException();
+            if (!DataSource.BranchData.Remove(delete))
+                throw new NullReferenceException("Branch does not found!");
         }
 
         public void DeleteClient(Client delete)
         {
-            throw new NotImplementedException();
+            if (!DataSource.ClientData.Remove(delete))
+                throw new NullReferenceException("Client does not found!");
         }
 
-        public void DeleteDish(int DishId)
+        public void DeleteDish(Dish DishId)
         {
-            throw new NotImplementedException();
+            if (!DataSource.dishData.Remove(DishId))
+                throw new NullReferenceException("Branch does not found!");
         }
 
         public void DeleteOrder(Order delete)
         {
-            throw new NotImplementedException();
+            if (!DataSource.OrderData.Remove(delete))
+                throw new NullReferenceException("Branch does not found!");
         }
 
         public void DeleteOrdered_Dish(Ordered_Dish delete)
         {
-            throw new NotImplementedException();
+            if (!DataSource.Ordered_DishData.Remove(delete))
+                throw new NullReferenceException("Branch does not found!");
         }
         #endregion
         #region Get List Functions
         public List<Branch> GetAllBranch()
         {
-            throw new NotImplementedException();
+            return DataSource.BranchData;
         }
 
         public List<Client> GetAllClients()
         {
-            throw new NotImplementedException();
+            return DataSource.ClientData;
         }
 
         public List<Dish> GetAllDish()
@@ -159,4 +195,25 @@ namespace DAL
         }
         #endregion
     }
+    #region Exceptions
+    public class IdAlreadyExists : Exception, ISerializable
+    {
+
+        public IdAlreadyExists(string message) : base(message)
+        {
+        }
+
+        public IdAlreadyExists(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
+        protected IdAlreadyExists(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
+        public override string ToString()
+        {
+            return "Id already exists on data base";
+        }
+    }
+    #endregion
 }

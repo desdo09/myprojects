@@ -11,7 +11,7 @@ namespace DAL
     {
         //Dish
         void AddDish(Dish add);
-        void DeleteDish(int DishId);
+        void DeleteDish(Dish DishId);
         void UpdateDish(Dish update);
         Dish SearchDishById(int id);
 
@@ -36,6 +36,7 @@ namespace DAL
         void DeleteOrdered_Dish(Ordered_Dish delete);
         void UpdateOrdered_Dish(Ordered_Dish updete);
         Ordered_Dish SearchOrdered_DishById(int id);
+
 
         //lists
         List<Ordered_Dish> GetAllOrdersDish();
