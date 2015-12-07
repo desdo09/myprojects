@@ -105,6 +105,48 @@
       <Name>BL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\add\add_male_user_98364.jpg" />
+    <Resource Include="Images\add\Sign_Add_Icon_128.png" />
+    <Resource Include="Images\add\Sign_Add_Icon_16.png" />
+    <Resource Include="Images\add\Sign_Add_Icon_256.png" />
+    <Resource Include="Images\add\Sign_Add_Icon_32.png" />
+    <Resource Include="Images\add\Sign_Add_Icon_48.png" />
+    <Resource Include="Images\add\Sign_Add_Icon_64.png" />
+    <Resource Include="Images\add\Sign_Add_Icon_72.png" />
+    <Resource Include="Images\add\Sign_Add_Icon_96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Client\Add_Male_User_Icon_128.png" />
+    <Resource Include="Images\Client\Add_Male_User_Icon_16.png" />
+    <Resource Include="Images\Client\Add_Male_User_Icon_256.png" />
+    <Resource Include="Images\Client\Add_Male_User_Icon_32.png" />
+    <Resource Include="Images\Client\Add_Male_User_Icon_48.png" />
+    <Resource Include="Images\Client\Add_Male_User_Icon_64.png" />
+    <Resource Include="Images\Client\Add_Male_User_Icon_72.png" />
+    <Resource Include="Images\Client\Add_Male_User_Icon_96.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Remove\Button_Delete_Icon_128.png" />
+    <Resource Include="Images\Remove\Button_Delete_Icon_16.png" />
+    <Resource Include="Images\Remove\Button_Delete_Icon_256.png" />
+    <Resource Include="Images\Remove\Button_Delete_Icon_32.png" />
+    <Resource Include="Images\Remove\Button_Delete_Icon_48.png" />
+    <Resource Include="Images\Remove\Button_Delete_Icon_64.png" />
+    <Resource Include="Images\Remove\Button_Delete_Icon_72.png" />
+    <Resource Include="Images\Remove\Button_Delete_Icon_96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Update\Button_Refresh_Icon_128.png" />
+    <Resource Include="Images\Update\Button_Refresh_Icon_16.png" />
+    <Resource Include="Images\Update\Button_Refresh_Icon_256.png" />
+    <Resource Include="Images\Update\Button_Refresh_Icon_32.png" />
+    <Resource Include="Images\Update\Button_Refresh_Icon_48.png" />
+    <Resource Include="Images\Update\Button_Refresh_Icon_64.png" />
+    <Resource Include="Images\Update\Button_Refresh_Icon_72.png" />
+    <Resource Include="Images\Update\Button_Refresh_Icon_96.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

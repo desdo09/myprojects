@@ -10,6 +10,7 @@ namespace DAL
     {
         public static IDAL getDal()
         {
+            
             // Singleton Pattern - use Instance
             return DAL_List.Instance;
         }

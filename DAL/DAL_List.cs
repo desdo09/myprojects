@@ -195,6 +195,7 @@ namespace DAL
         }
         #endregion
     }
+   
     #region Exceptions
     public class IdAlreadyExists : Exception, ISerializable
     {

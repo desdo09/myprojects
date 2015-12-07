@@ -29,16 +29,16 @@ namespace dotNet5776_Project_0260
             InitializeComponent();
             for (int i = 0; i < 100; i++)
             {
-                Bl_Object.addBranch(new Branch(i, "a" + i % 10, "b" + (i * 3) % 15, 33, "a", 4, 5, BE.Hashgacha.Kosher));
+                Bl_Object.addBranch(new Branch(i+1000009, "Havaad Haleumi " + i % 10, "b" + (i * 3) % 15, 33, "a", 4566576, 5, BE.Hashgacha.Kosher));
             }
-
+            dataGrid.ItemsSource = Bl_Object.GetAllBranch();
 
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             dataGrid.ItemsSource = Bl_Object.GetAllBranch();
-            
+
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
@@ -50,7 +50,8 @@ namespace dotNet5776_Project_0260
 
         private void dataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-
+            
+          // MessageBox.Show(e.Column.Header.ToString());
             for (int i = 0; i < Branch.NameOfObjects.Length; i++)
             {
                 if (e.Column.Header.ToString() == Branch.NameOfObjects[i])
@@ -59,12 +60,12 @@ namespace dotNet5776_Project_0260
                     break;
                 }
             }
-           
+
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
             //new Thread(() => MessageBox.Show("Pressed")).Start();
         }
     }
