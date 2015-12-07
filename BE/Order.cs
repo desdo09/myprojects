@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BE
 {
 
-    enum Hashgacha { NotKosher, Kosher, Mehadrin, Badatz };
+    public enum Hashgacha { NotKosher, Kosher, Mehadrin, Badatz };
     public class Order
     {
 
