@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BE
 {
 
-    enum Hashgacha { NotKosher, Kosher, Mehadrin, Badatz };
+    public enum Hashgacha { NotKosher, Kosher, Mehadrin, Badatz };
     public class Order
     {
 
@@ -18,6 +18,24 @@ namespace BE
         int _NumOfDeliveryPerson;
         int _ClientId;
 
+        public Order(int _OrderId, DateTime _OrderTime, int _BranchId, Hashgacha _HashgachaPlace, int _NumOfDeliveryPerson, int _ClientId)
+        {
+            this._OrderId = _OrderId;
+            this._OrderTime = _OrderTime;
+            this._BranchId = _BranchId;
+            this._HashgachaPlace = _HashgachaPlace;
+            this._NumOfDeliveryPerson = _NumOfDeliveryPerson;
+            this._ClientId = _ClientId;
+        }
+        public void Copy(Order a)
+        {
+            this._OrderId = a._OrderId;
+            this._OrderTime = a._OrderTime;
+            this._BranchId = a._BranchId;
+            this._HashgachaPlace = a._HashgachaPlace;
+            this._NumOfDeliveryPerson = a._NumOfDeliveryPerson;
+            this._ClientId = a._ClientId;
+        }
 
         public int OrderId
         {
