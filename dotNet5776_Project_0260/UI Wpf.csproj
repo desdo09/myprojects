@@ -151,6 +151,12 @@
     <Resource Include="Images\Update\Button_Refresh_Icon_72.png" />
     <Resource Include="Images\Update\Button_Refresh_Icon_96.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ExportButton.fw - copia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PrintButton.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
