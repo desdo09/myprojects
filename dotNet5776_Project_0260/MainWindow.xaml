@@ -13,7 +13,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <StackPanel  >
-            <Menu BorderBrush="Black" BorderThickness="0,0,0,1"   >
+            <Menu BorderBrush="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" BorderThickness="0,0,0,1" Background="#FFFFFDFD"   >
                 <MenuItem Header="File" >
                     <MenuItem Header="New" Click="MenuItem_Click" />
                     <MenuItem Header="Open" Click="MenuItem_Click_1" />
@@ -85,13 +85,13 @@
                     </Button>
                 </Grid>
             </Border>
-            <Grid x:Name="ContentDataGrid" Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+            <Grid x:Name="ContentDataGrid" Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="5*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <DataGrid x:Name="dataGrid" TextBlock.TextAlignment="Center" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="True"  AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" Margin="0,0,0,0" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}" >
+                <DataGrid x:Name="dataGrid" FontSize="18" TextBlock.TextAlignment="Center" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="True"  AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" Margin="0,0,0,0" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}" >
                 </DataGrid>
                 <Grid x:Name="SearchGrid" Grid.Row="0">
                     <Grid.ColumnDefinitions>
