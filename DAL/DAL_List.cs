@@ -145,7 +145,8 @@ namespace DAL
         #region Delete Functions
         public void DeleteBranch(Branch delete)
         {
-            if (!DataSource.BranchData.Remove(delete))
+            
+             if (delete == null && !DataSource.BranchData.Remove(delete))
                 throw new NullReferenceException("Branch does not found!");
         }
 

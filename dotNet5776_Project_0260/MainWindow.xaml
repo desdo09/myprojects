@@ -48,7 +48,7 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="Branch_button" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0" >
+                    <Button x:Name="Branch_button" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0" Click="Branch_button_Click" >
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="Images/addButton.fw.png"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"    Width="{Binding ActualWidth, ElementName=Branch_button}"   />
