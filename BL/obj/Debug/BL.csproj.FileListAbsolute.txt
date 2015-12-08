@@ -10,3 +10,14 @@ C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\B
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\BL\obj\Debug\BL.dll
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\dotNet5776_Project_0260_6603\BL\obj\Debug\BL.pdb
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BL\bin\Debug\BL.dll
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BL\bin\Debug\BL.pdb
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BL\bin\Debug\BE.dll
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BL\bin\Debug\DAL.dll
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BL\bin\Debug\DS.dll
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BL\bin\Debug\BE.pdb
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BL\bin\Debug\DAL.pdb
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BL\bin\Debug\DS.pdb
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BL\obj\Debug\BL.dll
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BL\obj\Debug\BL.pdb

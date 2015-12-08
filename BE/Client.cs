@@ -8,17 +8,29 @@ namespace BE
 {
     public class Client
     {
+        public static string[] NameOfObjects = new string[] {
+            "ClientId", "Id",
+            "ClientName","Name",
+            "ClientAddress","Address",
+            "ClientPhone","Phone",
+            "ClientCard","Card",
+
+
+        };
+
         int _ClientId;
         string _ClientName;
         string _ClientAddress;
         double _ClientCard;
+        int _ClientPhone;
 
-        public Client(int _ClientId, string _ClientName, string _ClientAddress, double _ClientCard)
+        public Client(int _ClientId, string _ClientName, string _ClientAddress, double _ClientCard, int Phone)
         {
             this._ClientId = _ClientId;
             this._ClientName = _ClientName;
             this._ClientAddress = _ClientAddress;
             this._ClientCard = _ClientCard;
+            this._ClientPhone = Phone;
         }
         public void copy(Client a)
         {
@@ -65,7 +77,18 @@ namespace BE
                 _ClientAddress = value;
             }
         }
+        public int ClientPhone
+        {
+            get
+            {
+                return _ClientPhone;
+            }
 
+            set
+            {
+                _ClientPhone = value;
+            }
+        }
         public double ClientCard
         {
             get

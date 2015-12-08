@@ -5,3 +5,12 @@ C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\DAL\bin\Debug\BE
 C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\DAL\obj\Debug\DAL.dll
 C:\Users\dAVIDU\Dropbox\Project C# 2015\dotNet5776_Project_0260\DAL\obj\Debug\DAL.pdb
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\DAL\bin\Debug\DAL.dll
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\DAL\bin\Debug\DAL.pdb
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\DAL\bin\Debug\BE.dll
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\DAL\bin\Debug\DS.dll
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\DAL\bin\Debug\BE.pdb
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\DAL\bin\Debug\DS.pdb
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\DAL\obj\Debug\DAL.dll
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\DAL\obj\Debug\DAL.pdb

@@ -29,8 +29,13 @@ namespace dotNet5776_Project_0260
             InitializeComponent();
             for (int i = 0; i < 100; i++)
             {
-                Bl_Object.addBranch(new Branch(i+1000009, "Havaad Haleumi " + i % 10, "b" + (i * 3) % 15, 33, "a", 4566576, 5, BE.Hashgacha.Kosher));
+                Bl_Object.addBranch(new Branch(i + 1000009, "Havaad Haleumi " + i % 10, "b" + (i * 3) % 15, 33, "a", 4566576, 5, BE.Hashgacha.Kosher));
             }
+            //for (int i = 0; i < 40; i++)
+            //{
+            //    Bl_Object.addClient(new Client(i + 5900009, "Name " + i % 10, "Havaad Haleumi" + (i * 3) % 150, 33, (i*482)%27));
+            //}
+            SearchBox.Text = "Search branch";
             dataGrid.ItemsSource = Bl_Object.GetAllBranch();
 
         }
@@ -50,24 +55,37 @@ namespace dotNet5776_Project_0260
 
         private void dataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            
-          // MessageBox.Show(e.Column.Header.ToString());
-            for (int i = 0; i < Branch.NameOfObjects.Length; i++)
-            {
-                if (e.Column.Header.ToString() == Branch.NameOfObjects[i])
+
+
+            if ((dataGrid.ItemsSource.ToString()).Contains("Branch"))
+                for (int i = 0; i < Branch.NameOfObjects.Length; i++)
                 {
-                    e.Column.Header = Branch.NameOfObjects[i + 1];
-                    break;
+                    if (e.Column.Header.ToString() == Branch.NameOfObjects[i])
+                    {
+                        e.Column.Header = Branch.NameOfObjects[i + 1];
+                        break;
+                    }
                 }
-            }
+            if ((dataGrid.ItemsSource.ToString()).Contains("Client"))
+                for (int i = 0; i < Client.NameOfObjects.Length; i++)
+                {
+                    if (e.Column.Header.ToString() == Client.NameOfObjects[i])
+                    {
+                        e.Column.Header = Client.NameOfObjects[i + 1];
+                        break;
+                    }
+                }
 
         }
+
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
             //new Thread(() => MessageBox.Show("Pressed")).Start();
         }
+
+       
     }
 
 }
