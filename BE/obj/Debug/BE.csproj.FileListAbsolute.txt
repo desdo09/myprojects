@@ -13,3 +13,8 @@ C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BE\bin\Debug\BE.pdb
 C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BE\obj\Debug\BE.csprojResolveAssemblyReference.cache
 C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BE\obj\Debug\BE.dll
 C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\BE\obj\Debug\BE.pdb
+C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\BE\bin\Debug\BE.dll
+C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\BE\bin\Debug\BE.pdb
+C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\BE\obj\Debug\BE.csprojResolveAssemblyReference.cache
+C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\BE\obj\Debug\BE.dll
+C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\BE\obj\Debug\BE.pdb

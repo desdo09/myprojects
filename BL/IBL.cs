@@ -10,11 +10,40 @@ namespace BL
 {
     public interface IBL
     {
-        void addBranch(Branch a);
-        void update(Branch a);
+        //Dish
+        void AddDish(Dish add);
+        void DeleteDish(int DishId);
+        void UpdateDish(Dish update);
+        Dish SearchDishById(int id);
+
+        //Branch
+        void AddBranch(Branch add);
+        void DeleteBranch(int delete);
+        void UpdateBranch(Branch updete);
         Branch SearchBranchById(int id);
-        void delete(int id);
+        //Order
+        void AddOrder(Order add);
+        void DeleteOrder(int delete);
+        void UpdateOrder(Order updete);
+        Order SearchOrderById(int id);
+
+        //Clients
+        void AddClient(Client add);
+        void DeleteClient(int delete);
+        void UpdateClient(Client updete);
+        Client SearchClientById(int id);
+        //Ordered_Dish
+        void AddOrdered_Dish(Ordered_Dish add);
+        void DeleteOrdered_Dish(int delete);
+        void UpdateOrdered_Dish(Ordered_Dish updete);
+        Ordered_Dish SearchOrdered_DishById(int id);
+
+
+        //lists
+        List<Ordered_Dish> GetAllOrdersDish();
+        List<Dish> GetAllDish();
         List<Branch> GetAllBranch();
         List<Client> GetAllClients();
+
     }
 }
