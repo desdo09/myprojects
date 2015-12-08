@@ -39,7 +39,51 @@
                 <ColumnDefinition Width="7*"/>
             </Grid.ColumnDefinitions>
             <Border BorderBrush="#FF130B0B" BorderThickness="0,0,2,0">
-                <Grid Grid.Column="0" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"/>
+                <Grid x:Name="PlacesGrid" Grid.Column="0" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="Branch_button" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0" >
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Images/addButton.fw.png"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"    Width="{Binding ActualWidth, ElementName=Branch_button}"   />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="Clients_button" Grid.Row="1" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0"  >
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Images/UpdateButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Clients_button}"  />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="Dish_button" Grid.Row="2" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0,0,0,0" Padding="0"  >
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Images/RemoveButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"   Width="{Binding ActualWidth, ElementName=Dish_button}" />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="Order_button" Grid.Row="3" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0,0,0,0"  Padding="0" >
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Images/ExportButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="Ordered_Dish_button" Grid.Row="4" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}"  Margin="0,0,0,0" Padding="0">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Images/PrintButton.png"   Width="{Binding ActualWidth, ElementName=Ordered_Dish_button}"  />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </Grid>
             </Border>
             <Grid x:Name="ContentDataGrid" Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
                 <Grid.RowDefinitions>
