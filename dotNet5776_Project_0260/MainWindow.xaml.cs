@@ -23,10 +23,45 @@ namespace dotNet5776_Project_0260
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        enum classes { Branch, Client, Dish, Order, Order_dish };
+        classes _current;
+        classes Current
+        {
+            get { return _current; }
+            set
+            {
+                SearchBox.Text = "Search in " + value.ToString();
+                _current = value;
+                switch (value)
+                {
+                    case classes.Branch:
+                        dataGrid.ItemsSource = Bl_Object.GetAllBranch();
+                        break;
+                    case classes.Client:
+                        dataGrid.ItemsSource = Bl_Object.GetAllClients();
+                        break;
+                    case classes.Dish:
+                        dataGrid.ItemsSource = Bl_Object.GetAllDish();
+                        break;
+                    case classes.Order:
+                        dataGrid.ItemsSource = Bl_Object.GetAllOrders();
+                        break;
+                    case classes.Order_dish:
+                        dataGrid.ItemsSource = Bl_Object.GetAllOrdersDish();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
         static IBL Bl_Object = BL.FactoryBL.GetBL();
         public MainWindow()
         {
             InitializeComponent();
+            #region Test Only
+            Current = classes.Branch;
+
             for (int i = 0; i < 100; i++)
             {
                 Bl_Object.AddBranch(new Branch(i + 1000009, "Havaad Haleumi " + i % 10, "b" + (i * 3) % 15, 33, "a", 4566576, 5, BE.Hashgacha.Kosher));
@@ -35,22 +70,24 @@ namespace dotNet5776_Project_0260
             {
                 Bl_Object.AddClient(new Client(i + 5900009, "Name " + i % 10, "Havaad Haleumi" + (i * 3) % 150, 33, (i * 482) % 27));
             }
-            SearchBox.Text = "Search branch";
+
+            #endregion
             dataGrid.ItemsSource = Bl_Object.GetAllBranch();
-            BranchAdd a = new BranchAdd();
-            a.Show();
+
 
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            dataGrid.ItemsSource = Bl_Object.GetAllBranch();
+            Current = classes.Branch;
+
 
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            dataGrid.ItemsSource = Bl_Object.GetAllClients();
+            Current = classes.Client;
+
         }
 
 
@@ -58,25 +95,50 @@ namespace dotNet5776_Project_0260
         private void dataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
 
+            switch (Current)
+            {
+                #region  case classes.Branch:
+                case classes.Branch:
+                    for (int i = 0; i < Branch.NameOfObjects.Length; i++)
+                    {
+                        if (e.Column.Header.ToString() == Branch.NameOfObjects[i])
+                        {
+                            e.Column.Header = Branch.NameOfObjects[i + 1];
+                            break;
+                        }
+                    }
+                    break;
+                #endregion
+                #region  case classes.Client:
+                case classes.Client:
+                    for (int i = 0; i < Client.NameOfObjects.Length; i++)
+                    {
+                        if (e.Column.Header.ToString() == Client.NameOfObjects[i])
+                        {
+                            e.Column.Header = Client.NameOfObjects[i + 1];
+                            break;
+                        }
+                    }
+                    break;
+                #endregion
+                #region case classes.Dish:
+                case classes.Dish:
+                    break;
+                #endregion
+                #region  case classes.Order:
+                case classes.Order:
+                    break;
+                #endregion
+                #region case classes.Order_dish:
+                case classes.Order_dish:
+                    break;
+                #endregion
+                default:
+                    break;
+            }
 
-            if ((dataGrid.ItemsSource.ToString()).Contains("Branch"))
-                for (int i = 0; i < Branch.NameOfObjects.Length; i++)
-                {
-                    if (e.Column.Header.ToString() == Branch.NameOfObjects[i])
-                    {
-                        e.Column.Header = Branch.NameOfObjects[i + 1];
-                        break;
-                    }
-                }
-            if ((dataGrid.ItemsSource.ToString()).Contains("Client"))
-                for (int i = 0; i < Client.NameOfObjects.Length; i++)
-                {
-                    if (e.Column.Header.ToString() == Client.NameOfObjects[i])
-                    {
-                        e.Column.Header = Client.NameOfObjects[i + 1];
-                        break;
-                    }
-                }
+
+
 
         }
 
@@ -94,9 +156,31 @@ namespace dotNet5776_Project_0260
         #region AddButtons
         private void Add_button_Click(object sender, RoutedEventArgs e)
         {
+            switch (Current)
+            {
+                case classes.Branch:
+                    BranchAdd a = new BranchAdd();
+                    a.Show();
+                    break;
+                case classes.Client:
+                    break;
+                case classes.Dish:
+                    break;
+                case classes.Order:
+                    break;
+                case classes.Order_dish:
+                    break;
+                default:
+                    break;
+            }
 
         }
         #endregion
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 
 }

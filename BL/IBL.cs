@@ -41,6 +41,7 @@ namespace BL
 
         //lists
         List<Ordered_Dish> GetAllOrdersDish();
+        List<Order> GetAllOrders();
         List<Dish> GetAllDish();
         List<Branch> GetAllBranch();
         List<Client> GetAllClients();

@@ -113,10 +113,10 @@
                         <ColumnDefinition Width="1*"/>
 
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="Add_button" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0" Click="Add_button_Click">
+                    <Button x:Name="Add_button"  Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0" Click="Add_button_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="Images/addButton.fw.png"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"    Width="{Binding ActualWidth, ElementName=Add_button}"   />
+                                <Image x:Name="ImageAddButton" Source="Images/addButton.fw.png" MouseDown="Image_MouseDown" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"    Width="{Binding ActualWidth, ElementName=Add_button}"   />
                             </StackPanel>
                         </Button.Content>
                     </Button>

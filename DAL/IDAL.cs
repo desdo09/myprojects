@@ -40,6 +40,7 @@ namespace DAL
 
         //lists
         List<Ordered_Dish> GetAllOrdersDish();
+        List<Order> GetAllOrder();
         List<Dish> GetAllDish();
         List<Branch> GetAllBranch();
         List<Client> GetAllClients();

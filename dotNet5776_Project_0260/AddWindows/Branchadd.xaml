@@ -5,8 +5,82 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5776_Project_0260"
         mc:Ignorable="d"
-        Title="Add branch" Height="300" Width="300">
-    <Grid>
-        
+        Title="Add branch" Height="450" Width="450">
+    <Grid Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+
+
+        </Grid.RowDefinitions>
+        <Grid  Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Label FontSize="20" Grid.Column="0" Content="ID:" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+            <Label FontSize="20" Grid.Column="2" Content="Name:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <TextBox x:Name="IdBox" Grid.Column="1"  FontSize="18" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <TextBox x:Name="NameBox" Grid.Column="3" FontSize="18" Margin="0,0,5,0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label FontSize="20" Grid.Column="0" Content="Address:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <TextBox x:Name="AddressBox" Grid.Column="1"  FontSize="18" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,0,5,0"/>
+
+        </Grid>
+        <Grid  Grid.Row="4" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label FontSize="20" Grid.Column="0" Content="Manager:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <TextBox x:Name="ManagerBox" Grid.Column="1"  FontSize="18" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,0,5,0"/>
+
+        </Grid>
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label FontSize="20" Grid.Column="0" Content="Employees:" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+            <Label FontSize="20" Grid.Column="2" Content="Delivery Persons:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <TextBox x:Name="WorkersBox" Grid.Column="1"  FontSize="18" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <TextBox x:Name="DeliverysBox" Grid.Column="3" FontSize="18" Margin="0,0,5,0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+        </Grid>
+        <Grid  Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label FontSize="20" Grid.Column="0" Content="Phone:" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+            <Label FontSize="20" Grid.Column="2" Content="Hashgacha:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <TextBox x:Name="PhoneBox" Grid.Column="1"  FontSize="18" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <ComboBox x:Name="HashagachaBox" Grid.Column="3" VerticalAlignment="Center" FontSize="16" Margin="0,0,5,0"/>
+
+        </Grid>
+        <Label VerticalAlignment="Bottom" Grid.Row="0" Content="External Details:" FontSize="18"/>
+        <Label VerticalAlignment="Bottom" Grid.Row="3" Content="Internal Details:" FontSize="18"/>
+        <Button x:Name="AddButton" Content="Add branch" Grid.Row="7" Margin="5" FontSize="26" Click="AddButton_Click" />
+
+
+
     </Grid>
 </Window>

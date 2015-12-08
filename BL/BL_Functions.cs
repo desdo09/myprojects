@@ -79,6 +79,11 @@ namespace BL
             throw new NotImplementedException();
         }
 
+        public List<Order> GetAllOrders()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Ordered_Dish> GetAllOrdersDish()
         {
             throw new NotImplementedException();

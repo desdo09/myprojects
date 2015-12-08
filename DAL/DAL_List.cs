@@ -145,8 +145,8 @@ namespace DAL
         #region Delete Functions
         public void DeleteBranch(Branch delete)
         {
-            
-             if (delete == null && !DataSource.BranchData.Remove(delete))
+
+            if (delete == null && !DataSource.BranchData.Remove(delete))
                 throw new NullReferenceException("Branch does not found!");
         }
 
@@ -194,9 +194,14 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+
+        public List<Order> GetAllOrder()
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
-   
+
     #region Exceptions
     public class IdAlreadyExists : Exception, ISerializable
     {
