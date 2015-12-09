@@ -11,6 +11,8 @@ namespace BE
 
     public class Branch
     {
+        //Set the header name for data grid
+        #region NameOfObjects
         public static string[] NameOfObjects = new string[] {
             "BranchId", "Id",
             "BranchName","Name",
@@ -22,11 +24,19 @@ namespace BE
             "BranchHashgacha","Hashgacha"
 
         };
-        public Branch()
-        {
-
-        }
-
+        #endregion
+        #region Constructor and copy function
+        /// <summary>
+        /// Branch constructor
+        /// </summary>
+        /// <param name="BranchId">Branch Id</param>
+        /// <param name="BranchName">Branch Name</param>
+        /// <param name="BranchAddres">Branch address</param>
+        /// <param name="BranchPhone">Branch Phone</param>
+        /// <param name="BranchManager">Branch manager name</param>
+        /// <param name="BranchWorkers">Branch number of workers</param>
+        /// <param name="NumOfDeliveryPerson">Branch number of delivery peoples </param>
+        /// <param name="BranchHashgacha">Branch Hashgacha (using enum in BE.Hashagacha)</param>
         public Branch(int BranchId, string BranchName, string BranchAddres, int BranchPhone, string BranchManager, int BranchWorkers, int NumOfDeliveryPerson, Hashgacha BranchHashgacha)
         {
             this._BranchId = BranchId;
@@ -38,7 +48,10 @@ namespace BE
             this._NumOfDeliveryPerson = NumOfDeliveryPerson;
             this._BranchHashgacha = BranchHashgacha;
         }
-
+        /// <summary>
+        /// Function to copy from an other Branch
+        /// </summary>
+        /// <param name="a">The other Branch object</param>
         public void copy(Branch a)
         {
             //this.BranchId = a.BranchId;
@@ -51,9 +64,8 @@ namespace BE
             this._BranchHashgacha = a._BranchHashgacha;
 
         }
-
-
-
+        #endregion
+        #region Objects
         int _BranchId;
         string _BranchName;
         string _BranchAddres;
@@ -62,8 +74,8 @@ namespace BE
         int _BranchWorkers;
         int _NumOfDeliveryPerson;
         Hashgacha _BranchHashgacha;
-
-
+        #endregion
+        #region Proprieties 
         public int BranchId
         {
             get
@@ -169,6 +181,7 @@ namespace BE
             }
 
         }
+        #endregion
         public override string ToString()
         {
 

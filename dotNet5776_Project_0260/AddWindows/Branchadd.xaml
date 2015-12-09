@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:dotNet5776_Project_0260"
         mc:Ignorable="d"
         Title="Add branch" Height="450" Width="450">
-    <Grid Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}">
+    <Grid PreviewKeyDown="Grid_PreviewKeyDown"  Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="2*"/>

@@ -22,6 +22,7 @@ namespace BE
             this._DishPrice = _DishPrice;
             this._HashgachaDish = _HashgachaDish;
         }
+
         public void Copy(Dish a)
         {
             this._DishId = a._DishId;

@@ -15,16 +15,15 @@ namespace BE
         DateTime _OrderTime;
         int _BranchId;
         Hashgacha _HashgachaPlace;
-        int _NumOfDeliveryPerson;
+
         int _ClientId;
 
-        public Order(int _OrderId, DateTime _OrderTime, int _BranchId, Hashgacha _HashgachaPlace, int _NumOfDeliveryPerson, int _ClientId)
+        public Order(int _OrderId, DateTime _OrderTime, int _BranchId, Hashgacha _HashgachaPlace, int _ClientId)
         {
             this._OrderId = _OrderId;
             this._OrderTime = _OrderTime;
             this._BranchId = _BranchId;
             this._HashgachaPlace = _HashgachaPlace;
-            this._NumOfDeliveryPerson = _NumOfDeliveryPerson;
             this._ClientId = _ClientId;
         }
         public void Copy(Order a)
@@ -33,7 +32,6 @@ namespace BE
             this._OrderTime = a._OrderTime;
             this._BranchId = a._BranchId;
             this._HashgachaPlace = a._HashgachaPlace;
-            this._NumOfDeliveryPerson = a._NumOfDeliveryPerson;
             this._ClientId = a._ClientId;
         }
 
@@ -76,49 +74,18 @@ namespace BE
             }
         }
 
-        public String HashgachaPlace
+        public Hashgacha HashgachaPlace
         {
             get
             {
-                return _HashgachaPlace.ToString();
+                return _HashgachaPlace;
             }
             private set
             {
-                switch (value)
-                {
-                    case "Not Kosher":
-                        _HashgachaPlace = Hashgacha.NotKosher;
-                        break;
-                    case "NotKosher":
-                        _HashgachaPlace = Hashgacha.NotKosher;
-                        break;
-                    case "Kosher":
-                        _HashgachaPlace = Hashgacha.Kosher;
-                        break;
-                    case "Mehadrin":
-                        _HashgachaPlace = Hashgacha.Mehadrin;
-                        break;
-                    case "Badatz":
-                        _HashgachaPlace = Hashgacha.Badatz;
-                        break;
-                    default:
-                        break;
-                }
+                _HashgachaPlace = value;
             }
         }
 
-        public int NumOfDeliveryPerson
-        {
-            get
-            {
-                return _NumOfDeliveryPerson;
-            }
-
-            set
-            {
-                _NumOfDeliveryPerson = value;
-            }
-        }
 
         public int ClientId1
         {

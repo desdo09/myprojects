@@ -28,6 +28,7 @@ namespace dotNet5776_Project_0260
             BlObject = FactoryBL.GetBL();
             HashagachaBox.ItemsSource = Enum.GetValues(typeof(BE.Hashgacha));
             HashagachaBox.SelectedIndex = 1;
+
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -62,6 +63,17 @@ namespace dotNet5776_Project_0260
                 MessageBox.Show(a.Message, "Branch add", MessageBoxButton.OK, MessageBoxImage.Asterisk);
             }
 
+        }
+
+        private void Grid_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Source is TextBox && e.Key == Key.Enter)
+                (e.Source as TextBox).MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            if(e.Source is ComboBox && e.Key == Key.Enter)
+                (e.Source as ComboBox).MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            if (e.Source is Button && (e.Source as Button).Name == "AddButton")
+                 AddButton_Click(e.Source, null);
+                
         }
     }
 }
