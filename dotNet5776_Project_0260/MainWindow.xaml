@@ -15,8 +15,8 @@
         <StackPanel  >
             <Menu BorderBrush="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" BorderThickness="0,0,0,1" Background="#FFFFFDFD"   >
                 <MenuItem Header="File" >
-                    <MenuItem Header="New" Click="MenuItem_Click" />
-                    <MenuItem Header="Open" Click="MenuItem_Click_1" />
+                    <MenuItem Header="New"  />
+                    <MenuItem Header="Open"  />
                     <MenuItem Header="Save" />
                     <MenuItem Header="Save As">
                         <MenuItem Header="Save as BMP" />
@@ -25,9 +25,11 @@
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="View" >
-                    <MenuItem Header="Branch" Click="MenuItem_Click" />
-                    <MenuItem Header="Clients" Click="MenuItem_Click_1" />
-                    <MenuItem Header="Dish" />
+                    <MenuItem Header="Branch" Click="BranchClick" />
+                    <MenuItem Header="Clients" Click="ClientClick" />
+                    <MenuItem Header="Dish" Click="DishClick"/>
+                    <MenuItem Header="Order" Click="OrderClick"/>
+                    <MenuItem Header="Ordered Dish" Click="Ordered_DishClick"/>
                 </MenuItem>
                 <MenuItem Header="Format" />
             </Menu>
@@ -51,14 +53,14 @@
                     <Button x:Name="Branch_button" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0" Click="Branch_button_Click" >
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="Images/addButton.fw.png"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"    Width="{Binding ActualWidth, ElementName=Branch_button}"   />
+                                <Image Source="Images/BranchButton.fw.png"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"    Width="{Binding ActualWidth, ElementName=Branch_button}"   />
                             </StackPanel>
                         </Button.Content>
                     </Button>
                     <Button x:Name="Clients_button" Grid.Row="1" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0"  >
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="Images/UpdateButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Clients_button}"  />
+                                <Image Source="Images/ClientsButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Clients_button}"  />
                             </StackPanel>
                         </Button.Content>
                     </Button>
@@ -91,7 +93,7 @@
                     <RowDefinition Height="5*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <DataGrid x:Name="dataGrid" FontSize="18" TextBlock.TextAlignment="Center" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="True"  AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" Margin="0,0,0,0" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}" >
+                <DataGrid x:Name="dataGrid" FontSize="18"  TextBlock.TextAlignment="Center" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="True"  AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" Margin="0,0,0,0" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}" >
                 </DataGrid>
                 <Grid x:Name="SearchGrid" Grid.Row="0">
                     <Grid.ColumnDefinitions>

@@ -31,7 +31,7 @@ namespace dotNet5776_Project_0260
             get { return _current; }
             set
             {
-                SearchBox.Text = "Search in " + value.ToString();
+                SearchBox.Text = "Search in " + ( (value != classes.Order_dish) ? value.ToString():"Ordered dish");
                 _current = value;
                 switch (value)
                 {
@@ -58,7 +58,9 @@ namespace dotNet5776_Project_0260
         static IBL Bl_Object = BL.FactoryBL.GetBL();
         public MainWindow()
         {
+        
             InitializeComponent();
+         
             #region Test Only
             Current = classes.Branch;
 
@@ -72,26 +74,39 @@ namespace dotNet5776_Project_0260
             }
 
             #endregion
-            dataGrid.ItemsSource = Bl_Object.GetAllBranch();
 
+            dataGrid.ItemsSource = Bl_Object.GetAllBranch();
+            OrderAdd a = new OrderAdd();
+            a.Show();
 
         }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        #region Main menu click
+        private void BranchClick(object sender, RoutedEventArgs e)
         {
             Current = classes.Branch;
-
+         
 
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        private void ClientClick(object sender, RoutedEventArgs e)
         {
             Current = classes.Client;
 
         }
 
-
-
+        private void DishClick(object sender, RoutedEventArgs e)
+        {
+            Current = classes.Dish;
+        }
+        private void Ordered_DishClick(object sender, RoutedEventArgs e)
+        {
+            Current = classes.Order_dish;
+        }
+        private void OrderClick(object sender, RoutedEventArgs e)
+        {
+            Current = classes.Order;
+        }
+        #endregion
         private void dataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
 
@@ -141,14 +156,11 @@ namespace dotNet5776_Project_0260
 
 
         }
-
-
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
             // new Thread(() => MessageBox.Show("Pressed")).Start();
         }
-
         private void Branch_button_Click(object sender, RoutedEventArgs e)
         {
             dataGrid.ItemsSource = Bl_Object.GetAllClients();
@@ -176,11 +188,12 @@ namespace dotNet5776_Project_0260
 
         }
         #endregion
-
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
         }
+
+
     }
 
 }
