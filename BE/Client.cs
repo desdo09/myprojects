@@ -23,14 +23,16 @@ namespace BE
         string _ClientAddress;
         double _ClientCard;
         int _ClientPhone;
+        int _ClientAge;
 
-        public Client(int _ClientId, string _ClientName, string _ClientAddress, double _ClientCard, int Phone)
+        public Client(int _ClientId, string _ClientName, string _ClientAddress, double _ClientCard, int Phone, int _ClientAge)
         {
             this._ClientId = _ClientId;
             this._ClientName = _ClientName;
             this._ClientAddress = _ClientAddress;
             this._ClientCard = _ClientCard;
             this._ClientPhone = Phone;
+            this.ClientAge = _ClientAge;
         }
         public void copy(Client a)
         {
@@ -99,6 +101,19 @@ namespace BE
             set
             {
                 _ClientCard = value;
+            }
+        }
+
+        public int ClientAge
+        {
+            get
+            {
+                return _ClientAge;
+            }
+
+            set
+            {
+                _ClientAge = value;
             }
         }
     }

@@ -71,7 +71,7 @@ namespace dotNet5776_Project_0260
                 (e.Source as TextBox).MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             if(e.Source is ComboBox && e.Key == Key.Enter)
                 (e.Source as ComboBox).MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-            if (e.Source is Button && (e.Source as Button).Name == "AddButton")
+            if (e.Source is Button && (e.Source as Button).Name == "AddButton" && e.Key == Key.Enter)
                  AddButton_Click(e.Source, null);
                 
         }

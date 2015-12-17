@@ -95,7 +95,7 @@ namespace DAL
             if (a != null)
                 a.Copy(update);
             else
-                throw new NullReferenceException("Id does not found!");
+                throw new NullReferenceException("Dal Error: Id does not found!");
         }
 
         public void UpdateOrder(Order update)
@@ -104,7 +104,7 @@ namespace DAL
             if (a != null)
                 a.Copy(update);
             else
-                throw new NullReferenceException("Id does not found!");
+                throw new NullReferenceException("Dal Error:Id does not found!");
         }
 
         public void UpdateOrdered_Dish(Ordered_Dish update)
@@ -113,7 +113,7 @@ namespace DAL
             if (a != null)
                 a.copy(update);
             else
-                throw new NullReferenceException("Id does not found!");
+                throw new NullReferenceException("Dal Error: Id does not found!");
         }
         #endregion
         #region SearchById functions
@@ -187,17 +187,17 @@ namespace DAL
 
         public List<Dish> GetAllDish()
         {
-            throw new NotImplementedException();
+            return DataSource.dishData;
         }
 
         public List<Ordered_Dish> GetAllOrdersDish()
         {
-            throw new NotImplementedException();
+            return DataSource.Ordered_DishData;
         }
 
         public List<Order> GetAllOrder()
         {
-            throw new NotImplementedException();
+            return DataSource.OrderData.ToList();
         }
         #endregion
     }

@@ -1,0 +1,40 @@
+﻿<Window x:Class="dotNet5776_Project_0260.AddDishToOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotNet5776_Project_0260"
+        mc:Ignorable="d"
+        Title="AddDishToOrder" Height="300" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+           
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Search:" FontSize="12" VerticalAlignment="Center"></Label>
+            <TextBox Text="Search Dish" Grid.Column="1" FontSize="12" VerticalAlignment="Center" Margin="0,0,5,0"/>
+        </Grid>
+        <DataGrid x:Name="DishData" Grid.Row="1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=DishId}" Header="name" Width="*" />
+                <DataGridTextColumn Binding="{Binding Path=DishName}" Header="name" Width="*" />
+                <DataGridTextColumn Binding="{Binding Path=DishSize}" Header="size" Width="*" />
+                <DataGridTextColumn Binding="{Binding Path=DishPrice}" Header="price" Width="*" />
+                <DataGridTextColumn Binding="{Binding Path=HashgachaDish}" Header="Hashgacha" Width="*" />
+                <DataGridTemplateColumn  Header="Add" Width="*" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="Add" Content="Add Dish" Tag="{Binding Path=DishId}" Click="Add_Click" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

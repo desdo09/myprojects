@@ -24,6 +24,7 @@ namespace dotNet5776_Project_0260
     public partial class MainWindow : Window
     {
 
+        #region Objects
         enum classes { Branch, Client, Dish, Order, Order_dish };
         classes _current;
         classes Current
@@ -31,15 +32,39 @@ namespace dotNet5776_Project_0260
             get { return _current; }
             set
             {
-                SearchBox.Text = "Search in " + ( (value != classes.Order_dish) ? value.ToString():"Ordered dish");
+                switch (Current)
+                {
+                    case classes.Branch:
+                        Branch_button_image_selected.Visibility = Visibility.Collapsed;
+                        Branch_button_image.Visibility = Visibility.Visible;
+                        break;
+                    case classes.Client:
+                        Clients_button_image.Visibility = Visibility.Visible;
+                        Clients_button_image_selected.Visibility = Visibility.Collapsed;
+                        break;
+                    case classes.Dish:
+                        break;
+                    case classes.Order:
+                        break;
+                    case classes.Order_dish:
+                        break;
+                    default:
+                        break;
+                }
+               
+                SearchBox.Text = "Search in " + ((value != classes.Order_dish) ? value.ToString() : "Ordered dish");
                 _current = value;
                 switch (value)
                 {
                     case classes.Branch:
                         dataGrid.ItemsSource = Bl_Object.GetAllBranch();
+                        Branch_button_image.Visibility = Visibility.Collapsed;
+                        Branch_button_image_selected.Visibility = Visibility.Visible;
                         break;
                     case classes.Client:
                         dataGrid.ItemsSource = Bl_Object.GetAllClients();
+                        Clients_button_image.Visibility = Visibility.Collapsed;
+                        Clients_button_image_selected.Visibility = Visibility.Visible;
                         break;
                     case classes.Dish:
                         dataGrid.ItemsSource = Bl_Object.GetAllDish();
@@ -56,11 +81,12 @@ namespace dotNet5776_Project_0260
             }
         }
         static IBL Bl_Object = BL.FactoryBL.GetBL();
+        #endregion
         public MainWindow()
         {
-        
+
             InitializeComponent();
-         
+
             #region Test Only
             Current = classes.Branch;
 
@@ -70,8 +96,13 @@ namespace dotNet5776_Project_0260
             }
             for (int i = 0; i < 40; i++)
             {
-                Bl_Object.AddClient(new Client(i + 5900009, "Name " + i % 10, "Havaad Haleumi" + (i * 3) % 150, 33, (i * 482) % 27));
+                Bl_Object.AddClient(new Client(i + 5900009, "Name " + i % 10, "Havaad Haleumi" + (i * 3) % 150, 33, (i * 482) % 27, 22));
             }
+            for (int i = 0; i < 40; i++)
+            {
+                Bl_Object.AddDish(new Dish(i,"aa",(float)1.5,20,Hashgacha.Mehadrin));
+            }
+
 
             #endregion
 
@@ -84,7 +115,7 @@ namespace dotNet5776_Project_0260
         private void BranchClick(object sender, RoutedEventArgs e)
         {
             Current = classes.Branch;
-         
+
 
         }
 

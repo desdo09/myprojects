@@ -79,3 +79,7 @@ C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\dotNet5776_Project_0260\
 C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\dotNet5776_Project_0260\obj\Debug\UI Wpf.csproj.GenerateResource.Cache
 C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\dotNet5776_Project_0260\obj\Debug\AddWindows\BranchAdd.g.cs
 C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\dotNet5776_Project_0260\obj\Debug\AddWindows\BranchAdd.baml
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\dotNet5776_Project_0260\obj\Debug\AddWindows\OrderAdd.g.cs
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\dotNet5776_Project_0260\obj\Debug\AddWindows\OrderAdd.baml
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\dotNet5776_Project_0260\obj\Debug\AddWindows\AddDishToOrder.g.cs
+C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\dotNet5776_Project_0260\obj\Debug\AddWindows\AddDishToOrder.baml

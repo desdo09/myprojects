@@ -10,9 +10,9 @@ namespace BL
 {
     public class BL_Functions : IBL
     {
-        //Test
-        IDAL DalObject = FactoryDal.getDal();
 
+        IDAL DalObject = FactoryDal.getDal();
+        #region adds
         public void AddBranch(Branch add)
         {
             DalObject.AddBranch(add);
@@ -20,24 +20,35 @@ namespace BL
 
         public void AddClient(Client add)
         {
-            DalObject.AddClient(add);
+            if (add.ClientAge >= 18)
+                DalObject.AddClient(add);
+            else
+                throw new InvalidOperationException("BL error: Client can not be under 18 old");
+
         }
 
         public void AddDish(Dish add)
         {
-            throw new NotImplementedException();
+            DalObject.AddDish(add);
         }
 
         public void AddOrder(Order add)
         {
-            throw new NotImplementedException();
+            if (add.OrderPrice > 1000)
+                throw new InvalidOperationException("BL error: Order can't be bigger than 1000");
+            else
+                DalObject.AddOrder(add);
         }
 
         public void AddOrdered_Dish(Ordered_Dish add)
         {
-            throw new NotImplementedException();
+            if (SearchOrderById(add.OrderId).HashgachaPlace < SearchDishById(add.DishId).HashgachaDish)
+                throw new InvalidOperationException("BL error: The Hashgacha not match");
+            else
+                DalObject.AddOrdered_Dish(add);
         }
-
+        #endregion
+        #region Deletes
         public void DeleteBranch(int delete)
         {
 
@@ -63,7 +74,8 @@ namespace BL
         {
             throw new NotImplementedException();
         }
-
+        #endregion
+        #region gets All lists
         public List<Branch> GetAllBranch()
         {
             return DalObject.GetAllBranch();
@@ -76,32 +88,33 @@ namespace BL
 
         public List<Dish> GetAllDish()
         {
-            throw new NotImplementedException();
+            return DalObject.GetAllDish();
         }
 
         public List<Order> GetAllOrders()
         {
-            throw new NotImplementedException();
+            return DalObject.GetAllOrder();
         }
 
         public List<Ordered_Dish> GetAllOrdersDish()
         {
-            throw new NotImplementedException();
+            return DalObject.GetAllOrdersDish();
         }
-
+        #endregion
+        #region search
         public Branch SearchBranchById(int id)
         {
-            throw new NotImplementedException();
+            return DalObject.SearchBranchById(id);
         }
 
         public Client SearchClientById(int id)
         {
-            throw new NotImplementedException();
+           return DalObject.SearchClientById(id);
         }
 
         public Dish SearchDishById(int id)
         {
-            throw new NotImplementedException();
+            return DalObject.SearchDishById(id);
         }
 
         public Order SearchOrderById(int id)
@@ -113,7 +126,23 @@ namespace BL
         {
             throw new NotImplementedException();
         }
-
+        public List<Ordered_Dish> SearchAllOrderId(int id)
+        {
+            List<Ordered_Dish> orders = new List<Ordered_Dish>();
+            var list = from item in DalObject.GetAllOrdersDish()
+                       where item.OrderId == id
+                       select item;
+            foreach (var item in list)
+            {
+                if (item.OrderId == id)
+                {
+                    orders.Add(item);
+                }
+            }
+            return orders;
+        }
+        #endregion
+        #region updates
         public void UpdateBranch(Branch updete)
         {
             throw new NotImplementedException();
@@ -138,5 +167,21 @@ namespace BL
         {
             throw new NotImplementedException();
         }
+        #endregion
+        #region other functions
+        public float CalculateOrderPrice(Order a)
+        {
+            float price = 0;
+            List<Ordered_Dish> AllDish = SearchAllOrderId(a.OrderId);
+            if (AllDish == null)
+                throw new NullReferenceException("There no dish in order " + a.OrderId);
+            foreach (Ordered_Dish item in AllDish)
+            {
+                price += (SearchDishById(item.DishId)).DishPrice * item.DishAmount;
+            }
+            return price;
+        }
+        #endregion
+
     }
 }

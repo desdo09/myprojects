@@ -8,6 +8,19 @@ namespace BE
 {
     public class Dish
     {
+        public static string[] NameOfObjects = new string[] {
+            "DishId", "Id",
+            "DishName","Name",
+            "DishSize","Size",
+            "DishPrice","Price",
+            "HashgachaDish","Hashgacha"
+
+
+        };
+
+
+
+
         int _DishId;
         string _DishName;
         float _DishSize;
@@ -83,8 +96,7 @@ namespace BE
                 _DishPrice = value;
             }
         }
-
-        internal Hashgacha HashgachaDish
+        public Hashgacha HashgachaDish
         {
             get
             {

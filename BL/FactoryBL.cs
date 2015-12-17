@@ -8,7 +8,7 @@ namespace BL
 {
     public class FactoryBL
     {
-        public static BL_Functions GetBL()
+        public static IBL GetBL()
         {
             return new BL_Functions();
         }

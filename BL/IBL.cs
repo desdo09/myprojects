@@ -26,6 +26,7 @@ namespace BL
         void DeleteOrder(int delete);
         void UpdateOrder(Order updete);
         Order SearchOrderById(int id);
+        float CalculateOrderPrice(Order a);
 
         //Clients
         void AddClient(Client add);
@@ -36,6 +37,7 @@ namespace BL
         void AddOrdered_Dish(Ordered_Dish add);
         void DeleteOrdered_Dish(int delete);
         void UpdateOrdered_Dish(Ordered_Dish updete);
+        List<Ordered_Dish> SearchAllOrderId(int id);
         Ordered_Dish SearchOrdered_DishById(int id);
 
 

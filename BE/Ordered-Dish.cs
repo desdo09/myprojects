@@ -11,9 +11,9 @@ namespace BE
         int _Ordered_DishId;
         int _OrderId;
         int _DishId;
-        int _DishAmount;
+        float _DishAmount;
 
-        public Ordered_Dish(int _Ordered_DishId, int _OrderId, int _DishId, int _DishAmount)
+        public Ordered_Dish(int _Ordered_DishId, int _OrderId, int _DishId, float _DishAmount)
         {
             this._Ordered_DishId = _Ordered_DishId;
             this._OrderId = _OrderId;
@@ -66,7 +66,7 @@ namespace BE
             }
         }
 
-        public int DishAmount
+        public float DishAmount
         {
             get
             {

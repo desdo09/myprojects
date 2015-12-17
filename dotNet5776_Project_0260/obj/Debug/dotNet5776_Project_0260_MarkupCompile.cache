@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\dotNet5776_Project_0260\App.xaml
-21259612870
+41680654781
 
-6410426739
+8-318187778
 15-68687600
-AddWindows\BranchAdd.xaml;MainWindow.xaml;
+AddWindows\AddDishToOrder.xaml;AddWindows\OrderAdd.xaml;AddWindows\BranchAdd.xaml;MainWindow.xaml;
 
 False
 

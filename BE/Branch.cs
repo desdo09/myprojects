@@ -11,6 +11,18 @@ namespace BE
 
     public class Branch
     {
+        class BranchDish
+        {
+
+            int DishAmount;
+            Dish dish;
+
+            public BranchDish(int dishAmount, Dish dish)
+            {
+                DishAmount = dishAmount;
+                this.dish = dish;
+            }
+        }
         //Set the header name for data grid
         #region NameOfObjects
         public static string[] NameOfObjects = new string[] {
@@ -47,6 +59,7 @@ namespace BE
             this._BranchWorkers = BranchWorkers;
             this._NumOfDeliveryPerson = NumOfDeliveryPerson;
             this._BranchHashgacha = BranchHashgacha;
+            List<BranchDish> BranchDishes = new List<BranchDish>();
         }
         /// <summary>
         /// Function to copy from an other Branch
@@ -74,6 +87,9 @@ namespace BE
         int _BranchWorkers;
         int _NumOfDeliveryPerson;
         Hashgacha _BranchHashgacha;
+        List<BranchDish> BranchDishes;
+
+
         #endregion
         #region Proprieties 
         public int BranchId
@@ -180,6 +196,19 @@ namespace BE
                 _BranchHashgacha = value;
             }
 
+        }
+
+        private List<BranchDish> BranchDishes1
+        {
+            get
+            {
+                return BranchDishes;
+            }
+
+            set
+            {
+                BranchDishes = value;
+            }
         }
         #endregion
         public override string ToString()

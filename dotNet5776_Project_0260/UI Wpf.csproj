@@ -55,6 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AddWindows\AddDishToOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddWindows\OrderAdd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AddWindows\BranchAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -63,6 +71,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AddWindows\AddDishToOrder.xaml.cs">
+      <DependentUpon>AddDishToOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddWindows\OrderAdd.xaml.cs">
+      <DependentUpon>OrderAdd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -163,6 +177,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\ExportButton.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ClientsButton.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BranchButton.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ClientsButton.Selected.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BranchButton.fw.Selected.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace BE
 {
 
@@ -15,17 +16,21 @@ namespace BE
         DateTime _OrderTime;
         int _BranchId;
         Hashgacha _HashgachaPlace;
-
         int _ClientId;
+        float _OrderPrice;
 
-        public Order(int _OrderId, DateTime _OrderTime, int _BranchId, Hashgacha _HashgachaPlace, int _ClientId)
+        public Order(int _OrderId, DateTime _OrderTime, int _BranchId, Hashgacha _HashgachaPlace, int _ClientId, float _OrderPrice)
         {
             this._OrderId = _OrderId;
             this._OrderTime = _OrderTime;
             this._BranchId = _BranchId;
             this._HashgachaPlace = _HashgachaPlace;
             this._ClientId = _ClientId;
+            this._OrderPrice = _OrderPrice;
         }
+        //public override static  void operator[](int a){
+        //}
+
         public void Copy(Order a)
         {
             this._OrderId = a._OrderId;
@@ -33,6 +38,7 @@ namespace BE
             this._BranchId = a._BranchId;
             this._HashgachaPlace = a._HashgachaPlace;
             this._ClientId = a._ClientId;
+            this._OrderPrice = a._OrderPrice;
         }
 
         public int OrderId
@@ -87,7 +93,7 @@ namespace BE
         }
 
 
-        public int ClientId1
+        public int ClientId
         {
             get
             {
@@ -100,5 +106,17 @@ namespace BE
             }
         }
 
+        public float OrderPrice
+        {
+            get
+            {
+                return _OrderPrice;
+            }
+
+            set
+            {
+                _OrderPrice = value;
+            }
+        }
     }
 }
