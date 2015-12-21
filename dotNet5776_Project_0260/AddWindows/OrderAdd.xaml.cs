@@ -25,6 +25,7 @@ namespace dotNet5776_Project_0260
         IBL BlObject;
         ObservableCollection<Dishamount> CurrentDish;
         AddDishToOrder order = new AddDishToOrder();
+        Client currentClient;
         public OrderAdd()
         {
             InitializeComponent();
@@ -112,10 +113,11 @@ namespace dotNet5776_Project_0260
 
         private void AddDishToOrder(object sender, RoutedEventArgs e)
         {
-            // MessageBox.Show("hi");
+
             order.Show();
             order = new AddDishToOrder();
             order.SendDish += AddDish;
+
         }
 
         private void IdBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -125,14 +127,22 @@ namespace dotNet5776_Project_0260
             if (string.IsNullOrEmpty(text.Text))
                 return;
 
-            try {
-                Client client = BlObject.SearchClientById(int.Parse(text.Text));
-                if (client != null)
+            try
+            {
+                currentClient = BlObject.SearchClientById(int.Parse(text.Text));
+                if (currentClient != null)
                 {
-                    ClientDetails.Text = client.ClientName + " in " + client.ClientAddress;
-                    NameBox.Text = client.ClientPhone.ToString();
+                    ClientDetails.Text = currentClient.ClientName + " in " + currentClient.ClientAddress;
+                    NameBox.Text = currentClient.ClientPhone.ToString();
+                    SearchDish.IsEnabled = true;
+                    AddButton.IsEnabled = true;
                 }
-           }catch(FormatException)
+                else
+                {
+                    AddButton.IsEnabled = false;
+                }
+            }
+            catch (FormatException)
             {
                 text.Text = "";
             }

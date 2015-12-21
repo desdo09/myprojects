@@ -23,3 +23,12 @@ C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\DAL\bin\Debug\DS.pdb
 C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\DAL\obj\Debug\DAL.dll
 C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\DAL\obj\Debug\DAL.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DAL\bin\Debug\DAL.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DAL\bin\Debug\DAL.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DAL\bin\Debug\BE.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DAL\bin\Debug\DS.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DAL\bin\Debug\BE.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DAL\bin\Debug\DS.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DAL\obj\Debug\DAL.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DAL\obj\Debug\DAL.pdb

@@ -29,10 +29,10 @@ using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
-using dotNet5776_Project_0260;
+using dotNet5776_Project_0260_6603;
 
 
-namespace dotNet5776_Project_0260 {
+namespace DotNet5776_Project_0260_6603 {
     
     
     /// <summary>
@@ -61,7 +61,7 @@ namespace dotNet5776_Project_0260 {
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
         public static void Main() {
-            dotNet5776_Project_0260.App app = new dotNet5776_Project_0260.App();
+            DotNet5776_Project_0260_6603.App app = new DotNet5776_Project_0260_6603.App();
             app.InitializeComponent();
             app.Run();
         }

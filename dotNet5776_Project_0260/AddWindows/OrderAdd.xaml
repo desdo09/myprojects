@@ -30,7 +30,7 @@
 
         </Grid>
         <Grid Grid.Row="2">
-        <TextBox x:Name="ClientDetails" Text="David in Havaad Haleumi 21, jerusalem - Branch Givat-Mordechay" IsEnabled="False" FontSize="16"  TextAlignment="Center" />
+        <TextBox x:Name="ClientDetails"  IsEnabled="False" FontSize="16"  TextAlignment="Center" />
         </Grid>
         <Grid Grid.Row="3" >
             <Grid.ColumnDefinitions>
@@ -41,7 +41,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <DataGrid x:Name="DishList"  Grid.Row="1" Grid.ColumnSpan="2"  AutoGenerateColumns="False">
+            <DataGrid x:Name="DishList"  Grid.Row="1" Grid.ColumnSpan="2"  AutoGenerateColumns="False"  IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=DishId}" Header="ID" Width="*" />
                     <DataGridTextColumn Binding="{Binding Path=DishName}" Header="name" Width="*" />
@@ -66,7 +66,7 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Label x:Name="label" Content="Dish:" FontSize="20"/>
-            <Button x:Name="SearchDish" Content="Add dish" Grid.Column="1" FontSize="20"  Click="AddDishToOrder"/>
+            <Button x:Name="SearchDish" Content="Add dish" Grid.Column="1" FontSize="20"  Click="AddDishToOrder" IsEnabled="False"/>
         </Grid>
         <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
@@ -77,7 +77,7 @@
             <TextBox Name="PriceBox" Grid.Column="1" IsEnabled="False" FontSize="20" Text="₪ 0.0" TextAlignment="Center" />
         </Grid>
         <Label VerticalAlignment="Center" Grid.Row="0" Content="Search Client By:" FontSize="18" Height="32" Margin="0,2" />
-        <Button x:Name="AddButton" Content="Add Order" Grid.Row="5" Margin="5" FontSize="26" Click="AddButton_Click" />
+        <Button x:Name="AddButton" Content="Add Order" Grid.Row="5" Margin="5" FontSize="26" Click="AddButton_Click" IsEnabled="False"/>
    
     </Grid>
 </Window>

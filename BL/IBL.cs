@@ -21,6 +21,7 @@ namespace BL
         void DeleteBranch(int delete);
         void UpdateBranch(Branch updete);
         Branch SearchBranchById(int id);
+        //  Branch SearchInBranch();
         //Order
         void AddOrder(Order add);
         void DeleteOrder(int delete);

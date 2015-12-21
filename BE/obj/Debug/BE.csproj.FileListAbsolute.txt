@@ -17,3 +17,8 @@ C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\BE\bin\Debug\BE.pdb
 C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\BE\obj\Debug\BE.csprojResolveAssemblyReference.cache
 C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\BE\obj\Debug\BE.dll
 C:\Users\dAVIDU\Documents\GitHubVisualStudio\myprojects\BE\obj\Debug\BE.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\BE\bin\Debug\BE.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\BE\bin\Debug\BE.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\BE\obj\Debug\BE.csprojResolveAssemblyReference.cache
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\BE\obj\Debug\BE.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\BE\obj\Debug\BE.pdb

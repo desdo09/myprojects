@@ -23,7 +23,7 @@ namespace dotNet5776_Project_0260
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        
         #region Objects
         enum classes { Branch, Client, Dish, Order, Order_dish };
         classes _current;
@@ -43,15 +43,21 @@ namespace dotNet5776_Project_0260
                         Clients_button_image_selected.Visibility = Visibility.Collapsed;
                         break;
                     case classes.Dish:
+                        Dish_button_image.Visibility = Visibility.Visible;
+                        Dish_button_image_selected.Visibility = Visibility.Collapsed;
                         break;
                     case classes.Order:
+                        Order_button_image.Visibility = Visibility.Visible;
+                        Order_button_image_selected.Visibility = Visibility.Collapsed;
                         break;
                     case classes.Order_dish:
+                        DishOrders_button_image.Visibility = Visibility.Visible;
+                        DishOrders_button_image_selected.Visibility = Visibility.Collapsed;
                         break;
                     default:
                         break;
                 }
-               
+
                 SearchBox.Text = "Search in " + ((value != classes.Order_dish) ? value.ToString() : "Ordered dish");
                 _current = value;
                 switch (value)
@@ -68,12 +74,18 @@ namespace dotNet5776_Project_0260
                         break;
                     case classes.Dish:
                         dataGrid.ItemsSource = Bl_Object.GetAllDish();
+                        Dish_button_image.Visibility = Visibility.Collapsed;
+                        Dish_button_image_selected.Visibility = Visibility.Visible;
                         break;
                     case classes.Order:
                         dataGrid.ItemsSource = Bl_Object.GetAllOrders();
+                        Order_button_image.Visibility = Visibility.Collapsed;
+                        Order_button_image_selected.Visibility = Visibility.Visible;
                         break;
                     case classes.Order_dish:
                         dataGrid.ItemsSource = Bl_Object.GetAllOrdersDish();
+                        DishOrders_button_image.Visibility = Visibility.Collapsed;
+                        DishOrders_button_image_selected.Visibility = Visibility.Visible;
                         break;
                     default:
                         break;
@@ -86,29 +98,29 @@ namespace dotNet5776_Project_0260
         {
 
             InitializeComponent();
-
+            AddDish aa = new AddDish();
+            aa.Show();
             #region Test Only
-            Current = classes.Branch;
+            Current = classes.Order;
 
             for (int i = 0; i < 100; i++)
             {
-                Bl_Object.AddBranch(new Branch(i + 1000009, "Havaad Haleumi " + i % 10, "b" + (i * 3) % 15, 33, "a", 4566576, 5, BE.Hashgacha.Kosher));
+                Bl_Object.AddBranch(new Branch(i + 1000009, "Havaad Haleumi " + i % 10, "b" + (i * 3) % 15, 33, "a", 4566576, 5, Hashgacha.Kosher));
             }
             for (int i = 0; i < 40; i++)
             {
-                Bl_Object.AddClient(new Client(i + 5900009, "Name " + i % 10, "Havaad Haleumi" + (i * 3) % 150, 33, (i * 482) % 27, 22));
+                Bl_Object.AddClient(new Client(i + 509, "Name " + i % 10, "Havaad Haleumi" + (i * 3) % 150, 33, (i * 482) % 27, 22));
             }
             for (int i = 0; i < 40; i++)
             {
-                Bl_Object.AddDish(new Dish(i,"aa",(float)1.5,20,Hashgacha.Mehadrin));
+                Bl_Object.AddDish(new Dish(i, "aa", (float)1.5, 20, (Hashgacha)(i%4)));
             }
 
 
             #endregion
 
             dataGrid.ItemsSource = Bl_Object.GetAllBranch();
-            OrderAdd a = new OrderAdd();
-            a.Show();
+           
 
         }
         #region Main menu click
@@ -202,14 +214,16 @@ namespace dotNet5776_Project_0260
             switch (Current)
             {
                 case classes.Branch:
-                    BranchAdd a = new BranchAdd();
-                    a.Show();
+                    BranchAdd B = new BranchAdd();
+                    B.Show();
                     break;
                 case classes.Client:
                     break;
                 case classes.Dish:
                     break;
                 case classes.Order:
+                    OrderAdd O = new OrderAdd();
+                    O.Show();
                     break;
                 case classes.Order_dish:
                     break;

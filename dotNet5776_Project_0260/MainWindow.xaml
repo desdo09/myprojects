@@ -50,15 +50,23 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="Branch_button" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0" Click="BranchClick" >
+                    <Button x:Name="Order_button" Grid.Row="0" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0,0,0,0"  Padding="0" Click="OrderClick" >
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image Name="Branch_button_image" Source="Images/BranchButton.fw.png"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"    Width="{Binding ActualWidth, ElementName=Branch_button}"   />
-                                <Image Name="Branch_button_image_selected" Source="Images/BranchButton.fw.Selected.png"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"    Width="{Binding ActualWidth, ElementName=Branch_button}" Visibility="Collapsed"  />
+                                <Image Name="Order_button_image" Source="Images/OrdersButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" />
+                                <Image Name="Order_button_image_selected" Source="Images/OrderButton.fw.Selected.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" Visibility="Collapsed" />
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button x:Name="Clients_button" Grid.Row="1" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0"  Click="ClientClick">
+                    <Button x:Name="Ordered_Dish_button" Grid.Row="1" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}"  Margin="0,0,0,0" Padding="0" Click="Ordered_DishClick">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="DishOrders_button_image" Source="DishOrderButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" />
+                                <Image Name="DishOrders_button_image_selected" Source="DishOrderButton.fw.Selected.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" Visibility="Collapsed" />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="Clients_button" Grid.Row="2" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0"  Click="ClientClick">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <Image Name="Clients_button_image" Source="Images/ClientsButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Clients_button}"   />
@@ -66,24 +74,19 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button x:Name="Dish_button" Grid.Row="2" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0,0,0,0" Padding="0"  >
+                    <Button x:Name="Branch_button" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0" Click="BranchClick" >
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="Images/ClientsButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"   Width="{Binding ActualWidth, ElementName=Dish_button}" />
+                                <Image Name="Branch_button_image" Source="Images/BranchButton.fw.png"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"    Width="{Binding ActualWidth, ElementName=Branch_button}"   />
+                                <Image Name="Branch_button_image_selected" Source="Images/BranchButton.fw.Selected.png"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"    Width="{Binding ActualWidth, ElementName=Branch_button}" Visibility="Collapsed"  />
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button x:Name="Order_button" Grid.Row="3" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0,0,0,0"  Padding="0" >
+                    <Button x:Name="Dish_button" Grid.Row="4" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0,0,0,0" Padding="0"  Click="DishClick">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="Images/ClientsButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" />
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                    <Button x:Name="Ordered_Dish_button" Grid.Row="4" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}"  Margin="0,0,0,0" Padding="0">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="Images/ClientsButton.fw.png"   Width="{Binding ActualWidth, ElementName=Ordered_Dish_button}"  />
+                                <Image Name="Dish_button_image" Source="DishButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" />
+                                <Image Name="Dish_button_image_selected" Source="DishButton.fw.Selected.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" Visibility="Collapsed" />
                             </StackPanel>
                         </Button.Content>
                     </Button>
@@ -95,7 +98,7 @@
                     <RowDefinition Height="5*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <DataGrid x:Name="dataGrid" FontSize="18"  TextBlock.TextAlignment="Center" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="True"  AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" Margin="0,0,0,0" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}" >
+                <DataGrid x:Name="dataGrid" FontSize="18"  IsReadOnly="True" TextBlock.TextAlignment="Center" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="True"  AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" Margin="0,0,0,0" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}" >
                 </DataGrid>
                 <Grid x:Name="SearchGrid" Grid.Row="0">
                     <Grid.ColumnDefinitions>
