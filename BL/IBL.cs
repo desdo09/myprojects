@@ -15,12 +15,14 @@ namespace BL
         void DeleteDish(int DishId);
         void UpdateDish(Dish update);
         Dish SearchDishById(int id);
+        List<Dish> SearchInDish(Func<Dish, bool> search);
 
         //Branch
         void AddBranch(Branch add);
         void DeleteBranch(int delete);
         void UpdateBranch(Branch updete);
         Branch SearchBranchById(int id);
+        List<Branch> SearchBranch(Func<Branch, bool> search);
         //  Branch SearchInBranch();
         //Order
         void AddOrder(Order add);
@@ -28,20 +30,22 @@ namespace BL
         void UpdateOrder(Order updete);
         Order SearchOrderById(int id);
         float CalculateOrderPrice(Order a);
+        List<Order> SearchOrder(Func<Order, bool> search);
 
         //Clients
         void AddClient(Client add);
         void DeleteClient(int delete);
         void UpdateClient(Client updete);
         Client SearchClientById(int id);
+        List<Client> SearchClient(Func<Client, bool> search);
         //Ordered_Dish
         void AddOrdered_Dish(Ordered_Dish add);
         void DeleteOrdered_Dish(int delete);
         void UpdateOrdered_Dish(Ordered_Dish updete);
         List<Ordered_Dish> SearchAllOrderId(int id);
         Ordered_Dish SearchOrdered_DishById(int id);
-
-
+        List<Ordered_Dish> SearchOrdered_Dish(Func<Ordered_Dish, bool> search);
+       
         //lists
         List<Ordered_Dish> GetAllOrdersDish();
         List<Order> GetAllOrders();

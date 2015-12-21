@@ -101,7 +101,7 @@ namespace BL
             return DalObject.GetAllOrdersDish();
         }
         #endregion
-        #region search
+        #region searchById
         public Branch SearchBranchById(int id)
         {
             return DalObject.SearchBranchById(id);
@@ -182,6 +182,42 @@ namespace BL
             return price;
         }
         #endregion
-
+        #region Search
+        public List<Dish> SearchInDish(Func<Dish, bool> search)
+        {
+            var items = from x in GetAllDish()
+                        where search(x)
+                        select x;
+            return items.ToList();
+        }
+        public List<Branch> SearchBranch(Func<Branch, bool> search)
+        {
+            var items = from x in GetAllBranch()
+                        where search(x)
+                        select x;
+            return items.ToList();
+        }
+        public List<Order> SearchOrder(Func<Order, bool> search)
+        {
+            var items = from x in GetAllOrders()
+                        where search(x)
+                        select x;
+            return items.ToList();
+        }
+        public List<Client> SearchClient(Func<Client, bool> search)
+        {
+            var items = from x in GetAllClients()
+                        where search(x)
+                        select x;
+            return items.ToList();
+        }
+        public List<Ordered_Dish> SearchOrdered_Dish(Func<Ordered_Dish, bool> search)
+        {
+            var items = from x in GetAllOrdersDish()
+                        where search(x)
+                        select x;
+            return items.ToList();
+        }
+        #endregion
     }
 }
