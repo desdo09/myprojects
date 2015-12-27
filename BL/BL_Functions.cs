@@ -17,21 +17,19 @@ namespace BL
         {
             DalObject.AddBranch(add);
         }
-
         public void AddClient(Client add)
         {
-            if (add.ClientAge >= 18)
-                DalObject.AddClient(add);
-            else
+            if (add.ClientAge < 18)
                 throw new InvalidOperationException("BL error: Client can not be under 18 old");
+            if (!ValidateCard(add.ClientCard))
+                throw new InvalidOperationException("BL error: Invalid credit card");
+            DalObject.AddClient(add);
 
         }
-
         public void AddDish(Dish add)
         {
             DalObject.AddDish(add);
         }
-
         public void AddOrder(Order add)
         {
             if (add.OrderPrice > 1000)
@@ -39,7 +37,6 @@ namespace BL
             else
                 DalObject.AddOrder(add);
         }
-
         public void AddOrdered_Dish(Ordered_Dish add)
         {
             if (SearchOrderById(add.OrderId).HashgachaPlace < SearchDishById(add.DishId).HashgachaDish)
@@ -54,25 +51,21 @@ namespace BL
 
             DalObject.DeleteBranch(DalObject.SearchBranchById(delete));
         }
-
         public void DeleteClient(int delete)
         {
-            throw new NotImplementedException();
+            DalObject.DeleteClient(SearchClientById(delete));
         }
-
         public void DeleteDish(int DishId)
         {
-            throw new NotImplementedException();
+            DalObject.DeleteDish(SearchDishById(DishId));
         }
-
         public void DeleteOrder(int delete)
         {
-            throw new NotImplementedException();
+            DalObject.DeleteOrder(SearchOrderById(delete));
         }
-
         public void DeleteOrdered_Dish(int delete)
         {
-            throw new NotImplementedException();
+            DalObject.DeleteOrdered_Dish(SearchOrdered_DishById(delete));
         }
         #endregion
         #region gets All lists
@@ -109,7 +102,7 @@ namespace BL
 
         public Client SearchClientById(int id)
         {
-           return DalObject.SearchClientById(id);
+            return DalObject.SearchClientById(id);
         }
 
         public Dish SearchDishById(int id)
@@ -119,12 +112,12 @@ namespace BL
 
         public Order SearchOrderById(int id)
         {
-            throw new NotImplementedException();
+            return DalObject.SearchOrderById(id);
         }
 
         public Ordered_Dish SearchOrdered_DishById(int id)
         {
-            throw new NotImplementedException();
+            return DalObject.SearchOrdered_DishById(id);
         }
         public List<Ordered_Dish> SearchAllOrderId(int id)
         {
@@ -145,27 +138,27 @@ namespace BL
         #region updates
         public void UpdateBranch(Branch updete)
         {
-            throw new NotImplementedException();
+            DalObject.UpdateBranch(updete);
         }
 
         public void UpdateClient(Client updete)
         {
-            throw new NotImplementedException();
+            DalObject.UpdateClient(updete);
         }
 
         public void UpdateDish(Dish update)
         {
-            throw new NotImplementedException();
+            DalObject.UpdateDish(update);
         }
 
         public void UpdateOrder(Order updete)
         {
-            throw new NotImplementedException();
+            DalObject.UpdateOrder(updete);
         }
 
         public void UpdateOrdered_Dish(Ordered_Dish updete)
         {
-            throw new NotImplementedException();
+            DalObject.UpdateOrdered_Dish(updete);
         }
         #endregion
         #region other functions
@@ -181,6 +174,31 @@ namespace BL
             }
             return price;
         }
+        internal bool ValidateCard(string card)
+        {
+            if (card.Length < 15)
+                return false;
+
+            try
+            {
+                int sum = 0;
+                for (int i = 0; i < 15; i += 2)
+                {
+                    sum = int.Parse(card[i].ToString());
+                    if (sum > 10)
+                        sum -= 9;
+                    card = sum.ToString() + card.Substring(1);
+                }
+                sum = 0;
+                for (int i = 0; i < 16; i++)
+                    sum += int.Parse(card[i].ToString());
+                return (sum % 10 == 0) ? true : false;
+            }
+            catch (FormatException)
+            {
+                throw new FormatException("BL error: Card number missing!");
+            }
+        }
         #endregion
         #region Search
         public List<Dish> SearchInDish(Func<Dish, bool> search)
@@ -190,33 +208,105 @@ namespace BL
                         select x;
             return items.ToList();
         }
-        public List<Branch> SearchBranch(Func<Branch, bool> search)
+        public List<Branch> SearchInBranch(Func<Branch, bool> search)
         {
             var items = from x in GetAllBranch()
                         where search(x)
                         select x;
             return items.ToList();
         }
-        public List<Order> SearchOrder(Func<Order, bool> search)
+        public List<Order> SearchInOrder(Func<Order, bool> search)
         {
             var items = from x in GetAllOrders()
                         where search(x)
                         select x;
             return items.ToList();
         }
-        public List<Client> SearchClient(Func<Client, bool> search)
+        public List<Client> SearchInClient(Func<Client, bool> search)
         {
             var items = from x in GetAllClients()
                         where search(x)
                         select x;
             return items.ToList();
         }
-        public List<Ordered_Dish> SearchOrdered_Dish(Func<Ordered_Dish, bool> search)
+        public List<Ordered_Dish> SearchInOrdered_Dish(Func<Ordered_Dish, bool> search)
         {
             var items = from x in GetAllOrdersDish()
                         where search(x)
                         select x;
             return items.ToList();
+        }
+        #endregion
+        #region GetValidId
+        public int GetDishValidId()
+        {
+            if (DalObject.GetAllDish() == null)
+                return 0;
+            int prevId = DalObject.GetAllDish()[0].DishId;
+            foreach (Dish item in DalObject.GetAllDish())
+            {
+                if (item.DishId > prevId + 1)
+                    return prevId;
+                else
+                    prevId = item.DishId;
+            }
+            return prevId+1;
+        }
+        public int GetBranchValidId()
+        {
+            if (DalObject.GetAllBranch() == null)
+                return 0;
+            int prevId = DalObject.GetAllBranch()[0].BranchId;
+            foreach(Branch item in DalObject.GetAllBranch())
+            {
+                if (item.BranchId > prevId + 1)
+                    return prevId;
+                else
+                    prevId = item.BranchId;
+            }
+            return prevId+1;
+        }
+        public int GetOrderValidId()
+        {
+            if (DalObject.GetAllOrder() == null || DalObject.GetAllOrder().Count == 0)
+                return 0;
+            int prevId = DalObject.GetAllOrder()[0].OrderId;
+            foreach (Order item in DalObject.GetAllOrder())
+            {
+                if (item.OrderId > prevId + 1)
+                    return prevId;
+                else
+                    prevId = item.OrderId;
+            }
+            return prevId+1;
+        }
+        public int GetClientValidId()
+        {
+            if (DalObject.GetAllClients() == null)
+                return 0;
+            int prevId = DalObject.GetAllClients()[0].ClientId;
+            foreach (Client item in DalObject.GetAllClients())
+            {
+                if (item.ClientId > prevId + 1)
+                    return prevId;
+                else
+                    prevId = item.ClientId;
+            }
+            return prevId+1;
+        }
+        public int GetOrdered_DishValidId()
+        {
+            if (DalObject.GetAllOrdersDish() == null)
+                return 0;
+            int prevId = DalObject.GetAllOrdersDish()[0].Ordered_DishId;
+            foreach (Ordered_Dish item in DalObject.GetAllOrdersDish())
+            {
+                if (item.Ordered_DishId > prevId + 1)
+                    return prevId;
+                else
+                    prevId = item.Ordered_DishId;
+            }
+            return prevId+1;
         }
         #endregion
     }

@@ -25,12 +25,17 @@
             </Grid.ColumnDefinitions>
             <Label FontSize="20" Grid.Column="0" Content="ID:" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
             <Label FontSize="20" Grid.Column="2" Content="Phone:" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <TextBox x:Name="IdBox" Grid.Column="1"  FontSize="18" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextChanged="IdBox_TextChanged"/>
-            <TextBox x:Name="NameBox" Grid.Column="3" FontSize="18" Margin="0,0,5,0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <TextBox x:Name="IdBox" Grid.Column="1"  FontSize="18" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextChanged="IdBox_TextChanged" />
+            <TextBox x:Name="PhoneBox" Grid.Column="3" FontSize="18" Margin="0,0,5,0" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextChanged="IdBox_TextChanged"/>
 
         </Grid>
         <Grid Grid.Row="2">
-        <TextBox x:Name="ClientDetails"  IsEnabled="False" FontSize="16"  TextAlignment="Center" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="271*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="163*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="ClientDetails"  IsEnabled="False" FontSize="16"  TextAlignment="Center" Grid.ColumnSpan="3" />
         </Grid>
         <Grid Grid.Row="3" >
             <Grid.ColumnDefinitions>
@@ -66,7 +71,7 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Label x:Name="label" Content="Dish:" FontSize="20"/>
-            <Button x:Name="SearchDish" Content="Add dish" Grid.Column="1" FontSize="20"  Click="AddDishToOrder" IsEnabled="False"/>
+            <Button x:Name="SearchDish" Content="Add dish" Grid.Column="1" FontSize="20"  Click="AddDishToOrder"  IsEnabled="{Binding ElementName=AddButton, Path=IsEnabled, Mode=TwoWay}"/>
         </Grid>
         <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
@@ -78,6 +83,6 @@
         </Grid>
         <Label VerticalAlignment="Center" Grid.Row="0" Content="Search Client By:" FontSize="18" Height="32" Margin="0,2" />
         <Button x:Name="AddButton" Content="Add Order" Grid.Row="5" Margin="5" FontSize="26" Click="AddButton_Click" IsEnabled="False"/>
-   
+
     </Grid>
 </Window>

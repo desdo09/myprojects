@@ -1,0 +1,59 @@
+﻿<Window x:Class="dotNet5776_Project_0260.UserPrint"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotNet5776_Project_0260"
+        mc:Ignorable="d"
+        Title="UserPrint" Height="842 " Width="1000">
+    <Grid x:Name="main">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="646*"/>
+        </Grid.RowDefinitions>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="264*"/>
+                <ColumnDefinition Width="323*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Program Name"/>
+            <TextBlock Text="BS'H" Grid.Column="1" HorizontalAlignment="Right"/>
+        </Grid>
+        <Grid Grid.Row="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Client details:" Margin="0,30,0,0"/>
+            <TextBlock Text="================================================================================================================================="  Grid.Row="1"/>
+        </Grid>
+        <Grid Grid.Row="3"  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="17*"/>
+                <RowDefinition Height="17*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0"  Text="Client ID:" TextAlignment="Center"  VerticalAlignment="Center" FontFamily="David" />
+            <TextBlock Grid.Row="0" Grid.Column="1" Name="Id" Text="5 " TextAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="2" Text="Client Name:" TextAlignment="Center" VerticalAlignment="Center" FontFamily="David"/>
+            <TextBlock Grid.Row="0" Grid.Column="3" Name="Name" Text=" Desdo Hambres" TextAlignment="Center" VerticalAlignment="Center"/>
+           <TextBlock Grid.Row="1"  Grid.ColumnSpan="4" VerticalAlignment="Top" Margin="0,-5,0,0" Text="____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________" FontSize="8"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Client Address:" TextAlignment="Center" VerticalAlignment="Center" FontFamily="David"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Name="Address" Text=" Havaad Haleumi 21, Jerusalem " TextAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="Lasts card number:" TextAlignment="Center" VerticalAlignment="Center" FontFamily="David"/>
+            <TextBlock Grid.Row="2" Grid.Column="3"  Name="Card" Text="7175 " TextAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+
+
+    </Grid>
+</Window>

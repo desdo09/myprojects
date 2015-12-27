@@ -55,7 +55,15 @@ namespace dotNet5776_Project_0260
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            int id = BlObject.GetOrderValidId();
+            try
+            {
+                
+                
+            }catch(Exception)
+            {
 
+            }
 
         }
 
@@ -129,16 +137,28 @@ namespace dotNet5776_Project_0260
 
             try
             {
-                currentClient = BlObject.SearchClientById(int.Parse(text.Text));
+                if (text.Name != "PhoneBox")
+                    currentClient = BlObject.SearchClientById(int.Parse(text.Text));
+                else
+                   try {
+                        currentClient = BlObject.SearchInClient(client => client.ClientPhone == int.Parse(text.Text))[0];
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        currentClient = null;
+                    }
                 if (currentClient != null)
                 {
                     ClientDetails.Text = currentClient.ClientName + " in " + currentClient.ClientAddress;
-                    NameBox.Text = currentClient.ClientPhone.ToString();
-                    SearchDish.IsEnabled = true;
+                    if (text.Name != "PhoneBox")
+                        PhoneBox.Text = currentClient.ClientPhone.ToString();
+                    else
+                        IdBox.Text = currentClient.ClientId.ToString();
                     AddButton.IsEnabled = true;
                 }
                 else
                 {
+                    ClientDetails.Text =" ";
                     AddButton.IsEnabled = false;
                 }
             }
@@ -146,6 +166,7 @@ namespace dotNet5776_Project_0260
             {
                 text.Text = "";
             }
+           
         }
     }
     public class Dishamount

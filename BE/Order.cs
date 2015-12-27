@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace BE
 {
 
     public enum Hashgacha { NotKosher, Kosher, Mehadrin, Badatz };
-    public class Order
+    public class Order 
     {
 
         int _OrderId;
@@ -19,14 +20,27 @@ namespace BE
         int _ClientId;
         float _OrderPrice;
 
+       
+
+        /// <summary>
+        /// Order constructor
+        /// </summary>
+        /// <param name="_OrderId">Order Id</param>
+        /// <param name="_OrderTime">Order Time: time made the order.\nUsing DateTime</param>
+        /// <param name="_BranchId"></param>
+        /// <param name="_HashgachaPlace">Branch hashgacha (Be.Hashgacha)</param>
+        /// <param name="_ClientId">Id client that made the delivery</param>
+        /// <param name="_OrderPrice"> Order total price</param>
         public Order(int _OrderId, DateTime _OrderTime, int _BranchId, Hashgacha _HashgachaPlace, int _ClientId, float _OrderPrice)
         {
+           
             this._OrderId = _OrderId;
             this._OrderTime = _OrderTime;
             this._BranchId = _BranchId;
             this._HashgachaPlace = _HashgachaPlace;
             this._ClientId = _ClientId;
             this._OrderPrice = _OrderPrice;
+            
         }
         //public override static  void operator[](int a){
         //}

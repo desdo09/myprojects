@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    
     public class Client
     {
         public static string[] NameOfObjects = new string[] {
@@ -21,11 +22,20 @@ namespace BE
         int _ClientId;
         string _ClientName;
         string _ClientAddress;
-        double _ClientCard;
+        string _ClientCard;
         int _ClientPhone;
         int _ClientAge;
 
-        public Client(int _ClientId, string _ClientName, string _ClientAddress, double _ClientCard, int Phone, int _ClientAge)
+        /// <summary>
+        /// Client constructor
+        /// </summary>
+        /// <param name="_ClientId">Client id</param>
+        /// <param name="_ClientName">Client name</param>
+        /// <param name="_ClientAddress">Client Address</param>
+        /// <param name="_ClientCard">Client credit card</param>
+        /// <param name="Phone">Client phone</param>
+        /// <param name="_ClientAge">Client age</param>
+        public Client(int _ClientId, string _ClientName, string _ClientAddress, string _ClientCard, int Phone, int _ClientAge)
         {
             this._ClientId = _ClientId;
             this._ClientName = _ClientName;
@@ -91,7 +101,7 @@ namespace BE
                 _ClientPhone = value;
             }
         }
-        public double ClientCard
+        public string ClientCard
         {
             get
             {
@@ -115,6 +125,21 @@ namespace BE
             {
                 _ClientAge = value;
             }
+        }
+
+        public override string ToString()
+        {
+            string str = "Program name   						               			     			BSH\n\n\n";
+            str += "Client Details:\n";
+            str += "=========================================================================================================\n";
+            str += " Client id:   " + ClientId + "             Client Name:" + ClientName + "\n\n";
+            str += "Client Address:   "+	ClientAddress +  "                             Last 4 card number: " + ClientCard.Split('=')[0].Substring(12);
+                                    
+
+
+
+
+            return str;
         }
     }
 }

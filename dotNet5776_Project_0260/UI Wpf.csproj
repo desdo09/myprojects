@@ -91,12 +91,21 @@
     <Compile Include="AddWindows\BranchAdd.xaml.cs">
       <DependentUpon>BranchAdd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomDataGridDocumentPaginator.cs" />
+    <Compile Include="FactoryBL.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PrinterLabel\UserPrint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PrinterLabel\UserPrint.xaml.cs">
+      <DependentUpon>UserPrint.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

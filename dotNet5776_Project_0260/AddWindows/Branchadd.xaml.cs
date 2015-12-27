@@ -13,45 +13,56 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BL;
 using BE;
+using System.ComponentModel;
 
 namespace dotNet5776_Project_0260
 {
     /// <summary>
     /// Interaction logic for Branch.xaml
     /// </summary>
-    public partial class BranchAdd : Window
+    public partial class BranchAdd : Window, INotifyPropertyChanged
     {
-        IBL BlObject;
+        //Bl object
+        IBL BlObject = FactoryBL.GetBL();
         public BranchAdd()
         {
             InitializeComponent();
-            BlObject = FactoryBL.GetBL();
+            //Insert number in Id box
+            IdBox.Text = BlObject.GetBranchValidId().ToString();
+            //insert in ComboBox all Hashgacha 
             HashagachaBox.ItemsSource = Enum.GetValues(typeof(BE.Hashgacha));
+            //Kosher is selected
             HashagachaBox.SelectedIndex = 1;
 
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-
-                if (IdBox.Text == "")
+                // Verify if the textbox are empty
+                if (string.IsNullOrEmpty(IdBox.Text))
                     throw new Exception("Id is required");
-                if (NameBox.Text == "")
+                if (string.IsNullOrEmpty(NameBox.Text))
                     throw new Exception("Name is required");
-                if (AddressBox.Text == "")
+                if (string.IsNullOrEmpty(AddressBox.Text))
                     throw new Exception("Address is required");
-                if (ManagerBox.Text == "")
+                if (string.IsNullOrEmpty(ManagerBox.Text))
                     throw new Exception("Manager is required");
-                if (WorkersBox.Text == "")
+                if (string.IsNullOrEmpty(WorkersBox.Text))
                     throw new Exception("Workers is required");
-                if (DeliverysBox.Text == "")
+                if (string.IsNullOrEmpty(DeliverysBox.Text))
                     throw new Exception("Delivery is required");
-                if (PhoneBox.Text == "")
+                if (string.IsNullOrEmpty(PhoneBox.Text))
                     throw new Exception("Phone required");
+                //If all textbox are something then the program will send to bl to verify
                 BlObject.AddBranch(new Branch(int.Parse(IdBox.Text), NameBox.Text, AddressBox.Text, int.Parse(PhoneBox.Text), ManagerBox.Text, int.Parse(WorkersBox.Text), int.Parse(DeliverysBox.Text), (BE.Hashgacha)HashagachaBox.SelectedItem));
+                //If Bl didn't send error then the program will show a message that  data are added and close the window
                 MessageBox.Show("Data added successful!", "Branch Add");
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("Add"));
                 this.Close();
             }
             catch (FormatException)
@@ -62,9 +73,11 @@ namespace dotNet5776_Project_0260
             {
                 MessageBox.Show(a.Message, "Branch add", MessageBoxButton.OK, MessageBoxImage.Asterisk);
             }
-
+          
         }
-
+        /// <summary>
+        /// The function will change the box when the user press enter
+        /// </summary>
         private void Grid_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Source is TextBox && e.Key == Key.Enter)

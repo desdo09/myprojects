@@ -120,6 +120,8 @@ namespace DAL
         public Branch SearchBranchById(int id)
         {
             return DataSource.BranchData.FirstOrDefault(item => item.BranchId == id);
+        
+            
         }
 
         public Client SearchClientById(int id)
@@ -146,13 +148,18 @@ namespace DAL
         public void DeleteBranch(Branch delete)
         {
 
-            if (delete == null && !DataSource.BranchData.Remove(delete))
+            if (delete == null)
                 throw new NullReferenceException("Branch does not found!");
+           if(!DataSource.BranchData.Remove(delete))
+            {
+                throw new NullReferenceException("Branch does not found!");
+            }
+
         }
 
         public void DeleteClient(Client delete)
         {
-            if (!DataSource.ClientData.Remove(delete))
+            if (DataSource.ClientData.Remove(delete) == false)
                 throw new NullReferenceException("Client does not found!");
         }
 

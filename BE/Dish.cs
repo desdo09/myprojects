@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Dish
+    public class Dish 
     {
+        #region ObjectName
         public static string[] NameOfObjects = new string[] {
             "DishId", "Id",
             "DishName","Name",
@@ -17,9 +19,7 @@ namespace BE
 
 
         };
-
-
-
+        #endregion
 
         int _DishId;
         string _DishName;
@@ -27,6 +27,16 @@ namespace BE
         float _DishPrice;
         Hashgacha _HashgachaDish;
 
+   
+
+        /// <summary>
+        /// Dish constructor
+        /// </summary>
+        /// <param name="_DishId">Dish Id</param>
+        /// <param name="_DishName">Dish Name</param>
+        /// <param name="_DishSize">Dish Size</param>
+        /// <param name="_DishPrice">Dish Price</param>
+        /// <param name="_HashgachaDish">Dish Hashagacha (Be.Hashgacha)</param>
         public Dish(int _DishId, string _DishName, float _DishSize, float _DishPrice, Hashgacha _HashgachaDish)
         {
             this._DishId = _DishId;
