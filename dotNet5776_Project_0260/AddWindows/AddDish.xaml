@@ -1,0 +1,65 @@
+﻿<Window x:Class="dotNet5776_Project_0260.AddDish"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotNet5776_Project_0260"
+        mc:Ignorable="d"
+        Title="AddDish" Height="300" Width="400">
+    <Grid Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Name="Names">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="Idlabel" FontSize="20" Grid.Column="0" Grid.Row="0" Content="Id:" HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Center"  />
+                <TextBox x:Name="IdBox" FontSize="20" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                <Label x:Name="NameLabel" FontSize="20" Grid.Column="0" Grid.Row="1" Content="Name:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                <TextBox x:Name="NameBox" FontSize="20" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                <Button Grid.RowSpan="2" Grid.Column="2" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
+                <Image x:Name="image"  Source="/dotNet5776_Project_0260;component/Images/NoImage.fw.png" Margin="20,5"  />
+                </Button>
+            </Grid>
+            <Grid  Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label FontSize="20" Grid.Column="0" Content="Size:" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                <Label FontSize="20" Grid.Column="2" Content="Hashgacha:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                <TextBox x:Name="SizeBox" Grid.Column="1"  FontSize="18" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                <ComboBox x:Name="HashagachaBox" Grid.Column="3" VerticalAlignment="Center" FontSize="16" Margin="0,0,5,0"/>
+
+            </Grid>
+            <Grid  Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+               
+                <Label FontSize="20" Grid.Column="2" Content="Price:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                <TextBox x:Name="PriceBox" Grid.Column="3"  FontSize="18" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+               
+
+            </Grid>
+            <Button x:Name="AddDishButton" Content="Add Dish" Grid.Row="3" FontSize="20" Margin="5" Click="AddDishButton_Click"/>
+        </Grid>
+
+    </Grid>
+</Window>

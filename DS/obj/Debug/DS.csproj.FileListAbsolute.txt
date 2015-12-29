@@ -1,0 +1,7 @@
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DS\bin\Debug\DS.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DS\bin\Debug\DS.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DS\bin\Debug\BE.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DS\bin\Debug\BE.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DS\obj\Debug\DS.csprojResolveAssemblyReference.cache
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DS\obj\Debug\DS.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\DS\obj\Debug\DS.pdb

@@ -193,7 +193,7 @@ namespace dotNet5776_Project_0260 {
         #line hidden
         
         
-        #line 118 "..\..\MainWindow.xaml"
+        #line 119 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Label label;
         
@@ -209,7 +209,15 @@ namespace dotNet5776_Project_0260 {
         #line hidden
         
         
-        #line 123 "..\..\MainWindow.xaml"
+        #line 122 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.ComboBox comboBox;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 127 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Grid ButtonsGrid;
         
@@ -217,7 +225,7 @@ namespace dotNet5776_Project_0260 {
         #line hidden
         
         
-        #line 132 "..\..\MainWindow.xaml"
+        #line 136 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button Add_button;
         
@@ -225,7 +233,7 @@ namespace dotNet5776_Project_0260 {
         #line hidden
         
         
-        #line 135 "..\..\MainWindow.xaml"
+        #line 139 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Image ImageAddButton;
         
@@ -233,7 +241,7 @@ namespace dotNet5776_Project_0260 {
         #line hidden
         
         
-        #line 139 "..\..\MainWindow.xaml"
+        #line 143 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button Update_button;
         
@@ -241,7 +249,7 @@ namespace dotNet5776_Project_0260 {
         #line hidden
         
         
-        #line 146 "..\..\MainWindow.xaml"
+        #line 150 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button Remove_button;
         
@@ -249,7 +257,7 @@ namespace dotNet5776_Project_0260 {
         #line hidden
         
         
-        #line 153 "..\..\MainWindow.xaml"
+        #line 157 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button Export_button;
         
@@ -257,7 +265,7 @@ namespace dotNet5776_Project_0260 {
         #line hidden
         
         
-        #line 160 "..\..\MainWindow.xaml"
+        #line 164 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button Print_button;
         
@@ -464,39 +472,42 @@ namespace dotNet5776_Project_0260 {
             #line hidden
             return;
             case 30:
-            this.ButtonsGrid = ((System.Windows.Controls.Grid)(target));
+            this.comboBox = ((System.Windows.Controls.ComboBox)(target));
             return;
             case 31:
+            this.ButtonsGrid = ((System.Windows.Controls.Grid)(target));
+            return;
+            case 32:
             this.Add_button = ((System.Windows.Controls.Button)(target));
             
-            #line 132 "..\..\MainWindow.xaml"
+            #line 136 "..\..\MainWindow.xaml"
             this.Add_button.Click += new System.Windows.RoutedEventHandler(this.Add_button_Click);
             
             #line default
             #line hidden
             return;
-            case 32:
+            case 33:
             this.ImageAddButton = ((System.Windows.Controls.Image)(target));
             return;
-            case 33:
+            case 34:
             this.Update_button = ((System.Windows.Controls.Button)(target));
             return;
-            case 34:
+            case 35:
             this.Remove_button = ((System.Windows.Controls.Button)(target));
             
-            #line 146 "..\..\MainWindow.xaml"
+            #line 150 "..\..\MainWindow.xaml"
             this.Remove_button.Click += new System.Windows.RoutedEventHandler(this.Remove_Click);
             
             #line default
             #line hidden
             return;
-            case 35:
+            case 36:
             this.Export_button = ((System.Windows.Controls.Button)(target));
             return;
-            case 36:
+            case 37:
             this.Print_button = ((System.Windows.Controls.Button)(target));
             
-            #line 160 "..\..\MainWindow.xaml"
+            #line 164 "..\..\MainWindow.xaml"
             this.Print_button.Click += new System.Windows.RoutedEventHandler(this.Print_button_Click);
             
             #line default
