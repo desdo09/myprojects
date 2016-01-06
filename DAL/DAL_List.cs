@@ -182,29 +182,29 @@ namespace DAL
         }
         #endregion
         #region Get List Functions
-        public List<Branch> GetAllBranch()
+        public IEnumerable<Branch> GetAllBranch()
         {
             return DataSource.BranchData;
         }
 
-        public List<Client> GetAllClients()
+        public IEnumerable<Client> GetAllClients()
         {
             return DataSource.ClientData;
         }
 
-        public List<Dish> GetAllDish()
+        public IEnumerable<Dish> GetAllDish()
         {
             return DataSource.dishData;
         }
 
-        public List<Ordered_Dish> GetAllOrdersDish()
+        public IEnumerable<Ordered_Dish> GetAllOrdersDish()
         {
             return DataSource.Ordered_DishData;
         }
 
-        public List<Order> GetAllOrder()
+        public IEnumerable<Order> GetAllOrder()
         {
-            return DataSource.OrderData.ToList();
+            return DataSource.OrderData;
         }
         #endregion
     }

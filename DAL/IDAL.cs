@@ -39,11 +39,11 @@ namespace DAL
 
 
         //lists
-        List<Ordered_Dish> GetAllOrdersDish();
-        List<Order> GetAllOrder();
-        List<Dish> GetAllDish();
-        List<Branch> GetAllBranch();
-        List<Client> GetAllClients();
+        IEnumerable<Ordered_Dish> GetAllOrdersDish();
+        IEnumerable<Order> GetAllOrder();
+        IEnumerable<Dish> GetAllDish();
+        IEnumerable<Branch> GetAllBranch();
+        IEnumerable<Client> GetAllClients();
 
 
     }

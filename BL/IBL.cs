@@ -17,7 +17,7 @@ namespace BL
         void UpdateDish(Dish update);
         Dish SearchDishById(int id);
         List<Dish> SearchInDish(Func<Dish, bool> search);
-
+        IEnumerable<Dish> GettAllDishInBranch(int IdBranch);
         //Branch
         int GetBranchValidId();
         void AddBranch(Branch add);
@@ -28,7 +28,7 @@ namespace BL
         //  Branch SearchInBranch();
         //Order
         int GetOrderValidId();
-        void AddOrder(Order add);
+        void AddOrder(Order Orderadd, List<Ordered_Dish> DishAdd);
         void DeleteOrder(int delete);
         void UpdateOrder(Order updete);
         Order SearchOrderById(int id);
@@ -50,13 +50,13 @@ namespace BL
         List<Ordered_Dish> SearchAllOrderId(int id);
         Ordered_Dish SearchOrdered_DishById(int id);
         List<Ordered_Dish> SearchInOrdered_Dish(Func<Ordered_Dish, bool> search);
-       
+
         //lists
-        List<Ordered_Dish> GetAllOrdersDish();
-        List<Order> GetAllOrders();
-        List<Dish> GetAllDish();
-        List<Branch> GetAllBranch();
-        List<Client> GetAllClients();
+        IEnumerable<Ordered_Dish> GetAllOrdersDish();
+        IEnumerable<Order> GetAllOrders();
+        IEnumerable<Dish> GetAllDish();
+        IEnumerable<Branch> GetAllBranch();
+        IEnumerable<Client> GetAllClients();
 
     }
 }

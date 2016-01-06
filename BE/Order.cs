@@ -6,22 +6,25 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
 namespace BE
 {
 
     public enum Hashgacha { NotKosher, Kosher, Mehadrin, Badatz };
-    public class Order 
+    [AttributeUsage(AttributeTargets.Property)]
+    public class Order: Attribute
     {
-
+        #region Objects
+      
         int _OrderId;
         DateTime _OrderTime;
         int _BranchId;
         Hashgacha _HashgachaPlace;
         int _ClientId;
         float _OrderPrice;
-
-       
-
+        String remark;
+        #endregion
+        #region Constructor and copy Function
         /// <summary>
         /// Order constructor
         /// </summary>
@@ -31,16 +34,17 @@ namespace BE
         /// <param name="_HashgachaPlace">Branch hashgacha (Be.Hashgacha)</param>
         /// <param name="_ClientId">Id client that made the delivery</param>
         /// <param name="_OrderPrice"> Order total price</param>
-        public Order(int _OrderId, DateTime _OrderTime, int _BranchId, Hashgacha _HashgachaPlace, int _ClientId, float _OrderPrice)
+        public Order(int _OrderId, DateTime _OrderTime, int _BranchId, Hashgacha _HashgachaPlace, int _ClientId, float _OrderPrice, String remark)
         {
-           
+
             this._OrderId = _OrderId;
             this._OrderTime = _OrderTime;
             this._BranchId = _BranchId;
             this._HashgachaPlace = _HashgachaPlace;
             this._ClientId = _ClientId;
             this._OrderPrice = _OrderPrice;
-            
+            this.remark =  remark;
+
         }
         //public override static  void operator[](int a){
         //}
@@ -53,8 +57,11 @@ namespace BE
             this._HashgachaPlace = a._HashgachaPlace;
             this._ClientId = a._ClientId;
             this._OrderPrice = a._OrderPrice;
+            this.remark = a.remark;
         }
-
+        #endregion
+        #region Proprieties
+        
         public int OrderId
         {
             get
@@ -132,5 +139,6 @@ namespace BE
                 _OrderPrice = value;
             }
         }
+        #endregion
     }
 }

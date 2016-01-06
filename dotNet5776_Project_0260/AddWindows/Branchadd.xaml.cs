@@ -24,7 +24,9 @@ namespace dotNet5776_Project_0260
     {
         //Bl object
         IBL BlObject = FactoryBL.GetBL();
-        public BranchAdd()
+
+        bool Update = false;
+        public BranchAdd(Branch update = null )
         {
             InitializeComponent();
             //Insert number in Id box
@@ -34,6 +36,23 @@ namespace dotNet5776_Project_0260
             //Kosher is selected
             HashagachaBox.SelectedIndex = 1;
 
+
+
+            if(update != null)
+            {
+                Update = true;
+                IdBox.Text = update.BranchId.ToString();
+                IdBox.IsEnabled = false;
+                NameBox.Text = update.BranchName;
+                AddressBox.Text = update.BranchAddres.ToString();
+                ManagerBox.Text = update.BranchManager;
+                WorkersBox.Text = update.BranchWorkers.ToString();
+                DeliverysBox.Text = update.NumOfDeliveryPerson.ToString();
+                PhoneBox.Text =  update.BranchPhone ;
+                HashagachaBox.SelectedIndex = (int)update.BranchHashgacha;
+                AddButton.Content = "Update Branch";
+            }
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -42,6 +61,7 @@ namespace dotNet5776_Project_0260
         {
             try
             {
+                MessageBox.Show(PhoneBox.Text + "\n"  + "\n");
                 // Verify if the textbox are empty
                 if (string.IsNullOrEmpty(IdBox.Text))
                     throw new Exception("Id is required");
@@ -57,12 +77,19 @@ namespace dotNet5776_Project_0260
                     throw new Exception("Delivery is required");
                 if (string.IsNullOrEmpty(PhoneBox.Text))
                     throw new Exception("Phone required");
-                //If all textbox are something then the program will send to bl to verify
-                BlObject.AddBranch(new Branch(int.Parse(IdBox.Text), NameBox.Text, AddressBox.Text, int.Parse(PhoneBox.Text), ManagerBox.Text, int.Parse(WorkersBox.Text), int.Parse(DeliverysBox.Text), (BE.Hashgacha)HashagachaBox.SelectedItem));
+                
+                if(Update)
+                    BlObject.UpdateBranch(new Branch(int.Parse(IdBox.Text), NameBox.Text, AddressBox.Text, PhoneBox.Text, ManagerBox.Text, int.Parse(WorkersBox.Text), int.Parse(DeliverysBox.Text), (BE.Hashgacha)HashagachaBox.SelectedItem));
+                else
+                    //If all textbox are something then the program will send to bl to verify
+                    BlObject.AddBranch(new Branch(int.Parse(IdBox.Text), NameBox.Text, AddressBox.Text, PhoneBox.Text, ManagerBox.Text, int.Parse(WorkersBox.Text), int.Parse(DeliverysBox.Text), (BE.Hashgacha)HashagachaBox.SelectedItem));
+
+
+               
                 //If Bl didn't send error then the program will show a message that  data are added and close the window
-                MessageBox.Show("Data added successful!", "Branch Add");
+                MessageBox.Show("Data " + ((Update)?"Updated" : "added") +" successful!", "Branch Add");
                 if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("Add"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("BranchAdd#id=" + IdBox.Text + "Name=" + NameBox.Text));
                 this.Close();
             }
             catch (FormatException)

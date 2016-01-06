@@ -11,18 +11,7 @@ namespace BE
 
     public class Branch
     {
-        class BranchDish
-        {
 
-            int DishAmount;
-            Dish dish;
-
-            public BranchDish(int dishAmount, Dish dish)
-            {
-                DishAmount = dishAmount;
-                this.dish = dish;
-            }
-        }
         //Set the header name for data grid
         #region NameOfObjects
         public static string[] NameOfObjects = new string[] {
@@ -49,7 +38,7 @@ namespace BE
         /// <param name="BranchWorkers">Branch number of workers</param>
         /// <param name="NumOfDeliveryPerson">Branch number of delivery peoples </param>
         /// <param name="BranchHashgacha">Branch Hashgacha (using enum in BE.Hashagacha)</param>
-        public Branch(int BranchId, string BranchName, string BranchAddres, int BranchPhone, string BranchManager, int BranchWorkers, int NumOfDeliveryPerson, Hashgacha BranchHashgacha)
+        public Branch(int BranchId, string BranchName, string BranchAddres, string BranchPhone, string BranchManager, int BranchWorkers, int NumOfDeliveryPerson, Hashgacha BranchHashgacha)
         {
             this._BranchId = BranchId;
             this._BranchName = BranchName;
@@ -59,7 +48,7 @@ namespace BE
             this._BranchWorkers = BranchWorkers;
             this._NumOfDeliveryPerson = NumOfDeliveryPerson;
             this._BranchHashgacha = BranchHashgacha;
-            List<BranchDish> BranchDishes = new List<BranchDish>();
+            List<int> BranchDishes = new List<int>();
         }
         /// <summary>
         /// Function to copy from an other Branch
@@ -82,13 +71,12 @@ namespace BE
         int _BranchId;
         string _BranchName;
         string _BranchAddres;
-        int _BranchPhone;
+        string _BranchPhone;
         string _BranchManager;
         int _BranchWorkers;
         int _NumOfDeliveryPerson;
         Hashgacha _BranchHashgacha;
-        List<BranchDish> BranchDishes;
-
+        public List<int> BranchDishes;
 
         #endregion
         #region Proprieties 
@@ -132,7 +120,7 @@ namespace BE
             }
         }
 
-        public int BranchPhone
+        public string BranchPhone
         {
             get
             {
@@ -183,7 +171,6 @@ namespace BE
                 _NumOfDeliveryPerson = value;
             }
         }
-
         public Hashgacha BranchHashgacha
         {
             get
@@ -196,19 +183,6 @@ namespace BE
                 _BranchHashgacha = value;
             }
 
-        }
-
-        private List<BranchDish> BranchDishes1
-        {
-            get
-            {
-                return BranchDishes;
-            }
-
-            set
-            {
-                BranchDishes = value;
-            }
         }
         #endregion
         public override string ToString()

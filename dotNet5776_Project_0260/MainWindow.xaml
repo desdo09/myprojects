@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:dotNet5776_Project_0260"
         mc:Ignorable="d"
         Height="600" Width="800"
+        Closing="Window_Closing"
         Title="MainWindow" MinHeight="600" MinWidth="800">
+    <Window.Resources>
+        <CollectionViewSource x:Key="Names" Source="{Binding  Path=BranchNames/BranchName }" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -17,12 +21,25 @@
                 <MenuItem Header="File" >
                     <MenuItem Header="New" IsEnabled="False" />
                     <MenuItem Header="Open" IsEnabled="False" />
-                    <MenuItem Header="Save" IsEnabled="False" />
-                    <MenuItem Header="Save As" IsEnabled="False">
-                        <MenuItem Header="Save as BMP" IsEnabled="False"/>
-                        <MenuItem Header="Save as JPG" IsEnabled="False" />
-                        <MenuItem Header="Save as GIF" IsEnabled="False" />
+                    <MenuItem Header="Print"  />
+                 
+                </MenuItem>
+                <MenuItem Header="Edit" >
+                    <MenuItem Header="Add" IsEnabled="True" >
+                        <MenuItem Header="Branch" Click="BranchClick" />
+                        <MenuItem Header="Clients" Click="ClientClick" />
+                        <MenuItem Header="Dish in current branch" Click="DishClick"/>
+                        <MenuItem Header="Order" Click="OrderClick"/>
+                        <MenuItem Header="Ordered Dish" Click="Ordered_DishClick"/>
                     </MenuItem>
+                    <MenuItem Header="Update" >
+                        <MenuItem Header="Branch" Click="BranchClick" />
+                        <MenuItem Header="Clients" Click="ClientClick" />
+                        <MenuItem Header="Dish" Click="DishClick"/>
+                        <MenuItem Header="Order" Click="OrderClick"/>
+                        <MenuItem Header="Ordered Dish" Click="Ordered_DishClick"/>
+                    </MenuItem>
+                    <MenuItem Header="Save" IsEnabled="False" />  
                 </MenuItem>
                 <MenuItem Header="View" >
                     <MenuItem Header="Branch" Click="BranchClick" />
@@ -31,8 +48,15 @@
                     <MenuItem Header="Order" Click="OrderClick"/>
                     <MenuItem Header="Ordered Dish" Click="Ordered_DishClick"/>
                 </MenuItem>
-                <MenuItem Header="Format" IsEnabled="False" />
+                <MenuItem Header="Report">
+                    <MenuItem Header="Earnings per Dish" Click="DishReport_Click"/>
+                    <MenuItem Header="Earnings per Client" Click="ClientReport_Click"/>
+                    <MenuItem Header="Earnings per Branch"/>
+                    <MenuItem Header="Orders"/>
+                </MenuItem>
                 <MenuItem Header="Help">
+                    <MenuItem Header="View Help" Click="About"></MenuItem>
+                    <MenuItem Header="Developer Help" Click="About"></MenuItem>
                     <MenuItem Header="About" Click="About"></MenuItem>
                 </MenuItem>
             </Menu>
@@ -109,15 +133,28 @@
                         </ContextMenu>
                     </DataGrid.ContextMenu>
                 </DataGrid>
+
+
                 <Grid x:Name="SearchGrid" Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="401*"/>
-                        <ColumnDefinition Width="247*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Label x:Name="label" Margin="0,10,0,10" Grid.Column="0" Content="Search" HorizontalAlignment="Right" />
+                    <TextBox x:Name="SearchBox" VerticalAlignment="Center"  Grid.Column="1" Margin="0,0,5,0" TextChanged="textBox_TextChanged" BorderThickness="2" />
+                    <Label Grid.Column="2" Content="Branch:" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
 
-                    <TextBox x:Name="SearchBox" VerticalAlignment="Center"  Grid.Column="1" Margin="0,0,5,0" TextChanged="textBox_TextChanged" BorderThickness="2" Grid.ColumnSpan="2"   />
+                    <ComboBox x:Name="BranchBox" IsEditable="True" Grid.Column="3" Text="Branch" FontSize="16" VerticalAlignment="Center" Margin="5,0" LostFocus="BranchBox_LostFocus" >
+                        <ComboBoxItem Content="All" IsSelected="True"/>
+
+                    </ComboBox>
+
+
+
+
+
 
                 </Grid>
                 <Grid x:Name="ButtonsGrid" Grid.Row="2">
@@ -136,7 +173,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button x:Name="Update_button" Grid.Column="1" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0"  >
+                    <Button x:Name="Update_button" Grid.Column="1" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0" Click="Update_button_Click"  >
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="Images/UpdateButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Update_button}"  />

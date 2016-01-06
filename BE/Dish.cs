@@ -20,10 +20,10 @@ namespace BE
 
         };
         #endregion
-
+        public enum size { small,medium,big}
         int _DishId;
         string _DishName;
-        float _DishSize;
+        size _DishSize;
         float _DishPrice;
         Hashgacha _HashgachaDish;
 
@@ -37,7 +37,7 @@ namespace BE
         /// <param name="_DishSize">Dish Size</param>
         /// <param name="_DishPrice">Dish Price</param>
         /// <param name="_HashgachaDish">Dish Hashagacha (Be.Hashgacha)</param>
-        public Dish(int _DishId, string _DishName, float _DishSize, float _DishPrice, Hashgacha _HashgachaDish)
+        public Dish(int _DishId, string _DishName, size _DishSize, float _DishPrice, Hashgacha _HashgachaDish)
         {
             this._DishId = _DishId;
             this._DishName = _DishName;
@@ -81,7 +81,7 @@ namespace BE
             }
         }
 
-        public float DishSize
+        public size DishSize
         {
             get
             {

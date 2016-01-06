@@ -30,18 +30,45 @@ namespace BL
         {
             DalObject.AddDish(add);
         }
-        public void AddOrder(Order add)
+        public void AddOrder(Order Orderadd, List<Ordered_Dish> DishAdd)
         {
-            if (add.OrderPrice > 1000)
-                throw new InvalidOperationException("BL error: Order can't be bigger than 1000");
-            else
-                DalObject.AddOrder(add);
+           
+
+            if (Orderadd.OrderTime.Day > DateTime.Now.Day + 2)
+                throw new InvalidOperationException("Does not allowed add an order to 24 hours early");
+            if (Orderadd.OrderTime.Hour > 23 || Orderadd.OrderTime.Hour < 9)
+                throw new InvalidProgramException("Branch closed");
+            if(Orderadd.OrderTime.Hour < DateTime.Now.Hour - 1)
+                throw new InvalidOperationException("Time not allowed");
+
+            if (SearchClientById(Orderadd.ClientId) == null)
+                throw new NullReferenceException("Client does not found");
+            if (Orderadd.OrderPrice > 1000)
+                throw new InvalidOperationException("Price to hight");
+           foreach(Ordered_Dish item in DishAdd)
+            {
+                if (SearchDishById(item.DishId).HashgachaDish < Orderadd.HashgachaPlace)
+                    throw new InvalidOperationException("Dish Hashacha lower than " + Orderadd.HashgachaPlace.ToString());
+
+            }
+            DalObject.AddOrder(Orderadd);
+            try {
+                foreach (Ordered_Dish item in DishAdd)
+                {
+                    DalObject.AddOrdered_Dish(item);
+
+                }
+            }catch(Exception)
+            {
+                DalObject.DeleteOrder(Orderadd);
+               
+            }
         }
         public void AddOrdered_Dish(Ordered_Dish add)
         {
-            if (SearchOrderById(add.OrderId).HashgachaPlace < SearchDishById(add.DishId).HashgachaDish)
-                throw new InvalidOperationException("BL error: The Hashgacha not match");
-            else
+            //if (SearchOrderById(add.OrderId).HashgachaPlace < SearchDishById(add.DishId).HashgachaDish)
+            //    throw new InvalidOperationException("BL error: The Hashgacha not match");
+          //  else
                 DalObject.AddOrdered_Dish(add);
         }
         #endregion
@@ -69,30 +96,31 @@ namespace BL
         }
         #endregion
         #region gets All lists
-        public List<Branch> GetAllBranch()
+        public IEnumerable<Branch> GetAllBranch()
         {
             return DalObject.GetAllBranch();
         }
 
-        public List<Client> GetAllClients()
+        public IEnumerable<Client> GetAllClients()
         {
             return DalObject.GetAllClients();
         }
 
-        public List<Dish> GetAllDish()
+        public IEnumerable<Dish> GetAllDish()
         {
             return DalObject.GetAllDish();
         }
 
-        public List<Order> GetAllOrders()
+        public IEnumerable<Order> GetAllOrders()
         {
             return DalObject.GetAllOrder();
         }
 
-        public List<Ordered_Dish> GetAllOrdersDish()
+        public IEnumerable<Ordered_Dish> GetAllOrdersDish()
         {
             return DalObject.GetAllOrdersDish();
         }
+      
         #endregion
         #region searchById
         public Branch SearchBranchById(int id)
@@ -208,6 +236,22 @@ namespace BL
                         select x;
             return items.ToList();
         }
+        public IEnumerable<Dish> GettAllDishInBranch(int IdBranch)
+        {
+            Branch currentBranch = SearchBranchById(IdBranch);
+            if (currentBranch.BranchDishes == null)
+                return currentBranch.BranchDishes as IEnumerable<Dish>;
+            try {
+                var Dishes = from x in GetAllDish()
+                             where currentBranch.BranchDishes.Contains(x.DishId)
+                             select x;
+                return Dishes.ToList();
+            }catch(Exception ex)
+            {
+               throw ex;
+            }
+
+        }
         public List<Branch> SearchInBranch(Func<Branch, bool> search)
         {
             var items = from x in GetAllBranch()
@@ -241,8 +285,8 @@ namespace BL
         public int GetDishValidId()
         {
             if (DalObject.GetAllDish() == null)
-                return 0;
-            int prevId = DalObject.GetAllDish()[0].DishId;
+                return 1;
+            int prevId = ((List<Dish>) DalObject.GetAllDish())[0].DishId;
             foreach (Dish item in DalObject.GetAllDish())
             {
                 if (item.DishId > prevId + 1)
@@ -255,8 +299,8 @@ namespace BL
         public int GetBranchValidId()
         {
             if (DalObject.GetAllBranch() == null)
-                return 0;
-            int prevId = DalObject.GetAllBranch()[0].BranchId;
+                return 1;
+            int prevId =((List<Branch>) DalObject.GetAllBranch())[0].BranchId;
             foreach(Branch item in DalObject.GetAllBranch())
             {
                 if (item.BranchId > prevId + 1)
@@ -268,9 +312,9 @@ namespace BL
         }
         public int GetOrderValidId()
         {
-            if (DalObject.GetAllOrder() == null || DalObject.GetAllOrder().Count == 0)
-                return 0;
-            int prevId = DalObject.GetAllOrder()[0].OrderId;
+            if (DalObject.GetAllOrder() == null || ((List<Order>) DalObject.GetAllOrder()).Count == 0)
+                return 1;
+            int prevId = ((List<Order>) DalObject.GetAllOrder())[0].OrderId;
             foreach (Order item in DalObject.GetAllOrder())
             {
                 if (item.OrderId > prevId + 1)
@@ -283,8 +327,8 @@ namespace BL
         public int GetClientValidId()
         {
             if (DalObject.GetAllClients() == null)
-                return 0;
-            int prevId = DalObject.GetAllClients()[0].ClientId;
+                return 1;
+            int prevId = ((List<Client>)DalObject.GetAllClients())[0].ClientId;
             foreach (Client item in DalObject.GetAllClients())
             {
                 if (item.ClientId > prevId + 1)
@@ -296,18 +340,22 @@ namespace BL
         }
         public int GetOrdered_DishValidId()
         {
-            if (DalObject.GetAllOrdersDish() == null)
-                return 0;
-            int prevId = DalObject.GetAllOrdersDish()[0].Ordered_DishId;
+            if (DalObject.GetAllOrdersDish() == null || ((List<Ordered_Dish>)DalObject.GetAllOrdersDish()).Count == 0)
+                return 1;
+            int prevId =((List<Ordered_Dish>) DalObject.GetAllOrdersDish())[0].Ordered_DishId;
             foreach (Ordered_Dish item in DalObject.GetAllOrdersDish())
             {
                 if (item.Ordered_DishId > prevId + 1)
-                    return prevId;
+                    return prevId+1;
                 else
                     prevId = item.Ordered_DishId;
             }
             return prevId+1;
         }
+
+       
+
+
         #endregion
     }
 }

@@ -32,7 +32,7 @@ namespace dotNet5776_Project_0260
         {
             InitializeComponent();
             items = new ObservableCollection<BE.Dish>(Bl_Object.GetAllDish());
-            DishData.ItemsSource = Bl_Object.GetAllDish();
+            DishData.ItemsSource = items;
 
         }
 

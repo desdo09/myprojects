@@ -16,16 +16,21 @@ using BE;
 using BL;
 using System.Threading;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace dotNet5776_Project_0260
 {
+
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Classes enum to know the current class
     /// </summary>
+    public enum classes { Branch, Client, Dish, Order, Order_dish };
+
     public partial class MainWindow : Window
     {
 
         #region Objects
+      
         /// <summary>
         /// function to get changes
         /// </summary>
@@ -33,12 +38,35 @@ namespace dotNet5776_Project_0260
         /// <param name="ev"></param>
         void propertychanged(object sender, PropertyChangedEventArgs ev)
         {
+            try {
+                string Sended = ev.PropertyName.Split('#')[0];
+                string[] paramSended = ev.PropertyName.Split('#')[1].Split('=');
+                #region From BranchAdd
+                if (Sended.Contains("BranchAdd"))
+                {
+                    ComboBoxItem temp = new ComboBoxItem();
+                    for (int i = 0; i < paramSended.Length; i++)
+                    {
+                       
+
+                        if (paramSended[i].Contains("Name"))
+                          temp.Content = paramSended[i + 1];
+                        if (paramSended[i].Contains("id"))
+                          temp.Tag = paramSended[i + 1];
+
+                    }
+                    BranchBox.Items.Add(temp);
+                }
+                #endregion
+            }
+            catch (Exception)
+            {
+
+            }
+
             dataGrid.Items.Refresh();
         }
-        /// <summary>
-        /// Classes enum to know the current class
-        /// </summary>
-        enum classes { Branch, Client, Dish, Order, Order_dish };
+       
         /// <summary>
         /// Classes (enum) object to save the current class
         /// </summary>
@@ -95,7 +123,13 @@ namespace dotNet5776_Project_0260
                         Clients_button_image_selected.Visibility = Visibility.Visible;
                         break;
                     case classes.Dish:
-                        dataGrid.ItemsSource = Bl_Object.GetAllDish();
+                        if ((BranchBox.SelectedItem as ComboBoxItem).Content.ToString() != "All")
+                        {
+                            
+                            dataGrid.ItemsSource = Bl_Object.GettAllDishInBranch(int.Parse((BranchBox.SelectedItem as ComboBoxItem).Tag.ToString()));
+                        }
+                        else
+                            dataGrid.ItemsSource = Bl_Object.GetAllDish();
                         Dish_button_image.Visibility = Visibility.Collapsed;
                         Dish_button_image_selected.Visibility = Visibility.Visible;
                         break;
@@ -116,43 +150,73 @@ namespace dotNet5776_Project_0260
         }
         //BL object
         static IBL Bl_Object = FactoryBL.GetBL();
+        
         #endregion
         public MainWindow()
         {
 
-            InitializeComponent();
-            //Set start class
-            Current = classes.Order;
+            
 
             #region Test Only
 
             for (int i = 0; i < 100; i++)
             {
-                Bl_Object.AddBranch(new Branch(i + 1000009, "Havaad Haleumi " + i % 10, "b" + (i * 3) % 15, 33, "a", 4566576, 5, Hashgacha.Kosher));
+                Bl_Object.AddBranch(new Branch(i + 1000009, "Branch " +i,"Havaad Haleumi " + i % 10, "02-645-1000"+i , "a", 4566576, 5, Hashgacha.Kosher));
             }
             Bl_Object.DeleteBranch(1000009);
             for (int i = 0; i < 40; i++)
             {
-                Bl_Object.AddClient(new Client(i + 509, "Name " + i % 10, "Havaad Haleumi" + (i * 3) % 150, "4998774833737162", (i * 482) % 27, 22));
+                Bl_Object.AddClient(new Client(i + 509, "Name " + i % 10, "Havaad Haleumi" + (i * 3) % 150, "4998774833737162+", (i * 482) % 27, 22));
             }
 
             for (int i = 0; i < 40; i++)
             {
-                Bl_Object.AddDish(new Dish(i, "aa", (float)1.5, 20, (Hashgacha)(i % 4)));
+                Bl_Object.AddDish(new Dish(i, "Dish "+i, (Dish.size)(i % 3), 20, (Hashgacha)(i % 4)));
             }
-
-
+            for (int i = 0; i < 100; i++)
+            {
+                Bl_Object.AddOrder(new Order(i, DateTime.Now , 1000009 + i, Hashgacha.Kosher, i % 4 + 509, i%8 * 10, " "), new List<Ordered_Dish>());
+            }
+            for (int i = 0; i < 100; i++)
+            {
+                Bl_Object.AddOrdered_Dish(new Ordered_Dish(i, i % 4 + 509,i%9, 10));
+            }
             #endregion
+            DataContext = this;
+            InitializeComponent();
+            Current = classes.Order;
+            BranchBoxItems();
 
-            //UserPrint a = new UserPrint(new Client(509, "Desdo Hambres ", "Havaad Haleumi 21", "4998774833737162", 0584160414, 22));
-            //a.Show();
 
         }
+        void BranchBoxItems(String ToAdd = null)
+        {
+            if (ToAdd == null)
+            {
+                ComboBoxItem temp;
+                foreach (Branch item in Bl_Object.GetAllBranch())
+                {
+                    temp = new ComboBoxItem();
+                    temp.Content = item.BranchName;
+                    temp.Tag = item.BranchId;
+                    BranchBox.Items.Add(temp);
+                }
+
+            }
+            else
+            {
+                BranchBox.Items.Add(ToAdd);
+            }
+        }
+
+
+
         /// <summary>
         /// The function will verify how is the current class and change the datagrid header name.
         /// </summary>
         private void dataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
+            e.Column.Width = new DataGridLength(2.0, DataGridLengthUnitType.Star);
             //switch to know how is the current
             switch (Current)
             {
@@ -256,11 +320,13 @@ namespace dotNet5776_Project_0260
                 case classes.Client:
                     break;
                 case classes.Dish:
+                    
                     AddDish D = new AddDish();
                     D.Show();
                     break;
                 case classes.Order:
                     OrderAdd O = new OrderAdd();
+                    O.PropertyChanged += propertychanged;
                     O.Show();
                     break;
                 case classes.Order_dish:
@@ -386,6 +452,7 @@ namespace dotNet5776_Project_0260
 
             Label temp = new Label();
             temp.Content = dataGrid.SelectedCells[0].Item;
+           
 
             for (int i = 0; i < size; i++)
             {
@@ -397,6 +464,69 @@ namespace dotNet5776_Project_0260
             PrintDialog printDlg = new PrintDialog();
             printDlg.PrintVisual(temp, "Window Printing.");
 
+        }
+
+        private void BranchBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if ((sender as ComboBox).SelectedItem != null)
+                Current = Current;
+        }
+
+        private void Update_button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                switch (Current)
+                {
+                    case classes.Branch:
+
+                        Branch ToUpdate = dataGrid.SelectedCells[0].Item as Branch;
+                        BranchAdd B = new BranchAdd(Bl_Object.SearchBranchById(ToUpdate.BranchId));
+                        B.PropertyChanged += propertychanged;
+                        B.Show();
+                        break;
+                    case classes.Client:
+                        break;
+                    case classes.Dish:
+
+                        AddDish D = new AddDish();
+                        D.Show();
+                        break;
+                    case classes.Order:
+                        OrderAdd O = new OrderAdd();
+                        O.PropertyChanged += propertychanged;
+                        O.Show();
+                        break;
+                    case classes.Order_dish:
+                        MessageBox.Show("Dish order can not insert a new row or changes\nTo change, please go to Order");
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+
+                MessageBox.Show("Please select a item");
+            }
+
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void ClientReport_Click(object sender, RoutedEventArgs e)
+        {
+            Report a = new Report(classes.Client);
+            a.Show();
+        }
+
+        private void DishReport_Click(object sender, RoutedEventArgs e)
+        {
+            Report a = new Report(classes.Dish);
+            a.Show();
         }
     }
 

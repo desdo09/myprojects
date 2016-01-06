@@ -23,6 +23,9 @@ namespace dotNet5776_Project_0260
         public AddDish()
         {
             InitializeComponent();
+           
+            SizeBox.ItemsSource = Enum.GetValues(typeof(BE.Dish.size));
+            SizeBox.SelectedIndex = 0;
             HashagachaBox.ItemsSource = Enum.GetValues(typeof(BE.Hashgacha));
             HashagachaBox.SelectedIndex = 1;
             IdBox.Text = BlObject.GetDishValidId().ToString();
@@ -42,11 +45,10 @@ namespace dotNet5776_Project_0260
                     throw new Exception("Id is required");
                 if (string.IsNullOrEmpty(NameBox.Text))
                     throw new Exception("Name is required");
-                if (string.IsNullOrEmpty(SizeBox.Text))
-                    throw new Exception("Size is required");
+               
                 if (string.IsNullOrEmpty(PriceBox.Text))
                     throw new Exception("Price is required");
-                BlObject.AddDish(new BE.Dish(int.Parse(IdBox.Text), NameBox.Text, float.Parse(SizeBox.Text), float.Parse(PriceBox.Text), (BE.Hashgacha)HashagachaBox.SelectedItem));
+                BlObject.AddDish(new BE.Dish(int.Parse(IdBox.Text), NameBox.Text, (BE.Dish.size)SizeBox.SelectedItem, float.Parse(PriceBox.Text), (BE.Hashgacha)HashagachaBox.SelectedItem));
                 MessageBox.Show("Dish added successfully");
                 this.Close();
             } catch(FormatException)
