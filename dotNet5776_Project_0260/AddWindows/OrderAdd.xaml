@@ -177,7 +177,7 @@
                         <DataGridTemplateColumn  Header="Amount" Width="*" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <toolkit:IntegerUpDown x:Name="Cant" Text="1" Tag="{Binding Path=DishId}" LostFocus="UpdateAmount" />
+                                    <toolkit:IntegerUpDown x:Name="Cant" Text="{Binding Path=amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Tag="{Binding Path=DishId}" LostFocus="UpdateAmount" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

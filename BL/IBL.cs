@@ -30,7 +30,7 @@ namespace BL
         int GetOrderValidId();
         void AddOrder(Order Orderadd, List<Ordered_Dish> DishAdd);
         void DeleteOrder(int delete);
-        void UpdateOrder(Order updete);
+        void UpdateOrder(Order updete, List<Ordered_Dish> DishAdd);
         Order SearchOrderById(int id);
         float CalculateOrderPrice(Order a);
         List<Order> SearchInOrder(Func<Order, bool> search);

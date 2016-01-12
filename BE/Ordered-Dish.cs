@@ -15,10 +15,10 @@ namespace BE
 
         public Ordered_Dish(int _Ordered_DishId, int _OrderId, int _DishId, float _DishAmount)
         {
-            this._Ordered_DishId = _Ordered_DishId;
-            this._OrderId = _OrderId;
-            this._DishId = _DishId;
-            this._DishAmount = _DishAmount;
+            this.Ordered_DishId = _Ordered_DishId;
+            this.OrderId = _OrderId;
+            this.DishId = _DishId;
+            this.DishAmount = _DishAmount;
         }
         public void copy(Ordered_Dish a)
         {
@@ -37,6 +37,8 @@ namespace BE
 
             set
             {
+                if (value < 0) value *= -1;
+
                 _Ordered_DishId = value;
             }
         }
@@ -49,6 +51,8 @@ namespace BE
 
             set
             {
+                if (value < 0) value *= -1;
+
                 _OrderId = value;
             }
         }
@@ -62,6 +66,8 @@ namespace BE
 
             set
             {
+                if (value < 0) value *= -1;
+
                 _DishId = value;
             }
         }
@@ -75,6 +81,8 @@ namespace BE
 
             set
             {
+                if (value < 0) value *= -1;
+
                 _DishAmount = value;
             }
         }

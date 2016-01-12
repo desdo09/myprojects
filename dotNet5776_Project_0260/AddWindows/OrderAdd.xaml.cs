@@ -27,6 +27,7 @@ namespace dotNet5776_Project_0260
         #region Objects
         IBL BlObject;
         int OrderId;
+        Order Update;
         ObservableCollection<Dishamount> CurrentDish;
         AddDishToOrder order = new AddDishToOrder();
         Client currentClient;
@@ -37,18 +38,55 @@ namespace dotNet5776_Project_0260
         public OrderAdd(Order update = null)
         {
             InitializeComponent();
+
             BlObject = FactoryBL.GetBL();
             CurrentDish = new ObservableCollection<Dishamount>();
             DishList.ItemsSource = CurrentDish;
             order.SendDish += AddDish;
-            OrderId = BlObject.GetOrderValidId();
+           
             foreach (Branch items in BlObject.GetAllBranch())
             {
                 ComboBoxItem temp = new ComboBoxItem();
                 temp.Content = items.BranchName;
                 temp.Tag = items.BranchId;
-                BranchBox.Items.Add(temp);
+                if (update != null)
+                {
+                    if (items.BranchId == update.BranchId)
+                    {
+                        temp.IsSelected = true;
+                        currentBranch = items;
+                        KashrutBox.Content = items.BranchHashgacha.ToString();
+                    }
+
+                }
+               BranchBox.Items.Add(temp);
             }
+
+            if(update == null)
+              OrderId = BlObject.GetOrderValidId();
+            else
+            {
+                
+                Update = update;
+                OrderId = update.OrderId;
+                foreach(Ordered_Dish item in BlObject.SearchInOrdered_Dish(x=>x.OrderId == update.OrderId))
+                {
+                    Dish current = BlObject.SearchDishById(item.DishId);
+                    CurrentDish.Add(new Dishamount(current, item.DishAmount));
+                    //MessageBox.Show(current.DishId.ToString());
+                }
+                IdBox.Text = update.ClientId.ToString();
+                IdBox_TextChanged(IdBox, null);
+                DayBox.SelectedDate = update.OrderTime;
+                HourBox.Value = update.OrderTime;
+
+                 
+
+
+                Price();
+            }
+            this.Title += " n. " + OrderId;
+
         }
         void AddDish(object a, Dish b)
         {
@@ -76,9 +114,9 @@ namespace dotNet5776_Project_0260
             try
             {
                 if (currentBranch == null)
-                    throw new Exception("Please choice a Branch");
+                    throw new Exception("Please select a Branch");
                 if (currentClient == null)
-                    throw new Exception("Please choice a client");
+                    throw new Exception("Please select the client");
                 if (CurrentDish == null)
                     throw new Exception("No dish added");
                 if (DayBox.SelectedDate == null)
@@ -99,8 +137,10 @@ namespace dotNet5776_Project_0260
 
 
                 Order temp = new Order(OrderId, DeliveryTime, currentBranch.BranchId, currentBranch.BranchHashgacha, currentClient.ClientId, price, RemarksBox.Text.ToString());
-
-                BlObject.AddOrder(temp, dishes.ToList());
+                if(Update == null)
+                     BlObject.AddOrder(temp, dishes.ToList());
+                else
+                    BlObject.UpdateOrder(temp, dishes.ToList());
                 PropertyChanged(this, new PropertyChangedEventArgs("OrderAdd#"));
 
                 MessageBox.Show("Order added successful");
@@ -141,27 +181,6 @@ namespace dotNet5776_Project_0260
 
         private void UpdateAmount(object sender, RoutedEventArgs e)
         {
-            Xceed.Wpf.Toolkit.IntegerUpDown text = sender as Xceed.Wpf.Toolkit.IntegerUpDown;
-            int id = (int)text.Tag;
-            int amount;
-            try
-            {
-                amount = int.Parse(text.Text.ToString());
-                if (amount < 1)
-                    throw new FormatException();
-            }
-            catch (FormatException)
-            {
-                amount = 1;
-                text.Text = "1";
-            }
-
-
-            Dishamount current = CurrentDish.FirstOrDefault(item => item.DishId == id);
-            if (current != null)
-            {
-                current.amount = amount;
-            }
             Price();
         }
 
@@ -244,6 +263,9 @@ namespace dotNet5776_Project_0260
             }
 
         }
+       
+
+       
     }
     public class Dishamount
     {
@@ -252,9 +274,9 @@ namespace dotNet5776_Project_0260
         public Dish.size DishSize { get; set; }
         public float DishPrice { get; set; }
         public Hashgacha HashgachaDish { get; set; }
-        public int amount { get; set; }
+        public float amount { get; set; }
 
-        public Dishamount(Dish Dish, int amount)
+        public Dishamount(Dish Dish, float amount)
         {
             this.DishId = Dish.DishId;
             DishName = Dish.DishName;

@@ -40,14 +40,14 @@ namespace BE
         /// <param name="BranchHashgacha">Branch Hashgacha (using enum in BE.Hashagacha)</param>
         public Branch(int BranchId, string BranchName, string BranchAddres, string BranchPhone, string BranchManager, int BranchWorkers, int NumOfDeliveryPerson, Hashgacha BranchHashgacha)
         {
-            this._BranchId = BranchId;
-            this._BranchName = BranchName;
-            this._BranchAddres = BranchAddres;
-            this._BranchPhone = BranchPhone;
-            this._BranchManager = BranchManager;
-            this._BranchWorkers = BranchWorkers;
-            this._NumOfDeliveryPerson = NumOfDeliveryPerson;
-            this._BranchHashgacha = BranchHashgacha;
+            this.BranchId = BranchId;
+            this.BranchName = BranchName;
+            this.BranchAddres = BranchAddres;
+            this.BranchPhone = BranchPhone;
+            this.BranchManager = BranchManager;
+            this.BranchWorkers = BranchWorkers;
+            this.NumOfDeliveryPerson = NumOfDeliveryPerson;
+            this.BranchHashgacha = BranchHashgacha;
             List<int> BranchDishes = new List<int>();
         }
         /// <summary>
@@ -89,7 +89,9 @@ namespace BE
 
             set
             {
-                _BranchId = value;
+                if (value < 0)
+                    value -= -1;
+                 _BranchId = value;
             }
 
         }
@@ -150,11 +152,14 @@ namespace BE
         {
             get
             {
+                
                 return _BranchWorkers;
             }
 
             set
             {
+                if (value < 0)
+                    value *= -1;
                 _BranchWorkers = value;
             }
         }
@@ -168,6 +173,8 @@ namespace BE
 
             set
             {
+                if (value < 0)
+                    value *= -1;
                 _NumOfDeliveryPerson = value;
             }
         }

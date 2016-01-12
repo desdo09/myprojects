@@ -37,11 +37,11 @@ namespace BE
         /// <param name="_ClientAge">Client age</param>
         public Client(int _ClientId, string _ClientName, string _ClientAddress, string _ClientCard, int Phone, int _ClientAge)
         {
-            this._ClientId = _ClientId;
-            this._ClientName = _ClientName;
-            this._ClientAddress = _ClientAddress;
-            this._ClientCard = _ClientCard;
-            this._ClientPhone = Phone;
+            this.ClientId = _ClientId;
+            this.ClientName = _ClientName;
+            this.ClientAddress = _ClientAddress;
+            this.ClientCard = _ClientCard;
+            this.ClientPhone = Phone;
             this.ClientAge = _ClientAge;
         }
         public void copy(Client a)
@@ -60,6 +60,7 @@ namespace BE
 
             set
             {
+                if (value < 0) value *= -1;
                 _ClientId = value;
             }
         }
@@ -98,6 +99,8 @@ namespace BE
 
             set
             {
+                if (value < 0) value *= -1;
+
                 _ClientPhone = value;
             }
         }
@@ -133,7 +136,7 @@ namespace BE
             str += "Client Details:\n";
             str += "=========================================================================================================\n";
             str += " Client id:   " + ClientId + "             Client Name:" + ClientName + "\n\n";
-            str += "Client Address:   "+	ClientAddress +  "                             Last 4 card number: " + ClientCard.Split('=')[0].Substring(12);
+           // str += "Client Address:   "+	ClientAddress +  "                             Last 4 card number: " + ClientCard.Split('=')[0].Substring(12);
                                     
 
 

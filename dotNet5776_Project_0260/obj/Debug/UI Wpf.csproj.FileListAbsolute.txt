@@ -84,45 +84,22 @@ C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\dotNet5776_Project_0
 C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\dotNet5776_Project_0260\obj\Debug\AddWindows\AddDishToOrder.g.cs
 C:\Users\User\Documents\GitHub\dotNet5776_Project_0260_6603\dotNet5776_Project_0260\obj\Debug\AddWindows\AddDishToOrder.baml
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\dotNet5776_Project_0260.exe.config
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\dotNet5776_Project_0260.exe
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\dotNet5776_Project_0260.pdb
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\dotNet5776_Project_0260.exe
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\dotNet5776_Project_0260.pdb
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\BE.dll
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\BL.dll
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\DAL.dll
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\DS.dll
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\BE.pdb
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\BL.pdb
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\DAL.pdb
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\DS.pdb
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\UI Wpf.csprojResolveAssemblyReference.cache
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\AddDishToOrder.g.cs
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\OrderAdd.g.cs
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\BranchAdd.g.cs
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\MainWindow.g.cs
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\App.g.cs
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\dotNet5776_Project_0260_MarkupCompile.cache
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\dotNet5776_Project_0260_MarkupCompile.lref
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\AddDishToOrder.baml
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\OrderAdd.baml
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\BranchAdd.baml
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\MainWindow.baml
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\dotNet5776_Project_0260.g.resources
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\dotNet5776_Project_0260.Properties.Resources.resources
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\UI Wpf.csproj.GenerateResource.Cache
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\AddDish.g.cs
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\AddDish.baml
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\PrinterLabel\UserPrint.g.cs
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\PrinterLabel\UserPrint.baml
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\ClientAdd.g.cs
-C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\ClientAdd.baml
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\Xceed.Wpf.AvalonDock.dll
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\Xceed.Wpf.DataGrid.dll
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\DAL.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\DS.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\BE.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\BL.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\DAL.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\DS.pdb
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
@@ -133,5 +110,29 @@ C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\UI Wpf.csprojResolveAssemblyReference.cache
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\AddDish.g.cs
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\AddDishToOrder.g.cs
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\ClientAdd.g.cs
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\OrderAdd.g.cs
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\BranchAdd.g.cs
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\MainWindow.g.cs
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\PrinterLabel\UserPrint.g.cs
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\Report.g.cs
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\App.g.cs
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\dotNet5776_Project_0260_MarkupCompile.cache
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\dotNet5776_Project_0260_MarkupCompile.lref
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\AddDish.baml
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\AddDishToOrder.baml
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\ClientAdd.baml
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\OrderAdd.baml
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\AddWindows\BranchAdd.baml
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\MainWindow.baml
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\PrinterLabel\UserPrint.baml
 C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\Report.baml
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\dotNet5776_Project_0260.g.resources
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\dotNet5776_Project_0260.Properties.Resources.resources
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\UI Wpf.csproj.GenerateResource.Cache
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\dotNet5776_Project_0260.exe
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\dotNet5776_Project_0260.pdb
+C:\Users\User\Dropbox\JCT\Proyect\Project C# 2015\myprojects\dotNet5776_Project_0260\obj\Debug\GeneratedInternalTypeHelper.g.cs

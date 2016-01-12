@@ -37,13 +37,13 @@ namespace BE
         public Order(int _OrderId, DateTime _OrderTime, int _BranchId, Hashgacha _HashgachaPlace, int _ClientId, float _OrderPrice, String remark)
         {
 
-            this._OrderId = _OrderId;
-            this._OrderTime = _OrderTime;
-            this._BranchId = _BranchId;
-            this._HashgachaPlace = _HashgachaPlace;
-            this._ClientId = _ClientId;
-            this._OrderPrice = _OrderPrice;
-            this.remark =  remark;
+            this.OrderId = _OrderId;
+            this.OrderTime = _OrderTime;
+            this.BranchId = _BranchId;
+            this.HashgachaPlace = _HashgachaPlace;
+            this.ClientId = _ClientId;
+            this.OrderPrice = _OrderPrice;
+            this.Remark =  remark;
 
         }
         //public override static  void operator[](int a){
@@ -57,7 +57,7 @@ namespace BE
             this._HashgachaPlace = a._HashgachaPlace;
             this._ClientId = a._ClientId;
             this._OrderPrice = a._OrderPrice;
-            this.remark = a.remark;
+            this.Remark = a.Remark;
         }
         #endregion
         #region Proprieties
@@ -71,6 +71,8 @@ namespace BE
 
             set
             {
+                if (value < 0) value *= -1;
+
                 _OrderId = value;
             }
         }
@@ -97,6 +99,8 @@ namespace BE
 
             set
             {
+                if (value < 0) value *= -1;
+
                 _BranchId = value;
             }
         }
@@ -123,6 +127,8 @@ namespace BE
 
             set
             {
+                if (value < 0) value *= -1;
+
                 _ClientId = value;
             }
         }
@@ -136,7 +142,22 @@ namespace BE
 
             set
             {
+                if (value < 0) value *= -1;
+
                 _OrderPrice = value;
+            }
+        }
+
+        public string Remark
+        {
+            get
+            {
+                return remark;
+            }
+
+            set
+            {
+                remark = value;
             }
         }
         #endregion

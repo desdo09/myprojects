@@ -37,6 +37,9 @@ namespace DAL
 
         public void AddClient(Client add)
         {
+           
+
+
             if (SearchClientById(add.ClientId) == null)
                 DataSource.ClientData.Add(add);
             else
@@ -166,19 +169,20 @@ namespace DAL
         public void DeleteDish(Dish DishId)
         {
             if (!DataSource.dishData.Remove(DishId))
-                throw new NullReferenceException("Branch does not found!");
+                throw new NullReferenceException("Dish does not found!");
         }
 
         public void DeleteOrder(Order delete)
         {
-            if (!DataSource.OrderData.Remove(delete))
-                throw new NullReferenceException("Branch does not found!");
+              DataSource.OrderData.Remove(delete);
+            if (SearchOrderById(delete.OrderId)  != null)
+                throw new NullReferenceException("Order does not found!");
         }
 
         public void DeleteOrdered_Dish(Ordered_Dish delete)
         {
             if (!DataSource.Ordered_DishData.Remove(delete))
-                throw new NullReferenceException("Branch does not found!");
+                throw new NullReferenceException("Order Dish does not found!");
         }
         #endregion
         #region Get List Functions
@@ -189,7 +193,7 @@ namespace DAL
 
         public IEnumerable<Client> GetAllClients()
         {
-            return DataSource.ClientData;
+           return DataSource.ClientData;
         }
 
         public IEnumerable<Dish> GetAllDish()

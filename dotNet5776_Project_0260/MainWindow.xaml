@@ -9,8 +9,12 @@
         Closing="Window_Closing"
         Title="MainWindow" MinHeight="600" MinWidth="800">
     <Window.Resources>
-        <CollectionViewSource x:Key="Names" Source="{Binding  Path=BranchNames/BranchName }" />
+        <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <local:NotBooleanToVisibilityConverter x:Key="notBooleanToVisibilityConverter" />
     </Window.Resources>
+
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -22,7 +26,7 @@
                     <MenuItem Header="New" IsEnabled="False" />
                     <MenuItem Header="Open" IsEnabled="False" />
                     <MenuItem Header="Print"  />
-                 
+
                 </MenuItem>
                 <MenuItem Header="Edit" >
                     <MenuItem Header="Add" IsEnabled="True" >
@@ -39,7 +43,7 @@
                         <MenuItem Header="Order" Click="OrderClick"/>
                         <MenuItem Header="Ordered Dish" Click="Ordered_DishClick"/>
                     </MenuItem>
-                    <MenuItem Header="Save" IsEnabled="False" />  
+                    <MenuItem Header="Save" IsEnabled="False" />
                 </MenuItem>
                 <MenuItem Header="View" >
                     <MenuItem Header="Branch" Click="BranchClick" />
@@ -68,6 +72,7 @@
                 <ColumnDefinition Width="7*"/>
             </Grid.ColumnDefinitions>
             <Border BorderBrush="#FF130B0B" BorderThickness="0,0,2,0">
+
                 <Grid x:Name="PlacesGrid" Grid.Column="0" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -77,43 +82,97 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="Order_button" Grid.Row="0" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0,0,0,0"  Padding="0" Click="OrderClick" >
+
+                    <RadioButton GroupName="ChangeImage"  Name="OrderCheck" Visibility="Collapsed" />
+                    <RadioButton GroupName="ChangeImage" Name="ODCheck"  Visibility="Collapsed"  />
+                    <RadioButton GroupName="ChangeImage" Name="ClientCheck"  Visibility="Collapsed"  />
+                    <RadioButton GroupName="ChangeImage" Name="BranchCheck"  Visibility="Collapsed"  />
+                    <RadioButton GroupName="ChangeImage" Name="DishCheck"  Visibility="Collapsed"  />
+
+
+
+                    <Button x:Name="Order_button"   BorderThickness="0"  Grid.Row="0" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0,0,0,0"  Padding="0" Click="OrderClick" >
+                        <Button.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <Trigger Property="Control.IsFocused" Value="True">
+
+                                    </Trigger>
+                                </Style.Triggers>
+
+                            </Style>
+                        </Button.Style>
                         <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Name="Order_button_image" Source="Images/OrdersButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" />
-                                <Image Name="Order_button_image_selected" Source="Images/OrderButton.fw.Selected.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" Visibility="Collapsed" />
+                            <StackPanel>
+
+                                <Image Name="Order_button_image" Source="Images/OrdersButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                       Width="{Binding ActualWidth, ElementName=Order_button}" 
+                                        Visibility="{Binding ElementName=OrderCheck, Path=IsChecked,  Converter={StaticResource notBooleanToVisibilityConverter}}" />
+                                <Image Name="Order_button_image_selected" Source="Images/OrderButton.fw.Selected.png"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"  
+                                       Width="{Binding ActualWidth, ElementName=Order_button}" 
+                                       Visibility="{Binding ElementName=OrderCheck, Path=IsChecked,  Converter={StaticResource BooleanToVisibilityConverter}}" />
                             </StackPanel>
                         </Button.Content>
                     </Button>
                     <Button x:Name="Ordered_Dish_button" Grid.Row="1" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}"  Margin="0,0,0,0" Padding="0" Click="Ordered_DishClick">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image Name="DishOrders_button_image" Source="DishOrderButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" />
-                                <Image Name="DishOrders_button_image_selected" Source="DishOrderButton.fw.Selected.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" Visibility="Collapsed" />
+                                <Image Name="image1" Source="DishOrderButton.fw.png" VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" 
+                                       Visibility="{Binding ElementName=ODCheck, Path=IsChecked,  Converter={StaticResource notBooleanToVisibilityConverter}}" />
+                                <Image Name="DishOrders_button_image_selected" Source="DishOrderButton.fw.Selected.png" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"  
+                                       Width="{Binding ActualWidth, ElementName=Order_button}" 
+                                       Visibility="{Binding ElementName=ODCheck, Path=IsChecked,  Converter={StaticResource BooleanToVisibilityConverter}}" />
                             </StackPanel>
                         </Button.Content>
                     </Button>
                     <Button x:Name="Clients_button" Grid.Row="2" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0"  Click="ClientClick">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image Name="Clients_button_image" Source="Images/ClientsButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Clients_button}"   />
-                                <Image Name="Clients_button_image_selected" Source="Images/ClientsButton.Selected.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Clients_button}" Visibility="Hidden"  />
+                                <Image Name="Clients_button_image" Source="Images/ClientsButton.fw.png" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                       Width="{Binding ActualWidth, ElementName=Clients_button}"  
+                                       Visibility="{Binding ElementName=ClientCheck, Path=IsChecked,  Converter={StaticResource notBooleanToVisibilityConverter}}" />
+
+                                <Image Name="Clients_button_image_selected" Source="Images/ClientsButton.Selected.fw.png"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                       Width="{Binding ActualWidth, ElementName=Clients_button}" 
+                                       Visibility="{Binding ElementName=ClientCheck, Path=IsChecked,  Converter={StaticResource BooleanToVisibilityConverter}}" />
+
                             </StackPanel>
                         </Button.Content>
                     </Button>
                     <Button x:Name="Branch_button" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0" Click="BranchClick" >
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image Name="Branch_button_image" Source="Images/BranchButton.fw.png"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"    Width="{Binding ActualWidth, ElementName=Branch_button}"   />
-                                <Image Name="Branch_button_image_selected" Source="Images/BranchButton.fw.Selected.png"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"    Width="{Binding ActualWidth, ElementName=Branch_button}" Visibility="Collapsed"  />
+                                <Image Name="Branch_button_image" Source="Images/BranchButton.fw.png"  VerticalAlignment="Stretch" 
+                                       HorizontalAlignment="Stretch"
+                                       Width="{Binding ActualWidth, ElementName=Branch_button}" 
+                                       Visibility="{Binding ElementName=BranchCheck, Path=IsChecked,  Converter={StaticResource notBooleanToVisibilityConverter}}" />
+
+                                <Image Name="Branch_button_image_selected" Source="Images/BranchButton.fw.Selected.png" 
+                                       VerticalAlignment="Stretch" HorizontalAlignment="Stretch"   
+                                       Width="{Binding ActualWidth, ElementName=Branch_button}"
+                                       Visibility="{Binding ElementName=BranchCheck, Path=IsChecked,  Converter={StaticResource BooleanToVisibilityConverter}}" />
+
                             </StackPanel>
                         </Button.Content>
                     </Button>
                     <Button x:Name="Dish_button" Grid.Row="4" VerticalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0,0,0,0" Padding="0"  Click="DishClick">
-                        <Button.Content>
+                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image Name="Dish_button_image" Source="DishButton.fw.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" />
-                                <Image Name="Dish_button_image_selected" Source="DishButton.fw.Selected.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="{Binding ActualWidth, ElementName=Order_button}" Visibility="Collapsed" />
+
+                                <Image Name="Dish_button_image" Source="DishButton.fw.png"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                       Width="{Binding ActualWidth, ElementName=Order_button}" 
+                                       Visibility="{Binding ElementName=DishCheck, Path=IsChecked,  Converter={StaticResource notBooleanToVisibilityConverter}}" />
+                                <Image Name="Dish_button_image_selected" Source="DishButton.fw.Selected.png" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"  
+                                       Width="{Binding ActualWidth, ElementName=Order_button}" 
+                                       Visibility="{Binding ElementName=DishCheck, Path=IsChecked,  Converter={StaticResource BooleanToVisibilityConverter}}" />
+
                             </StackPanel>
                         </Button.Content>
                     </Button>
@@ -139,17 +198,11 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="1*"/>
+                        
                     </Grid.ColumnDefinitions>
                     <Label x:Name="label" Margin="0,10,0,10" Grid.Column="0" Content="Search" HorizontalAlignment="Right" />
                     <TextBox x:Name="SearchBox" VerticalAlignment="Center"  Grid.Column="1" Margin="0,0,5,0" TextChanged="textBox_TextChanged" BorderThickness="2" />
-                    <Label Grid.Column="2" Content="Branch:" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
-
-                    <ComboBox x:Name="BranchBox" IsEditable="True" Grid.Column="3" Text="Branch" FontSize="16" VerticalAlignment="Center" Margin="5,0" LostFocus="BranchBox_LostFocus" >
-                        <ComboBoxItem Content="All" IsSelected="True"/>
-
-                    </ComboBox>
+                    
 
 
 

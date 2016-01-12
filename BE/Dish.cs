@@ -64,6 +64,8 @@ namespace BE
 
             set
             {
+                if (value < 0) value *= -1;
+
                 _DishId = value;
             }
         }
@@ -90,6 +92,7 @@ namespace BE
 
             set
             {
+
                 _DishSize = value;
             }
         }
@@ -103,6 +106,8 @@ namespace BE
 
             set
             {
+                if (value < 0) value *= -1;
+
                 _DishPrice = value;
             }
         }
