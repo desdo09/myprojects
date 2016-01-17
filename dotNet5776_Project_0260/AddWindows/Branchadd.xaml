@@ -25,7 +25,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <Label FontSize="20" Grid.Column="0" Content="ID:" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
             <Label FontSize="20" Grid.Column="2" Content="Name:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>

@@ -23,7 +23,7 @@ namespace BE
         string _ClientName;
         string _ClientAddress;
         string _ClientCard;
-        int _ClientPhone;
+        string _ClientPhone;
         int _ClientAge;
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace BE
         /// <param name="_ClientCard">Client credit card</param>
         /// <param name="Phone">Client phone</param>
         /// <param name="_ClientAge">Client age</param>
-        public Client(int _ClientId, string _ClientName, string _ClientAddress, string _ClientCard, int Phone, int _ClientAge)
+        public Client(int _ClientId, string _ClientName, string _ClientAddress, string _ClientCard, string Phone, int _ClientAge)
         {
             this.ClientId = _ClientId;
             this.ClientName = _ClientName;
@@ -90,7 +90,7 @@ namespace BE
                 _ClientAddress = value;
             }
         }
-        public int ClientPhone
+        public string ClientPhone
         {
             get
             {
@@ -99,7 +99,7 @@ namespace BE
 
             set
             {
-                if (value < 0) value *= -1;
+               
 
                 _ClientPhone = value;
             }

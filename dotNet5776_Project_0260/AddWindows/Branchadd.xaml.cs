@@ -61,7 +61,7 @@ namespace dotNet5776_Project_0260
         {
             try
             {
-                MessageBox.Show(PhoneBox.Text + "\n"  + "\n");
+               
                 // Verify if the textbox are empty
                 if (string.IsNullOrEmpty(IdBox.Text))
                     throw new Exception("Id is required");

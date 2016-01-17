@@ -31,7 +31,16 @@ namespace dotNet5776_Project_0260
         public AddDishToOrder()
         {
             InitializeComponent();
-            items = new ObservableCollection<BE.Dish>(Bl_Object.GetAllDish());
+            try
+            {
+                items = new ObservableCollection<BE.Dish>(Bl_Object.GetAllDish());
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("There are no dishes in database", "Add dish");
+                this.Loaded += ((x, y) => this.Close());
+            }
             DishData.ItemsSource = items;
 
         }

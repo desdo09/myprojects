@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5776_Project_0260"
         mc:Ignorable="d"
-        Title="ClientAdd" Height="300" Width="300">
+        ResizeMode="CanMinimize"
+        Title="ClientAdd" Height="500" Width="500">
     <Grid Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}">
         <Grid.Resources>
             <Style TargetType="Label">
@@ -22,7 +23,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -79,12 +80,31 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Label Content="year" VerticalAlignment="Center"/>
-            <TextBox Name="YearBox" Grid.Column="1" VerticalAlignment="Center" />
+            <ComboBox Name="YearBox" SelectedValuePath="Content"  Grid.Column="1" VerticalAlignment="Center" >
+                <ComboBoxItem Content="2015"  />
+                <ComboBoxItem Content="2016" IsSelected="True" />
+                <ComboBoxItem Content="2017"  />
+                <ComboBoxItem Content="2018"  />
+                <ComboBoxItem Content="2019"  />
+            </ComboBox>
             <Label Content="month" Grid.Column="2" VerticalAlignment="Center"/>
-            <TextBox Name="monthBox" Grid.Column="3" VerticalAlignment="Center"/>
+            <ComboBox Name="monthBox" SelectedValuePath="Content"  Grid.Column="3" VerticalAlignment="Center">
+                <ComboBoxItem Content="01" IsSelected="True" />
+                <ComboBoxItem Content="02"  />
+                <ComboBoxItem Content="03"  />
+                <ComboBoxItem Content="04"  />
+                <ComboBoxItem Content="05"  />
+                <ComboBoxItem Content="06"  />
+                <ComboBoxItem Content="07"  />
+                <ComboBoxItem Content="08"  />
+                <ComboBoxItem Content="09"  />
+                <ComboBoxItem Content="10"  />
+                <ComboBoxItem Content="11"  />
+                <ComboBoxItem Content="12"  />
+            </ComboBox>
 
         </Grid>
         <Button Grid.Row="6" Content="add client" Click="Button_Click"/>

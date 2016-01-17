@@ -43,26 +43,12 @@ namespace dotNet5776_Project_0260
             CurrentDish = new ObservableCollection<Dishamount>();
             DishList.ItemsSource = CurrentDish;
             order.SendDish += AddDish;
-           
-            foreach (Branch items in BlObject.GetAllBranch())
-            {
-                ComboBoxItem temp = new ComboBoxItem();
-                temp.Content = items.BranchName;
-                temp.Tag = items.BranchId;
-                if (update != null)
-                {
-                    if (items.BranchId == update.BranchId)
-                    {
-                        temp.IsSelected = true;
-                        currentBranch = items;
-                        KashrutBox.Content = items.BranchHashgacha.ToString();
-                    }
 
-                }
-               BranchBox.Items.Add(temp);
-            }
+            BranchBox.ItemsSource = BlObject.GetAllBranch();
+            BranchBox.DisplayMemberPath = "BranchName";
+            BranchBox.SelectedValuePath = "BranchId";
 
-            if(update == null)
+            if (update == null)
               OrderId = BlObject.GetOrderValidId();
             else
             {
@@ -79,9 +65,12 @@ namespace dotNet5776_Project_0260
                 IdBox_TextChanged(IdBox, null);
                 DayBox.SelectedDate = update.OrderTime;
                 HourBox.Value = update.OrderTime;
+                BranchBox.SelectedValue = update.BranchId;
+                RemarksBox.Text = update.Remark.Split('#')[0];
+                OderRemarksBox.Text = update.Remark.Split('#')[1];
 
-                 
 
+                currentBranch = BlObject.SearchBranchById(update.BranchId);
 
                 Price();
             }
@@ -136,7 +125,7 @@ namespace dotNet5776_Project_0260
                                                     0);
 
 
-                Order temp = new Order(OrderId, DeliveryTime, currentBranch.BranchId, currentBranch.BranchHashgacha, currentClient.ClientId, price, RemarksBox.Text.ToString());
+                Order temp = new Order(OrderId, DeliveryTime, currentBranch.BranchId, currentBranch.BranchHashgacha, currentClient.ClientId, price, RemarksBox.Text.ToString() + "#" + OderRemarksBox.Text);
                 if(Update == null)
                      BlObject.AddOrder(temp, dishes.ToList());
                 else
@@ -209,7 +198,7 @@ namespace dotNet5776_Project_0260
                 {
                     try
                     {
-                        currentClient = BlObject.SearchInClient(client => client.ClientPhone == int.Parse(text.Text))[0];
+                        currentClient = BlObject.SearchInClient(client => client.ClientPhone == text.Text).FirstOrDefault();
                     }
                     catch (ArgumentOutOfRangeException)
                     {
@@ -253,19 +242,20 @@ namespace dotNet5776_Project_0260
             (sender as CheckBox).IsChecked = false;
         }
 
-        private void BranchBox_LostFocus(object sender, RoutedEventArgs e)
+       
+
+        private void BranchBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBoxItem temp = ((sender as ComboBox).SelectedItem) as ComboBoxItem;
-            if (temp != null)
+            ComboBox temp = sender as ComboBox;
+            if (temp.SelectedValue != null)
             {
-                currentBranch = BlObject.SearchBranchById(int.Parse(temp.Tag.ToString()));
+                currentBranch = BlObject.SearchBranchById(int.Parse(temp.SelectedValue.ToString()));
+
                 KashrutBox.Content = currentBranch.BranchHashgacha.ToString();
             }
-
         }
-       
 
-       
+     
     }
     public class Dishamount
     {

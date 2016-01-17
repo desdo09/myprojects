@@ -88,32 +88,44 @@ namespace dotNet5776_Project_0260
 
             #region Test Only
 
-            for (int i = 0; i < 100; i++)
+            try
             {
-                Bl_Object.AddBranch(new Branch(i + 1000009, "Branch " + i, "Havaad Haleumi " + i % 10, "02-645-1000" + i, "a", 4566576, 5, Hashgacha.Kosher));
-            }
-            Bl_Object.DeleteBranch(1000009);
-            for (int i = 0; i < 40; i++)
-            {
-                Bl_Object.AddClient(new Client(i + 509, "Name " + i % 10, "Havaad Haleumi" + (i * 3) % 150, "4998774833737162+", (i * 482) % 27, 22));
-            }
+                for (int i = 0; i < 100; i++)
+                {
+           //         Bl_Object.AddBranch(new Branch(i + 1000009, "Branch " + i, "Havaad Haleumi " + i % 10, "02-645-1000" + i, "a", 4566576, 5, Hashgacha.Kosher));
+                }
+            //    Bl_Object.DeleteBranch(1000009);
+                for (int i = 0; i < 40; i++)
+                {
+           //         Bl_Object.AddClient(new Client(i + 509, "Name " + i % 10, "Havaad Haleumi" + (i * 3) % 150, "4998774833737162+", (i * 482) % 27, 22));
+                }
 
-            for (int i = 0; i < 40; i++)
-            {
-                Bl_Object.AddDish(new Dish(i, "Dish " + i, (Dish.size)(i % 3), 20*i, (Hashgacha)(i % 4)));
+                for (int i = 0; i < 40; i++)
+                {
+         //          Bl_Object.AddDish(new Dish(i, "Dish " + i, (Dish.size)(i % 3), 20 * i, (Hashgacha)(i % 4)));
+                }
+                for (int i = 0; i < 100; i++)
+                {
+         //          Bl_Object.AddOrder(new Order(i, DateTime.Now, 1000009 + i, Hashgacha.Kosher, i % 4 + 509, i % 8 * 10, " "), new List<Ordered_Dish>());
+                }
+                for (int i = 0; i < 100; i++)
+                {
+          //          Bl_Object.AddOrdered_Dish(new Ordered_Dish(i, i % 30, i % 9, i % 4 * 2 + 1));
+                }
             }
-            for (int i = 0; i < 100; i++)
+            catch (ArgumentException ex)
             {
-                Bl_Object.AddOrder(new Order(i, DateTime.Now, 1000009 + i, Hashgacha.Kosher, i % 4 + 509, i % 8 * 10, " "), new List<Ordered_Dish>());
-            }
-            for (int i = 0; i < 100; i++)
-            {
-                Bl_Object.AddOrdered_Dish(new Ordered_Dish(i, i % 30 , i % 9, i%4*2 + 1 ));
+
+                MessageBox.Show("Constructor error:\n" + ex.GetType() + ": " + ex.Message);
             }
             #endregion
             DataContext = this;
             InitializeComponent();
             OrderClick();
+            BranchBox.ItemsSource = Bl_Object.GetAllBranch();
+            BranchBox.DisplayMemberPath = "BranchName";
+            BranchBox.SelectedValuePath = "BranchId";
+            BranchBox.SelectedIndex = 0;
 
 
 
@@ -171,11 +183,15 @@ namespace dotNet5776_Project_0260
                         B.Show();
                         break;
                     case classes.Client:
-                      
+                        Client ClientToUpdate = dataGrid.SelectedCells[0].Item as Client;
+                        ClientAdd cl = new ClientAdd(ClientToUpdate);
+                        cl.PropertyChanged += propertychanged;
+                        cl.Show();
                         break;
                     case classes.Dish:
-
-                        AddDish D = new AddDish();
+                        Dish DishToUpdate = dataGrid.SelectedCells[0].Item as Dish;
+                        AddDish D = new AddDish(DishToUpdate);
+                        D.PropertyChanged += propertychanged;
                         D.Show();
                         break;
                     case classes.Order:
@@ -233,12 +249,14 @@ namespace dotNet5776_Project_0260
                     break;
                 case classes.Client:
                     ClientAdd cl = new ClientAdd();
+                    cl.PropertyChanged += propertychanged;
                     cl.Show();
                     
                     break;
                 case classes.Dish:
 
                     AddDish D = new AddDish();
+                    D.PropertyChanged += propertychanged;
                     D.Show();
                     break;
                 case classes.Order:
@@ -373,6 +391,7 @@ namespace dotNet5776_Project_0260
                 }
                 dataGrid.Items.Refresh();
                 MessageBox.Show("Id: " + IdsDeleted + " deleted!");
+                propertychanged(null,null);
             }
             catch (Exception ex)
             {
@@ -448,10 +467,8 @@ namespace dotNet5776_Project_0260
         /// <param name="ev"></param>
         void propertychanged(object sender, PropertyChangedEventArgs ev)
         {
-
-
-
-            dataGrid.Items.Refresh();
+           // dataGrid.ItemsSource = null;
+            Current = _current;
         }
         #endregion
     }

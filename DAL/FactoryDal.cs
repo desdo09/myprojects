@@ -14,7 +14,7 @@ namespace DAL
           
             
             // Singleton Pattern - use Instance
-            return DAL_List.Instance;
+            return new DAL_xml();
 
 
         }

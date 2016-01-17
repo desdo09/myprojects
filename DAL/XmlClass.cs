@@ -14,7 +14,6 @@ namespace DAL
         XElement Root;
         string Path = @"xml/client.xml";
 
-
         public ClientToXmlClass()
         {
 
@@ -48,9 +47,9 @@ namespace DAL
             XElement Address = new XElement("Address", client.ClientAddress);
             XElement Phone = new XElement("Phone", client.ClientPhone);
             XElement Card = new XElement("Card", client.ClientCard);
-            XElement Client = new XElement("Client_Details", Name, Age, Address, Phone);
+         //   XElement Client = new XElement("Client_Details", Name, Age, Address, Phone);
 
-            Root.Add(new XElement("Clients", id, Client, Card));
+            Root.Add(new XElement("Clients", id, Name, Card, Age, Address, Phone, Card));
             Root.Save(Path);
         }
 
@@ -65,8 +64,8 @@ namespace DAL
                                          p.Element("Client_Details").Element("Name").Value,
                                          p.Element("Client_Details").Element("Address").Value,
                                          p.Element("Card").Value,
-                                         int.Parse(p.Element("Client_Details").Element("Phone").Value),
-                                          int.Parse(p.Element("Client_Details").Element("Age").Value)));
+                                         p.Element("Client_Details").Element("Phone").Value,
+                                         int.Parse(p.Element("Client_Details").Element("Age").Value)));
 
             }
             catch (Exception ex)
@@ -90,7 +89,7 @@ namespace DAL
                                              p.Element("Client_Details").Element("Name").Value,
                                              p.Element("Client_Details").Element("Address").Value,
                                              p.Element("Card").Value,
-                                             int.Parse(p.Element("Client_Details").Element("Phone").Value),
+                                            p.Element("Client_Details").Element("Phone").Value,
                                              int.Parse(p.Element("Client_Details").Element("Age").Value))).FirstOrDefault();
             }
             catch

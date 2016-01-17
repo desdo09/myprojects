@@ -148,7 +148,7 @@ namespace DAL
         }
         #endregion
         #region Delete Functions
-        public void DeleteBranch(Branch delete)
+        public bool DeleteBranch(Branch delete)
         {
 
             if (delete == null)
@@ -157,32 +157,36 @@ namespace DAL
             {
                 throw new NullReferenceException("Branch does not found!");
             }
-
+            return true;
         }
 
-        public void DeleteClient(Client delete)
+        public bool DeleteClient(Client delete)
         {
             if (DataSource.ClientData.Remove(delete) == false)
                 throw new NullReferenceException("Client does not found!");
+            return true;
         }
 
-        public void DeleteDish(Dish DishId)
+        public bool DeleteDish(Dish DishId)
         {
             if (!DataSource.dishData.Remove(DishId))
                 throw new NullReferenceException("Dish does not found!");
+            return true;
         }
 
-        public void DeleteOrder(Order delete)
+        public bool DeleteOrder(Order delete)
         {
               DataSource.OrderData.Remove(delete);
             if (SearchOrderById(delete.OrderId)  != null)
                 throw new NullReferenceException("Order does not found!");
+            return true;
         }
 
-        public void DeleteOrdered_Dish(Ordered_Dish delete)
+        public bool DeleteOrdered_Dish(Ordered_Dish delete)
         {
             if (!DataSource.Ordered_DishData.Remove(delete))
                 throw new NullReferenceException("Order Dish does not found!");
+            return true;
         }
         #endregion
         #region Get List Functions

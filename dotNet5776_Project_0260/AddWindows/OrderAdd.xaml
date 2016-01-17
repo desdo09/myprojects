@@ -138,12 +138,12 @@
                 
 
                 <Label Content="Branch" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" />
-                <ComboBox Name="BranchBox" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="5,0" LostFocus="BranchBox_LostFocus" />
-                <Label Name="KashrutBox" Grid.Row="1" Grid.Column="2"  Background="{x:Null}" />
+                <ComboBox Name="BranchBox" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Center" Margin="5,0"  SelectionChanged="BranchBox_SelectionChanged" />
+                <Label Name="KashrutBox" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Background="{x:Null}" />
                
                 
                 <Label Content="Remarks" Grid.Row="2" Grid.Column="0" />
-                <RichTextBox Grid.Row="3" Grid.ColumnSpan="6" IsEnabled="True" Margin="3" FontSize="11"/>
+                <TextBox Name="OderRemarksBox" Grid.Row="3" Grid.ColumnSpan="6" IsEnabled="True" Margin="3" FontSize="11" />
             </Grid>
         </Grid>
 

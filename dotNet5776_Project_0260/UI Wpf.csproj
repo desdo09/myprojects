@@ -164,6 +164,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BE.Branch.datasource" />
+    <None Include="Properties\DataSources\BE.Client.datasource" />
+    <None Include="Properties\DataSources\BE.Dish+size.datasource" />
+    <None Include="Properties\DataSources\BE.Dish.datasource" />
+    <None Include="Properties\DataSources\BE.Order.datasource" />
+    <None Include="Properties\DataSources\BE.Ordered_Dish.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

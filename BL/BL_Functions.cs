@@ -37,8 +37,8 @@ namespace BL
 
             if (Orderadd.OrderTime.Day > DateTime.Now.Day + 2)
                 throw new InvalidOperationException("Does not allowed add an order to 24 hours early");
-          //  if (Orderadd.OrderTime.Hour > 23 || Orderadd.OrderTime.Hour < 9)
-           //     throw new InvalidProgramException("Branch closed");
+            if (Orderadd.OrderTime.Hour > 23 || Orderadd.OrderTime.Hour < 9)
+               throw new InvalidProgramException("Branch closed");
             if (Orderadd.OrderTime.Hour < DateTime.Now.Hour - 1)
                 throw new InvalidOperationException("Time not allowed");
 
@@ -55,17 +55,24 @@ namespace BL
 
             }
             DalObject.AddOrder(Orderadd);
+            int i = 0;
+
             try
             {
-                foreach (Ordered_Dish item in DishAdd)
-                {
-                    DalObject.AddOrdered_Dish(item);
 
+                for (; i < DishAdd.Count(); i++)
+                {
+                    DalObject.AddOrdered_Dish(DishAdd[i]);
                 }
+               
             }
             catch (Exception)
             {
                 DalObject.DeleteOrder(Orderadd);
+                for (int j = 0; j < i; j++)
+                {
+                    DalObject.DeleteOrdered_Dish(DishAdd[j]);
+                }
 
             }
         }
@@ -190,8 +197,30 @@ namespace BL
 
         public void UpdateOrder(Order updete, List<Ordered_Dish> DishAdd)
         {
-            DeleteOrder(updete.OrderId);
-            AddOrder(updete, DishAdd);
+            if (updete.OrderTime.Day > DateTime.Now.Day + 2)
+                throw new InvalidOperationException("Does not allowed add an order to 24 hours early");
+            if (updete.OrderTime.Hour > 23 || updete.OrderTime.Hour < 9)
+                throw new InvalidProgramException("Branch closed");
+            if (updete.OrderTime.Hour < DateTime.Now.Hour - 1)
+                throw new InvalidOperationException("Time not allowed");
+
+         
+            if (updete.OrderPrice > 1000)
+                throw new InvalidOperationException("Price to hight");
+
+
+            foreach (Ordered_Dish item in DishAdd)
+            {
+                if (SearchDishById(item.DishId).HashgachaDish < updete.HashgachaPlace)
+                    throw new InvalidOperationException("Dish Hashacha lower than " + updete.HashgachaPlace.ToString());
+
+            }
+            DalObject.UpdateOrder(updete);
+            foreach (Ordered_Dish item in GetAllOrdersDish().Where(x=>x.OrderId == updete.OrderId))
+            {
+                if (DishAdd.FirstOrDefault(x => x.Ordered_DishId == item.Ordered_DishId) == null)
+                    DalObject.DeleteOrdered_Dish(item);
+            }
         }
 
         public void UpdateOrdered_Dish(Ordered_Dish updete)
@@ -214,22 +243,25 @@ namespace BL
         }
         internal bool ValidateCard(string card)
         {
-            if (card.Length < 15)
+            StringBuilder tempCard = new StringBuilder(card.Split('+')[0]);
+
+            if (tempCard.Length < 15)
                 return false;
 
-            try
+           
+                try
             {
                 int sum = 0;
-                for (int i = 0; i < 15; i += 2)
+                for (int i = 0; i < tempCard.Length; i += 2)
                 {
-                    sum = int.Parse(card[i].ToString());
+                    sum = int.Parse(tempCard[i].ToString())*2;
                     if (sum > 10)
                         sum -= 9;
-                    card = sum.ToString() + card.Substring(1);
+                    tempCard[i] = sum.ToString()[0];
                 }
                 sum = 0;
-                for (int i = 0; i < 16; i++)
-                    sum += int.Parse(card[i].ToString());
+                for (int i = 0; i < tempCard.Length; i++)
+                    sum += int.Parse(tempCard[i].ToString());
                 return (sum % 10 == 0) ? true : false;
             }
             catch (FormatException)
@@ -296,53 +328,23 @@ namespace BL
         #region GetValidId
         public int GetDishValidId()
         {
-            if (DalObject.GetAllDish() == null)
-                return 1;
-            int prevId = ((List<Dish>)DalObject.GetAllDish())[0].DishId;
-            foreach (Dish item in DalObject.GetAllDish())
-            {
-                if (item.DishId > prevId + 1)
-                    return prevId;
-                else
-                    prevId = item.DishId;
-            }
-            return prevId + 1;
+            return (DalObject.GetAllDish() != null && DalObject.GetAllDish().Count() > 0) ? DalObject.GetAllDish().Max(x => x.DishId) + 1: 1;
         }
         public int GetBranchValidId()
         {
-            if (DalObject.GetAllBranch() == null)
-                return 1;
-            int prevId = ((List<Branch>)DalObject.GetAllBranch())[0].BranchId;
-            foreach (Branch item in DalObject.GetAllBranch())
-            {
-                if (item.BranchId > prevId + 1)
-                    return prevId;
-                else
-                    prevId = item.BranchId;
-            }
-            return prevId + 1;
+            return (DalObject.GetAllBranch() != null && DalObject.GetAllBranch().Count() > 0) ? DalObject.GetAllBranch().Max(x =>x.BranchId) +1 : 1;
         }
         public int GetOrderValidId()
         {
-            return (GetAllOrders().Count() > 0) ? GetAllOrders().Max(x => x.OrderId) +1 : 0;
+            return (GetAllOrders() != null && GetAllOrders().Count() > 0) ? GetAllOrders().Max(x => x.OrderId) +1 : 1;
         }
         public int GetClientValidId()
         {
-            if (DalObject.GetAllClients() == null)
-                return 1;
-            int prevId = ((List<Client>)DalObject.GetAllClients())[0].ClientId;
-            foreach (Client item in DalObject.GetAllClients())
-            {
-                if (item.ClientId > prevId + 1)
-                    return prevId;
-                else
-                    prevId = item.ClientId;
-            }
-            return prevId + 1;
+            return (GetAllClients() != null && GetAllClients().Count() > 0) ? GetAllClients().Max(x => x.ClientId) + 1 : 1;
         }
         public int GetOrdered_DishValidId()
         {
-            return (GetAllOrdersDish().Count() > 0) ? GetAllOrdersDish().Max(x => x.Ordered_DishId):0;
+            return (GetAllOrdersDish() != null && GetAllOrdersDish().Count() > 0) ? GetAllOrdersDish().Max(x => x.Ordered_DishId)+1:1;
         }
 
 

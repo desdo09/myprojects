@@ -13,6 +13,11 @@ namespace DAL
     {
 
 
+        private static readonly DAL_xml instance = new DAL_xml();
+        public static DAL_xml Instance { get { return instance; } private set { } }
+
+
+
         XElement Root;
         string OrderPath = @"xml/Order.xml";
         string ClientPath = @"xml/Clients.xml";
@@ -37,37 +42,37 @@ namespace DAL
 
 
 
-            if (!File.Exists(OrderPath))
+            if (!File.Exists(ClientPath))
             {
                 Root = new XElement("Clients");
-                Root.Save(OrderPath);
+                Root.Save(ClientPath);
             }
             else
-                LoadData(OrderPath);
+                LoadData(ClientPath);
 
-            if (!File.Exists(OrderPath))
+            if (!File.Exists(BranchPath))
             {
                 Root = new XElement("Branches");
-                Root.Save(OrderPath);
+                Root.Save(BranchPath);
             }
             else
-                LoadData(OrderPath);
+                LoadData(BranchPath);
 
-            if (!File.Exists(OrderPath))
+            if (!File.Exists(DishPath))
             {
                 Root = new XElement("Dishes");
-                Root.Save(OrderPath);
+                Root.Save(DishPath);
             }
             else
-                LoadData(OrderPath);
+                LoadData(DishPath);
 
-            if (!File.Exists(OrderPath))
+            if (!File.Exists(OrderDishPath))
             {
                 Root = new XElement("OrderDishes");
-                Root.Save(OrderPath);
+                Root.Save(OrderDishPath);
             }
             else
-                LoadData(OrderPath);
+                LoadData(OrderDishPath);
         }
 
         private void LoadData(string Path)
@@ -81,33 +86,40 @@ namespace DAL
                 throw new Exception("File upload problem");
             }
         }
-
-
-
-
-
-
+        
 
         public void AddBranch(Branch add)
         {
+            if (SearchBranchById(add.BranchId) != null)
+                throw new IdAlreadyExists("Branch already exist");
+
 
             LoadData(BranchPath);
+
+
+           
 
             XElement id = new XElement("id", add.BranchId);
             XElement Name = new XElement("Name", add.BranchName);
             XElement Address = new XElement("Address", add.BranchAddres);
             XElement Phone = new XElement("Phone", add.BranchPhone);
-            XElement BranchManager = new XElement("Card", add.BranchManager);
-            XElement BranchWorkers = new XElement("Card", add.BranchWorkers);
-            XElement NumOfDeliveryPerson = new XElement("Card", add.NumOfDeliveryPerson);
-            XElement BranchHashgacha = new XElement("Card", add.BranchHashgacha);
+            XElement BranchManager = new XElement("Manager", add.BranchManager);
+            XElement BranchWorkers = new XElement("Workers", add.BranchWorkers);
+            XElement NumOfDeliveryPerson = new XElement("NumOfDeliveryPerson", add.NumOfDeliveryPerson);
+            XElement BranchHashgacha = new XElement("Hashgacha", add.BranchHashgacha);
 
-            Root.Add(new XElement("Clients", id, Name, Address, Phone, BranchManager, BranchWorkers, NumOfDeliveryPerson, BranchHashgacha));
+            Root.Add(new XElement("Branch", id, Name, Address, Phone, BranchManager, BranchWorkers, NumOfDeliveryPerson, BranchHashgacha));
             Root.Save(BranchPath);
+
         }
 
         public void AddClient(Client add)
         {
+            if (SearchClientById(add.ClientId) != null)
+                throw new IdAlreadyExists("Client already exist");
+
+
+            LoadData(ClientPath);
 
             XElement id = new XElement("id", add.ClientId);
             XElement Name = new XElement("Name", add.ClientName);
@@ -117,126 +129,457 @@ namespace DAL
             XElement Card = new XElement("Card", add.ClientCard);
             XElement Client = new XElement("Client_Details", Name, Age, Address, Phone);
 
-            Root.Add(new XElement("Clients", id, Client, Card));
+            Root.Add(new XElement("Client", id, Client, Card));
             Root.Save(ClientPath);
 
         }
 
 
-
         public void AddDish(Dish add)
         {
-            throw new NotImplementedException();
+            if (SearchDishById(add.DishId) != null)
+                throw new IdAlreadyExists("Dish already exist");
+
+
+            LoadData(DishPath);
+
+          
+
+            XElement id = new XElement("id", add.DishId);
+            XElement Name = new XElement("Name", add.DishName);
+            XElement Size = new XElement("Size", add.DishSize);
+            XElement Price = new XElement("Price", add.DishPrice);
+            XElement Hashgacha = new XElement("Hashgacha", add.HashgachaDish);
+            
+
+            Root.Add(new XElement("Dish", id, Name, Size, Price, Hashgacha));
+            Root.Save(DishPath);
         }
 
         public void AddOrder(Order add)
         {
-            throw new NotImplementedException();
+            if (SearchOrderById(add.OrderId) != null)
+                throw new IdAlreadyExists("Order already exist");
+
+
+            LoadData(OrderPath);
+
+            XElement id = new XElement("id", add.OrderId);
+            XElement Time = new XElement("Time", add.OrderTime);
+            XElement ClientId = new XElement("Client", add.ClientId);
+            XElement BranchId = new XElement("Branch", add.BranchId);
+            XElement Hashgacha = new XElement("Hashgacha", add.HashgachaPlace);
+            XElement Remarks = new XElement("Remarks", add.Remark);
+            XElement Price = new XElement("Price", add.OrderPrice);
+            XElement Client = new XElement("Client_Details", ClientId, BranchId, Hashgacha);
+
+            Root.Add(new XElement("Order", id, Time, Client, Price, Remarks));
+            Root.Save(OrderPath);
+
         }
 
         public void AddOrdered_Dish(Ordered_Dish add)
         {
-            throw new NotImplementedException();
+            if (SearchOrdered_DishById(add.Ordered_DishId) != null)
+                throw new IdAlreadyExists("Ordered_Dish already exist");
+
+
+            LoadData(OrderDishPath);
+
+
+
+           
+
+            XElement id = new XElement("id", add.Ordered_DishId);
+            XElement Order = new XElement("Order", add.OrderId);
+            XElement Dish = new XElement("Dish", add.DishId);
+            XElement Amount = new XElement("Amount", add.DishAmount);
+           
+
+            Root.Add(new XElement("Ordered_Dish", id, Order, Dish, Amount));
+            Root.Save(OrderDishPath);
         }
 
-        public void DeleteBranch(Branch delete)
+        public bool DeleteBranch(Branch delete)
         {
-            throw new NotImplementedException();
+            XElement ToRemove;
+            LoadData(BranchPath);
+            try
+            {
+                ToRemove = (from p in Root.Elements()
+                            where int.Parse(p.Element("id").Value) == delete.BranchId
+                            select p).FirstOrDefault();
+                ToRemove.Remove();
+                Root.Save(BranchPath);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public void DeleteClient(Client delete)
+        public bool DeleteClient(Client delete)
         {
-            throw new NotImplementedException();
+            XElement ToRemove;
+            LoadData(ClientPath);
+            try
+            {
+                ToRemove = (from p in Root.Elements()
+                            where int.Parse(p.Element("id").Value) == delete.ClientId
+                            select p).FirstOrDefault();
+                ToRemove.Remove();
+                Root.Save(ClientPath);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public void DeleteDish(Dish DishId)
+        public bool DeleteDish(Dish DishId)
         {
-            throw new NotImplementedException();
+            XElement ToRemove;
+            LoadData(DishPath);
+            try
+            {
+                ToRemove = (from p in Root.Elements()
+                            where int.Parse(p.Element("id").Value) == DishId.DishId
+                            select p).FirstOrDefault();
+                ToRemove.Remove();
+                Root.Save(DishPath);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public void DeleteOrder(Order delete)
+        public bool DeleteOrder(Order delete)
         {
-            throw new NotImplementedException();
+            XElement ToRemove;
+            LoadData(OrderPath);
+            try
+            {
+                ToRemove = (from p in Root.Elements()
+                            where int.Parse(p.Element("id").Value) == delete.OrderId
+                            select p).FirstOrDefault();
+                ToRemove.Remove();
+                Root.Save(OrderPath);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public void DeleteOrdered_Dish(Ordered_Dish delete)
+        public bool DeleteOrdered_Dish(Ordered_Dish delete)
         {
-            throw new NotImplementedException();
+            XElement ToRemove;
+            LoadData(OrderDishPath);
+            try
+            {
+                ToRemove = (from p in Root.Elements()
+                            where int.Parse(p.Element("id").Value) == delete.Ordered_DishId
+                            select p).FirstOrDefault();
+                ToRemove.Remove();
+                Root.Save(OrderDishPath);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public IEnumerable<Branch> GetAllBranch()
         {
-            throw new NotImplementedException();
+            LoadData(BranchPath);
+
+            IEnumerable<Branch> temp;
+         
+            try
+            {
+                temp = from p in Root.Elements()
+                        select new Branch(int.Parse(p.Element("id").Value),
+                                         p.Element("Name").Value,
+                                         p.Element("Address").Value,
+                                         p.Element("Phone").Value,
+                                         p.Element("Manager").Value,
+                                        int.Parse( p.Element("Workers").Value),
+                                         int.Parse(p.Element("NumOfDeliveryPerson").Value),
+                                        (BE.Hashgacha) Enum.Parse(typeof( BE.Hashgacha) , (p.Element("Hashgacha").Value)));
+
+                if (temp.Count() == 0) return null;
+
+
+                return temp;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentNullException("XML Error: The database " + ClientPath + " is empty or corrupted" + "\n" +
+                                                "Error number" + ex.HResult);
+            }
         }
 
         public IEnumerable<Client> GetAllClients()
         {
-            return StudentXml.GetAllClients();
+            LoadData(ClientPath);
+
+            try
+            {
+                IEnumerable<Client> temp = (from p in Root.Elements()
+                        select new Client(int.Parse(p.Element("id").Value),
+                                         p.Element("Client_Details").Element("Name").Value,
+                                         p.Element("Client_Details").Element("Address").Value,
+                                         p.Element("Card").Value,
+                                         p.Element("Client_Details").Element("Phone").Value,
+                                          int.Parse(p.Element("Client_Details").Element("Age").Value)));
+                return (temp.Count() > 0) ? temp : null;
+
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentNullException("XML Error: The database " + ClientPath + " is empty or corrupted" + "\n" +
+                                                "Error number" + ex.HResult);
+            }
         }
 
         public IEnumerable<Dish> GetAllDish()
         {
-            throw new NotImplementedException();
+            LoadData(DishPath);
+
+            IEnumerable<Dish> temp;
+
+            try
+            {
+
+            
+
+                temp = from p in Root.Elements()
+                       select new Dish(int.Parse(p.Element("id").Value),
+                                        p.Element("Name").Value,
+                                       (BE.Dish.size) Enum.Parse( typeof(BE.Dish.size), p.Element("Size").Value),
+                                      float.Parse(  p.Element("Price").Value),
+                                       (BE.Hashgacha)Enum.Parse(typeof(BE.Hashgacha), (p.Element("Hashgacha").Value)));
+
+                if (temp.Count() == 0) return null;
+
+
+                return temp;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentNullException("XML Error: The database " + ClientPath + " is empty or corrupted" + "\n" +
+                                                "Error number" + ex.HResult);
+            }
         }
 
         public IEnumerable<Order> GetAllOrder()
         {
-            throw new NotImplementedException();
+            LoadData(OrderPath);
+
+            IEnumerable<Order> temp;
+
+
+            /*
+                   XElement id = new XElement("id", add.OrderId);
+            XElement Time = new XElement("Time", add.OrderTime);
+            XElement ClientId = new XElement("Client", add.ClientId);
+            XElement BranchId = new XElement("Branch", add.BranchId);
+            XElement Hashgacha = new XElement("Hashgacha", add.HashgachaPlace);
+            XElement Remarks = new XElement("Remarks", add.Remark);
+            XElement Price = new XElement("Price", add.OrderPrice);
+            XElement Client = new XElement("Client_Details", ClientId, BranchId, Hashgacha);
+            */
+
+            try
+            {
+                temp= from p in Root.Elements()
+                       select new Order(int.Parse(p.Element("id").Value),                                                     // int _OrderId;
+                                            DateTime.Parse(p.Element("Time").Value),                                          // DateTime _OrderTime;
+                                            int.Parse(p.Element("Client_Details").Element("Branch").Value),                   // int _BranchId;
+
+
+                                           (BE.Hashgacha) Enum.Parse(typeof(BE.Hashgacha), 
+                                                                   p.Element("Client_Details").Element("Hashgacha").Value),   // Hashgacha _HashgachaPlace;
+
+
+                                            int.Parse(p.Element("Client_Details").Element("Client").Value),                   // int _ClientId;
+                                            float.Parse(p.Element("Price").Value),                                            // float _OrderPrice;
+                                             p.Element("Remarks").Value);                                                     //  String remark;
+
+                return (temp.Count() > 0) ? temp : null;
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentNullException("XML Error: The database " + OrderPath + " is empty or corrupted" + "\n" +
+                                               "Error number" + ex.HResult +"/nError type"+ ex.GetType());
+            }
         }
 
         public IEnumerable<Ordered_Dish> GetAllOrdersDish()
         {
-            throw new NotImplementedException();
+          
+            LoadData(OrderDishPath);
+
+            /*
+               XElement id = new XElement("id", add.Ordered_DishId);
+            XElement Order = new XElement("Order", add.OrderId);
+            XElement Dish = new XElement("Dish", add.DishId);
+            XElement Amount = new XElement("Amount", add.DishAmount);
+    */
+
+
+            try
+            {
+                IEnumerable<Ordered_Dish> temp = from p in Root.Elements()
+                       select new Ordered_Dish(
+                                            int.Parse(p.Element("id").Value),                                                  
+                                            int.Parse(p.Element("Order").Value),                                          
+                                            int.Parse(p.Element("Dish").Value),                  
+                                            float.Parse(p.Element("Amount").Value)                                           
+                                             );
+
+                return (temp != null && temp.Count() > 0) ? temp : null;
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentNullException("XML Error: The database " + OrderPath + " is empty or corrupted" + "\n" +
+                                               "Error number" + ex.HResult);
+            }
+
         }
 
         public Branch SearchBranchById(int id)
         {
-            throw new NotImplementedException();
-        }
+            LoadData(BranchPath);
+
+
+            return (from p in Root.Elements()
+                    where (int.Parse(p.Element("id").Value) == id)
+                    select new Branch(int.Parse(p.Element("id").Value),
+                                     p.Element("Name").Value,
+                                     p.Element("Address").Value,
+                                     p.Element("Phone").Value,
+                                     p.Element("Manager").Value,
+                                    int.Parse(p.Element("Workers").Value),
+                                     int.Parse(p.Element("NumOfDeliveryPerson").Value),
+                                    (BE.Hashgacha)Enum.Parse(typeof(BE.Hashgacha), (p.Element("Hashgacha").Value)))).FirstOrDefault();
+
+              
+
+            }
 
         public Client SearchClientById(int id)
         {
-            throw new NotImplementedException();
+            LoadData(ClientPath);
+
+            return (from p in Root.Elements()
+                    where (int.Parse(p.Element("id").Value) == id)
+                    select new Client(int.Parse(p.Element("id").Value),
+                                     p.Element("Client_Details").Element("Name").Value,
+                                     p.Element("Client_Details").Element("Address").Value,
+                                     p.Element("Card").Value,
+                                     p.Element("Client_Details").Element("Phone").Value,
+                                      int.Parse(p.Element("Client_Details").Element("Age").Value))).FirstOrDefault();
         }
 
         public Dish SearchDishById(int id)
         {
-            throw new NotImplementedException();
+            LoadData(DishPath);
+            return (from p in Root.Elements()
+                    where (int.Parse(p.Element("id").Value) == id)
+                    select new Dish(int.Parse(p.Element("id").Value),
+                                    p.Element("Name").Value,
+                                   (BE.Dish.size)Enum.Parse(typeof(BE.Dish.size), p.Element("Size").Value),
+                                  float.Parse(p.Element("Price").Value),
+                                   (BE.Hashgacha)Enum.Parse(typeof(BE.Hashgacha), (p.Element("Hashgacha").Value)))).FirstOrDefault();
         }
 
         public Order SearchOrderById(int id)
         {
-            throw new NotImplementedException();
+            LoadData(OrderPath);
+            return (from p in Root.Elements()
+                    where (int.Parse(p.Element("id").Value) == id)
+                    select new Order(int.Parse(p.Element("id").Value),                                                        // int _OrderId;
+                                            DateTime.Parse(p.Element("Time").Value),                                          // DateTime _OrderTime;
+                                            int.Parse(p.Element("Client_Details").Element("Branch").Value),                   // int _BranchId;
+
+
+                                           (BE.Hashgacha)Enum.Parse(typeof(BE.Hashgacha),
+                                                                   p.Element("Client_Details").Element("Hashgacha").Value),   // Hashgacha _HashgachaPlace;
+
+
+                                            int.Parse(p.Element("Client_Details").Element("Client").Value),                   // int _ClientId;
+                                            float.Parse(p.Element("Price").Value),                                            // float _OrderPrice;
+                                             p.Element("Remarks").Value)).FirstOrDefault();                                   //  String remark;
         }
 
         public Ordered_Dish SearchOrdered_DishById(int id)
         {
-            throw new NotImplementedException();
+            LoadData(OrderDishPath);
+            return (from p in Root.Elements()
+                  where(int.Parse(p.Element("id").Value) == id)
+                   select new Ordered_Dish(
+                                        int.Parse(p.Element("id").Value),
+                                        int.Parse(p.Element("Order").Value),
+                                        int.Parse(p.Element("Dish").Value),
+                                        float.Parse(p.Element("Price").Value)
+                                         )).FirstOrDefault();
+
         }
 
         public void UpdateBranch(Branch updete)
         {
-            throw new NotImplementedException();
+            if (DeleteBranch(updete))
+                AddBranch(updete);
+            else
+                throw new NullReferenceException("Dal Error: Branch does not exist");
         }
 
         public void UpdateClient(Client updete)
         {
-            throw new NotImplementedException();
+            if (DeleteClient(updete))
+                AddClient(updete);
+            else
+                throw new NullReferenceException("Dal Error: Client does not exist");
         }
 
         public void UpdateDish(Dish update)
         {
-            throw new NotImplementedException();
+            if (DeleteDish(update))
+                AddDish(update);
+            else
+                throw new NullReferenceException("Dal Error: Dish does not exist");
         }
 
         public void UpdateOrder(Order updete)
         {
-            throw new NotImplementedException();
+            if (DeleteOrder(updete))
+                AddOrder(updete);
+            else
+                throw new NullReferenceException("Dal Error: Order does not exist");
         }
 
         public void UpdateOrdered_Dish(Ordered_Dish updete)
         {
-            throw new NotImplementedException();
+            if (DeleteOrdered_Dish(updete))
+                AddOrdered_Dish(updete);
+            else
+                throw new NullReferenceException("Dal Error: Order does not exist");
         }
     }
 }

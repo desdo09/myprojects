@@ -36,7 +36,6 @@ namespace dotNet5776_Project_0260
                 from item in BlObject.GetAllOrders()
                 group item.OrderPrice by new { item.ClientId, BlObject.SearchClientById(item.ClientId).ClientName }
                 into ClientGroup
-           
                 select new
                 {
 
