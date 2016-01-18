@@ -86,8 +86,8 @@ namespace DAL
                 throw new Exception("File upload problem");
             }
         }
-        
 
+        #region Add
         public void AddBranch(Branch add)
         {
             if (SearchBranchById(add.BranchId) != null)
@@ -199,7 +199,9 @@ namespace DAL
             Root.Add(new XElement("Ordered_Dish", id, Order, Dish, Amount));
             Root.Save(OrderDishPath);
         }
+        #endregion
 
+        #region Delete
         public bool DeleteBranch(Branch delete)
         {
             XElement ToRemove;
@@ -299,7 +301,9 @@ namespace DAL
                 return false;
             }
         }
+        #endregion
 
+        #region GetAll
         public IEnumerable<Branch> GetAllBranch()
         {
             LoadData(BranchPath);
@@ -394,17 +398,7 @@ namespace DAL
             IEnumerable<Order> temp;
 
 
-            /*
-                   XElement id = new XElement("id", add.OrderId);
-            XElement Time = new XElement("Time", add.OrderTime);
-            XElement ClientId = new XElement("Client", add.ClientId);
-            XElement BranchId = new XElement("Branch", add.BranchId);
-            XElement Hashgacha = new XElement("Hashgacha", add.HashgachaPlace);
-            XElement Remarks = new XElement("Remarks", add.Remark);
-            XElement Price = new XElement("Price", add.OrderPrice);
-            XElement Client = new XElement("Client_Details", ClientId, BranchId, Hashgacha);
-            */
-
+         
             try
             {
                 temp= from p in Root.Elements()
@@ -435,12 +429,7 @@ namespace DAL
           
             LoadData(OrderDishPath);
 
-            /*
-               XElement id = new XElement("id", add.Ordered_DishId);
-            XElement Order = new XElement("Order", add.OrderId);
-            XElement Dish = new XElement("Dish", add.DishId);
-            XElement Amount = new XElement("Amount", add.DishAmount);
-    */
+           
 
 
             try
@@ -462,7 +451,9 @@ namespace DAL
             }
 
         }
+        #endregion
 
+        #region Search
         public Branch SearchBranchById(int id)
         {
             LoadData(BranchPath);
@@ -531,17 +522,28 @@ namespace DAL
         public Ordered_Dish SearchOrdered_DishById(int id)
         {
             LoadData(OrderDishPath);
-            return (from p in Root.Elements()
-                  where(int.Parse(p.Element("id").Value) == id)
-                   select new Ordered_Dish(
-                                        int.Parse(p.Element("id").Value),
-                                        int.Parse(p.Element("Order").Value),
-                                        int.Parse(p.Element("Dish").Value),
-                                        float.Parse(p.Element("Price").Value)
-                                         )).FirstOrDefault();
+
+            try
+            {
+                return (from p in Root.Elements()
+                        where (int.Parse(p.Element("id").Value) == id)
+                        select new Ordered_Dish(
+                                             int.Parse(p.Element("id").Value),
+                                             int.Parse(p.Element("Order").Value),
+                                             int.Parse(p.Element("Dish").Value),
+                                             float.Parse(p.Element("Price").Value)
+                                              )).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
 
         }
+        #endregion
 
+        #region Update
         public void UpdateBranch(Branch updete)
         {
             if (DeleteBranch(updete))
@@ -581,5 +583,7 @@ namespace DAL
             else
                 throw new NullReferenceException("Dal Error: Order does not exist");
         }
+
+        #endregion
     }
 }
