@@ -79,7 +79,9 @@
         </Grid>
         <Label VerticalAlignment="Bottom" Grid.Row="0" Content="External Details:" FontSize="18"/>
         <Label VerticalAlignment="Bottom" Grid.Row="3" Content="Internal Details:" FontSize="18"/>
-        <Button x:Name="AddButton" Content="Add branch" Grid.Row="7" Margin="5" FontSize="26" Click="AddButton_Click" />
+        <Button x:Name="AddButton" Content="Add branch" Grid.Row="7" Margin="5" FontSize="26" Click="AddButton_Click" >
+            
+        </Button>
 
 
 

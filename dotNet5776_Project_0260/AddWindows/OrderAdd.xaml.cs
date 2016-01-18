@@ -62,12 +62,11 @@ namespace dotNet5776_Project_0260
                         Dish current = BlObject.SearchDishById(item.DishId);
                         if (current == null)
                         {
-                            MessageBox.Show("Dish Id " + item.DishId + " Does not exist anymore", "Dish", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                            CurrentDish.Add(new Dishamount(new Dish(item.DishId, " ", null, 0, null), item.DishAmount));
+                            MessageBox.Show("Dish Id " + item.DishId + "  Does not exist anymore\n", "Get ordered dish", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                             BlObject.DeleteOrdered_Dish(item.Ordered_DishId);
                         }
                         else
-                            CurrentDish.Add(new Dishamount(current, item.DishAmount));
+                            CurrentDish.Add(new Dishamount(current, item.DishAmount,item.Ordered_DishId));
 
                        
                     }
@@ -128,7 +127,7 @@ namespace dotNet5776_Project_0260
                     throw new Exception("Please select the Order time");
 
                 var dishes = from x in CurrentDish
-                             select new Ordered_Dish(BlObject.GetOrdered_DishValidId(), OrderId, x.DishId, x.amount);
+                             select new Ordered_Dish((x.OrderDishId != null)? (int) x.OrderDishId : BlObject.GetOrdered_DishValidId(), OrderId, x.DishId, x.amount);
 
                 DateTime DeliveryTime = new DateTime(
                                                     ((DateTime)DayBox.SelectedDate).Year,
@@ -146,12 +145,12 @@ namespace dotNet5776_Project_0260
                     BlObject.UpdateOrder(temp, dishes.ToList());
                 PropertyChanged(this, new PropertyChangedEventArgs("OrderAdd#"));
 
-                MessageBox.Show("Order added successful");
+                MessageBox.Show("Order added successful" , "New order");
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,"New order");
             }
 
         }
@@ -280,6 +279,8 @@ namespace dotNet5776_Project_0260
         public Hashgacha? HashgachaDish { get; set; }
         public float amount { get; set; }
 
+        public int? OrderDishId { get; set; }
+         
         public Dishamount(Dish Dish, float amount)
         {
             this.DishId = Dish.DishId;
@@ -288,6 +289,18 @@ namespace dotNet5776_Project_0260
             DishPrice = Dish.DishPrice;
             HashgachaDish = Dish.HashgachaDish;
             this.amount = amount;
+            this.OrderDishId = null;
+        }
+
+        public Dishamount(Dish Dish, float amount,int OrderDishId)
+        {
+            this.DishId = Dish.DishId;
+            DishName = Dish.DishName;
+            DishSize = Dish.DishSize;
+            DishPrice = Dish.DishPrice;
+            HashgachaDish = Dish.HashgachaDish;
+            this.amount = amount;
+            this.OrderDishId = OrderDishId;
         }
     }
 }

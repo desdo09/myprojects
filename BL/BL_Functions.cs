@@ -36,6 +36,7 @@ namespace BL
         {
 
             #region Condition
+
             if (Orderadd.OrderTime.Day > DateTime.Now.Day + 2)
                 throw new InvalidOperationException("Does not allowed add an order to 24 hours early");
             if (Orderadd.OrderTime.Hour > 23 || Orderadd.OrderTime.Hour < 9)
@@ -43,10 +44,17 @@ namespace BL
             if (Orderadd.OrderTime.Hour < DateTime.Now.Hour - 1)
                 throw new InvalidOperationException("Time not allowed");
 
+            IEnumerable<Order> OrderInHour = SearchInOrder(x => x.OrderTime.Hour == Orderadd.OrderTime.Hour);
+            Branch tempBranch = SearchBranchById(Orderadd.BranchId);
+
+            if(!(OrderInHour != null && OrderInHour.Count()>tempBranch.NumOfDeliveryPerson) )
+                throw new InvalidOperationException("Delivery full at " + Orderadd.OrderTime.Hour + "hs");
+
             if (SearchClientById(Orderadd.ClientId) == null)
                 throw new NullReferenceException("Client does not found");
             if (Orderadd.OrderPrice > 1000)
                 throw new InvalidOperationException("Price to hight");
+
             #endregion
 
             // The i will save the position where the will catch received the throw
@@ -201,6 +209,8 @@ namespace BL
 
         public void UpdateOrder(Order updete, List<Ordered_Dish> DishAdd)
         {
+
+            #region Condition
             if (updete.OrderTime.Day > DateTime.Now.Day + 2)
                 throw new InvalidOperationException("Does not allowed add an order to 24 hours early");
             if (updete.OrderTime.Hour > 23 || updete.OrderTime.Hour < 9)
@@ -211,20 +221,52 @@ namespace BL
 
             if (updete.OrderPrice > 1000)
                 throw new InvalidOperationException("Price to hight");
+            #endregion
 
-
-            foreach (Ordered_Dish item in DishAdd)
+            IEnumerable<Ordered_Dish> OrdersDishInDabase = SearchInOrdered_Dish(x => x.OrderId == updete.OrderId);
+          
+            foreach (Ordered_Dish item in OrdersDishInDabase)
             {
-                if (SearchDishById(item.DishId).HashgachaDish < updete.HashgachaPlace)
-                    throw new InvalidOperationException("Dish Hashacha lower than " + updete.HashgachaPlace.ToString());
+                Ordered_Dish ToUpdate = (from x in DishAdd where x.DishId == item.DishId select x).FirstOrDefault();
+
+                try
+                {
+
+                    if (ToUpdate != null)
+                    {
+                        DalObject.UpdateOrdered_Dish(ToUpdate);
+                        DishAdd.Remove(ToUpdate);
+                    }
+                    else
+                        DalObject.DeleteOrdered_Dish(item);
+                }
+                catch (NullReferenceException ex)
+               {
+                    throw new NullReferenceException(ex.Source + " Error:\n"+ ex.Message);
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
 
             }
             DalObject.UpdateOrder(updete);
-            foreach (Ordered_Dish item in GetAllOrdersDish().Where(x => x.OrderId == updete.OrderId))
+
+            foreach (Ordered_Dish item in DishAdd)
             {
-                if (DishAdd.FirstOrDefault(x => x.Ordered_DishId == item.Ordered_DishId) == null)
-                    DalObject.DeleteOrdered_Dish(item);
+                try
+                {
+                    AddOrdered_Dish(item);
+                }
+                catch (Exception ex) 
+                {
+
+                    throw new Exception("BL error:" + ex.Message + "\nThe another dishes was updated");
+                }
+
             }
+         
         }
 
         public void UpdateOrdered_Dish(Ordered_Dish updete)

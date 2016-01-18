@@ -10,6 +10,52 @@ namespace BL
 {
     public interface IBL
     {
+
+        /*
+
+        void AddBEObject(BEObject add);
+          The function will send BEObject to AddBEObject in DAl
+          There a few function that will verify a few condition before:
+            
+            
+          void AddClient(Client add)
+            The function will verify if the Credit card is valid and if the client is older than 18 
+
+          AddOrdered_Dish(Ordered_Dish add) 
+            The function will verify if the Hashgacha is able to the order 
+
+          void AddOrder(Order Orderadd, List<Ordered_Dish> DishAdd
+            The function will verify:
+               if the branch still open to delivery
+               if the delivery can be done
+               if the client exist
+               if the price is less than 1000
+                    then the function will send the order to AddOrder in DAL
+               if all order dish are inserted to the database 
+
+        bool DeleteBEObject(BEObject DishId);
+           The function will send BEObject to DeleteBEObject in DAl
+
+        void UpdateBEObject(BEObject update);
+          The function will send BEObject to UpdateBEObject in DAl
+
+        BEObject SearchBEObjectById(int id);
+          The function will send BEObject to SearchBEObjectById in DAl
+
+        IEnumerable<BEObject> GetAllBEObject()
+           The function will ask all BEObject to GetAllBEObject in DAl
+       
+        List<BEObject> SearchInBEObject(Func<BEObject, bool> search)
+            the function will get a predicate and use it into a link to find BEObjects and return a list with the objects founded
+
+        int GetBEObjectValidId();
+            The function will return the next valid id 
+
+        Ordered_Dish SearchOrdered_DishById(int id)
+            The function will return all Order dish that have same order Id
+
+     */
+
         //Dish
         int GetDishValidId();
         void AddDish(Dish add);

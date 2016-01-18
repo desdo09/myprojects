@@ -9,6 +9,37 @@ namespace DAL
 {
     public interface IDAL
     {
+        /*
+
+        void AddBEObject(BEObject add);
+           The function will verify if there the same BEObject in the database.
+           If the BEObject does not exist then the function will add it, otherwise the function will throw an IdAlreadyExist exception  
+
+
+        bool DeleteBEObject(BEObject DishId);
+           The function will verify if the BEObject exist in the database.
+           If the BEObject does not exist then the function throw an exception, otherwise the function will remove it  
+
+
+        void UpdateBEObject(BEObject update);
+           All classes in BE contains a function to copy from another object
+           The function will verify if the BEObject exist in the database.
+           If the BEObject does not exist then the function will throw an exception, otherwise the function will: 
+                    * Use the copy function to update it (DAl List).
+                    * Delete the old object then insert the new one (DAl XML). 
+
+        BEObject SearchBEObjectById(int id);
+            The function will verify if the BEObject exist in the database.
+            If the BEObject does not exist then the function will return null, otherwise the function will return the found object.
+
+        IEnumerable<BEObject> GetAllBEObject()
+            The function will return all BEObject found in database.
+
+
+
+    */
+
+
         //Dish
         void AddDish(Dish add);
         bool DeleteDish(Dish DishId);

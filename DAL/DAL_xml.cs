@@ -581,7 +581,7 @@ namespace DAL
             if (DeleteOrdered_Dish(updete))
                 AddOrdered_Dish(updete);
             else
-                throw new NullReferenceException("Dal Error: Order does not exist");
+                throw new NullReferenceException("Dal dish: Order does not exist");
         }
 
         #endregion
